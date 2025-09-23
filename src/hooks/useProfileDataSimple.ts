@@ -22,29 +22,10 @@ export const useProfileData = (): UseProfileDataResult => {
       setLoading(true);
       setError(null);
 
-      console.log('🔄 Fetching profile data...');
+      console.log('🔄 Fetching profile data from single source of truth...');
       
-      // Test local endpoint first for development
-      console.log('Testing local endpoint: /data/profiles/default.json');
-      
-      try {
-        const localResponse = await fetch('/data/profiles/default.json');
-        console.log('Local response status:', localResponse.status, localResponse.statusText);
-        
-        if (localResponse.ok) {
-          const localData = await localResponse.json();
-          console.log('✅ Local data loaded successfully:', localData);
-          setData(localData);
-          return;
-        } else {
-          console.log('❌ Local endpoint failed, trying remote...');
-        }
-      } catch (localErr) {
-        console.log('❌ Local fetch error:', localErr);
-      }
-      
-      // Try remote endpoint
-      console.log('Testing remote endpoint: GitHub raw content');
+      // Single source of truth - GitHub endpoint only
+      console.log('Fetching from: https://raw.githubusercontent.com/sunnydodti/sunnydodti/refs/heads/dev/data/profiles/default.json');
       const response = await fetch(
         'https://raw.githubusercontent.com/sunnydodti/sunnydodti/refs/heads/dev/data/profiles/default.json'
       );

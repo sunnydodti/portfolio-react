@@ -21,11 +21,6 @@ export {
 // Data fetching hooks
 export {
   useProfileData,
-  useWorkExperience,
-  useProjects,
-  useTechStack,
-  useBasicProfile,
-  useSocialLinks,
 } from './useProfileData';
 
 // UI state hooks (to be created)

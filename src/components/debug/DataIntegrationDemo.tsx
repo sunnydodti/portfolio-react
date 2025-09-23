@@ -16,14 +16,13 @@ export const DataIntegrationDemo: React.FC = () => {
   // Enhanced hook with validation
   const enhancedResult = useEnhancedProfileData({
     skipAutoFetch: activeHook !== 'enhanced',
-    enableLocal: true,
     enableValidation: true,
     onSuccess: (data, source) => {
       console.log(`✅ Enhanced hook loaded data from ${source}`);
       logDataStructure(data);
     },
-    onError: (error, context) => {
-      console.error(`❌ Enhanced hook error in ${context}:`, error);
+    onError: (error) => {
+      console.error(`❌ Enhanced hook error:`, error);
     },
   });
   

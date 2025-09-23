@@ -1,5 +1,5 @@
 import React from "react";
-import { useProfileData } from "../hooks/useProfileDataSimple";
+import { useProfileData } from "../hooks/useProfileData";
 import { LoadingContainer, Card, CardBody, Button, Badge, SkillBadge } from "../components/common";
 import "./Home.css";
 

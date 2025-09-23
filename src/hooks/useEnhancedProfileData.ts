@@ -1,9 +1,9 @@
 /* ==========================================================================
-   Enhanced Profile Data Hook - Robust data fetching with validation
+   Enhanced Profile Data Hook - Single Source of Truth
    ========================================================================== */
 
-import { useState, useEffect, useCallback, useRef } from 'react';
-import type { ProfileData, FetchResult } from '../types';
+import { useState, useEffect, useCallback } from 'react';
+import type { ProfileData } from '../types';
 import { validateProfileData, sanitizeProfileData } from '../utils/dataValidation';
 
 /* ========================================
@@ -11,16 +11,8 @@ import { validateProfileData, sanitizeProfileData } from '../utils/dataValidatio
    ======================================== */
 
 const API_CONFIG = {
-  // Primary endpoint (dev branch)
-  PRIMARY_ENDPOINT: 'https://raw.githubusercontent.com/sunnydodti/sunnydodti/refs/heads/dev/data/profiles/default.json',
-  
-  // Fallback endpoints
-  FALLBACK_ENDPOINTS: [
-    'https://raw.githubusercontent.com/sunnydodti/sunnydodti/main/data/profiles/default.json',
-  ],
-  
-  // Local development endpoint
-  LOCAL_ENDPOINT: '/context/data/profiles/default.json',
+  // Single source of truth - main repository
+  ENDPOINT: 'https://raw.githubusercontent.com/sunnydodti/sunnydodti/refs/heads/dev/data/profiles/default.json',
   
   // Request configuration
   TIMEOUT: 15000, // 15 seconds for better reliability
@@ -33,7 +25,7 @@ const API_CONFIG = {
 } as const;
 
 /* ========================================
-   Hook Options
+   Types
    ======================================== */
 
 interface UseEnhancedProfileDataOptions {
@@ -48,31 +40,30 @@ interface UseEnhancedProfileDataOptions {
   forceRefresh?: boolean;
   
   /**
-   * Enable local endpoint for development
-   */
-  enableLocal?: boolean;
-  
-  /**
    * Enable data validation
    */
   enableValidation?: boolean;
   
   /**
-   * Custom error handler
+   * Error callback
    */
-  onError?: (error: Error, context: string) => void;
+  onError?: (error: Error) => void;
   
   /**
-   * Custom success handler
+   * Success callback
    */
   onSuccess?: (data: ProfileData, source: DataSource) => void;
 }
 
-type DataSource = 'cache' | 'local' | 'primary' | 'fallback';
+type DataSource = 'cache' | 'remote';
 
-/* ========================================
-   Cache Management
-   ======================================== */
+interface UseEnhancedProfileDataResult {
+  data: ProfileData | null;
+  loading: boolean;
+  error: string | null;
+  source: DataSource | null;
+  refetch: () => void;
+}
 
 interface CacheEntry {
   data: ProfileData;
@@ -81,267 +72,267 @@ interface CacheEntry {
   version: string;
 }
 
-const getCachedData = (): ProfileData | null => {
+/* ========================================
+   Cache Utilities
+   ======================================== */
+
+/**
+ * Get cached data if valid
+ */
+const getCachedData = (): { data: ProfileData; source: DataSource } | null => {
   try {
     const cached = localStorage.getItem(API_CONFIG.CACHE_KEY);
     if (!cached) return null;
-    
+
     const entry: CacheEntry = JSON.parse(cached);
     const isExpired = Date.now() - entry.timestamp > API_CONFIG.CACHE_TTL;
-    
+
     if (isExpired) {
       localStorage.removeItem(API_CONFIG.CACHE_KEY);
       return null;
     }
-    
-    console.log(`📦 Using cached data from ${entry.source} (${entry.version})`);
-    return entry.data;
+
+    return { data: entry.data, source: entry.source };
   } catch (error) {
-    console.warn('Failed to read cache:', error);
+    console.warn('Failed to read cached data:', error);
     localStorage.removeItem(API_CONFIG.CACHE_KEY);
     return null;
   }
 };
 
+/**
+ * Cache data to localStorage
+ */
 const setCachedData = (data: ProfileData, source: DataSource): void => {
   try {
     const entry: CacheEntry = {
       data,
       timestamp: Date.now(),
       source,
-      version: '2.0.0',
+      version: '2.0',
     };
-    
     localStorage.setItem(API_CONFIG.CACHE_KEY, JSON.stringify(entry));
-    console.log(`💾 Data cached from ${source}`);
   } catch (error) {
     console.warn('Failed to cache data:', error);
   }
 };
 
 /* ========================================
-   Data Fetching Functions
+   Fetch Utilities
    ======================================== */
 
-const fetchFromEndpoint = async (
-  url: string, 
-  timeout: number = API_CONFIG.TIMEOUT
-): Promise<ProfileData> => {
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), timeout);
-  
-  try {
-    console.log(`🌐 Fetching from: ${url}`);
-    
-    const response = await fetch(url, {
-      signal: controller.signal,
-      headers: {
-        'Accept': 'application/json',
-        'Cache-Control': 'no-cache',
-        'Pragma': 'no-cache',
-      },
-    });
-    
-    clearTimeout(timeoutId);
-    
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-    }
-    
-    const rawData = await response.json();
-    console.log(`✅ Raw data received from ${url}`);
-    
-    return rawData;
-  } catch (error) {
-    clearTimeout(timeoutId);
-    
-    if (error instanceof Error) {
-      if (error.name === 'AbortError') {
-        throw new Error(`Request timeout after ${timeout}ms`);
-      }
-      throw error;
-    }
-    
-    throw new Error('Unknown fetch error');
-  }
-};
-
+/**
+ * Fetch data with timeout and retry logic
+ */
 const fetchWithRetry = async (
-  url: string, 
+  url: string,
+  timeout: number = API_CONFIG.TIMEOUT,
   maxAttempts: number = API_CONFIG.RETRY_ATTEMPTS
 ): Promise<ProfileData> => {
   let lastError: Error;
-  
+
   for (let attempt = 1; attempt <= maxAttempts; attempt++) {
     try {
-      const data = await fetchFromEndpoint(url);
-      
-      if (attempt > 1) {
-        console.log(`✅ Succeeded on attempt ${attempt}`);
+      console.info(`🔄 Fetching profile data (attempt ${attempt}/${maxAttempts})`);
+
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), timeout);
+
+      const response = await fetch(url, {
+        signal: controller.signal,
+        headers: {
+          'Accept': 'application/json',
+          'Cache-Control': 'no-cache',
+        },
+      });
+
+      clearTimeout(timeoutId);
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
-      
+
+      const contentType = response.headers.get('content-type');
+      if (!contentType?.includes('application/json')) {
+        throw new Error('Invalid content type: Expected JSON');
+      }
+
+      const data = await response.json() as ProfileData;
+
+      if (!data || typeof data !== 'object') {
+        throw new Error('Invalid data format received');
+      }
+
+      console.info('✅ Profile data fetched successfully');
       return data;
+
     } catch (error) {
-      lastError = error as Error;
-      console.warn(`❌ Attempt ${attempt}/${maxAttempts} failed:`, error);
-      
-      if (attempt < maxAttempts) {
-        const delay = API_CONFIG.RETRY_DELAY * attempt; // Exponential backoff
-        console.log(`⏳ Retrying in ${delay}ms...`);
-        await new Promise(resolve => setTimeout(resolve, delay));
+      lastError = error instanceof Error ? error : new Error('Unknown error');
+
+      if (attempt === maxAttempts) {
+        break;
       }
+
+      // Exponential backoff with jitter
+      const delay = API_CONFIG.RETRY_DELAY * Math.pow(2, attempt - 1) + Math.random() * 1000;
+      console.warn(`⚠️ Attempt ${attempt} failed: ${lastError.message}. Retrying in ${Math.round(delay)}ms...`);
+      await new Promise(resolve => setTimeout(resolve, delay));
     }
   }
-  
-  throw lastError!;
+
+  throw new Error(`Failed to fetch data after ${maxAttempts} attempts: ${lastError!.message}`);
 };
 
 /* ========================================
-   Main Hook
+   Main Fetch Function
    ======================================== */
 
+/**
+ * Fetch profile data from single source of truth
+ */
+const fetchProfileData = async (
+  options: {
+    enableValidation?: boolean;
+    onError?: (error: Error) => void;
+    onSuccess?: (data: ProfileData, source: DataSource) => void;
+  } = {}
+): Promise<{ data: ProfileData; source: DataSource }> => {
+  const { enableValidation = true, onError, onSuccess } = options;
+
+  try {
+    console.info('🚀 Starting profile data fetch from single source of truth...');
+
+    // Fetch from remote endpoint
+    const rawData = await fetchWithRetry(API_CONFIG.ENDPOINT);
+
+    // Validate data if enabled
+    let data = rawData;
+    if (enableValidation) {
+      const validation = validateProfileData(rawData);
+      
+      if (!validation.isValid) {
+        console.warn('⚠️ Data validation warnings:', validation.warnings);
+        console.error('❌ Data validation errors:', validation.errors);
+        
+        if (validation.errors.length > 0) {
+          throw new Error(`Data validation failed: ${validation.errors.join(', ')}`);
+        }
+      }
+
+      // Sanitize the data
+      const sanitized = sanitizeProfileData(rawData);
+      if (!sanitized) {
+        throw new Error('Data sanitization failed');
+      }
+      data = sanitized;
+      console.info('✅ Data validated and sanitized successfully');
+    }
+
+    const source: DataSource = 'remote';
+    
+    // Cache the successful result
+    setCachedData(data, source);
+
+    // Call success callback
+    if (onSuccess) {
+      onSuccess(data, source);
+    }
+
+    console.info('✅ Profile data loaded successfully from remote source');
+    return { data, source };
+
+  } catch (error) {
+    const finalError = error instanceof Error ? error : new Error('Failed to fetch profile data');
+    console.error('❌ Profile data fetch failed:', finalError.message);
+    
+    // Call error callback
+    if (onError) {
+      onError(finalError);
+    }
+    
+    throw finalError;
+  }
+};
+
+/* ========================================
+   Hook Implementation
+   ======================================== */
+
+/**
+ * Enhanced profile data hook with validation and caching
+ */
 export const useEnhancedProfileData = (
   options: UseEnhancedProfileDataOptions = {}
-): FetchResult<ProfileData> => {
+): UseEnhancedProfileDataResult => {
   const {
     skipAutoFetch = false,
     forceRefresh = false,
-    enableLocal = true,
     enableValidation = true,
     onError,
     onSuccess,
   } = options;
-  
+
   const [data, setData] = useState<ProfileData | null>(null);
   const [loading, setLoading] = useState<boolean>(!skipAutoFetch);
   const [error, setError] = useState<string | null>(null);
-  
-  const isMountedRef = useRef(true);
-  const fetchingRef = useRef(false);
-  
-  const fetchData = useCallback(async (): Promise<void> => {
-    if (fetchingRef.current) {
-      console.log('⏸️ Fetch already in progress, skipping...');
-      return;
-    }
-    
-    fetchingRef.current = true;
-    
+  const [source, setSource] = useState<DataSource | null>(null);
+
+  const fetchData = useCallback(async (force = false) => {
     try {
       setLoading(true);
       setError(null);
-      
-      // Check cache first (unless force refresh)
-      if (!forceRefresh) {
-        const cachedData = getCachedData();
-        if (cachedData) {
-          if (isMountedRef.current) {
-            setData(cachedData);
-            setLoading(false);
-            onSuccess?.(cachedData, 'cache');
-          }
+
+      // Try cache first unless force refresh
+      if (!force && !forceRefresh) {
+        const cached = getCachedData();
+        if (cached) {
+          console.info('📦 Using cached profile data');
+          setData(cached.data);
+          setSource(cached.source);
+          setLoading(false);
           return;
         }
       }
-      
-      let profileData: ProfileData;
-      let source: DataSource;
-      
-      // Try endpoints in order of priority
-      const endpoints = [
-        ...(enableLocal ? [{ url: API_CONFIG.LOCAL_ENDPOINT, source: 'local' as const }] : []),
-        { url: API_CONFIG.PRIMARY_ENDPOINT, source: 'primary' as const },
-        ...API_CONFIG.FALLBACK_ENDPOINTS.map((url) => ({
-          url,
-          source: 'fallback' as const,
-        })),
-      ];
-      
-      let lastError: Error | null = null;
-      
-      for (const { url, source: endpointSource } of endpoints) {
-        try {
-          const rawData = await fetchWithRetry(url);
-          
-          // Validate data if enabled
-          if (enableValidation) {
-            const validation = validateProfileData(rawData);
-            if (!validation.isValid) {
-              throw new Error(`Data validation failed: ${validation.errors.join(', ')}`);
-            }
-            
-            // Sanitize data
-            const sanitizedData = sanitizeProfileData(rawData);
-            if (!sanitizedData) {
-              throw new Error('Data sanitization failed');
-            }
-            
-            profileData = sanitizedData;
-          } else {
-            profileData = rawData as ProfileData;
-          }
-          
-          source = endpointSource;
-          console.log(`✅ Successfully loaded data from ${source}`);
-          break;
-        } catch (endpointError) {
-          console.warn(`❌ Failed to load from ${endpointSource}:`, endpointError);
-          lastError = endpointError as Error;
-          
-          // Don't continue trying if it's a local endpoint that failed
-          if (endpointSource === 'local' && enableLocal) {
-            console.log('🔄 Local endpoint failed, trying remote endpoints...');
-          }
-        }
-      }
-      
-      // If we got here without setting profileData, all endpoints failed
-      if (!profileData!) {
-        throw new Error(
-          `All endpoints failed. Last error: ${lastError?.message || 'Unknown error'}`
-        );
-      }
-      
-      // Cache successful data
-      setCachedData(profileData, source!);
-      
-      if (isMountedRef.current) {
-        setData(profileData);
-        setLoading(false);
-        onSuccess?.(profileData, source!);
-      }
-    } catch (fetchError) {
-      const errorMessage = fetchError instanceof Error 
-        ? fetchError.message 
-        : 'Failed to load profile data';
-      
-      console.error('🚨 Data fetching failed:', errorMessage);
-      
-      if (isMountedRef.current) {
-        setError(errorMessage);
-        setLoading(false);
-        onError?.(fetchError as Error, 'data-fetch');
-      }
+
+      // Fetch fresh data
+      const result = await fetchProfileData({
+        enableValidation,
+        onError,
+        onSuccess,
+      });
+
+      setData(result.data);
+      setSource(result.source);
+
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'Failed to load profile data';
+      console.error('❌ Enhanced profile data fetch failed:', errorMessage);
+      setError(errorMessage);
+      setData(null);
+      setSource(null);
     } finally {
-      fetchingRef.current = false;
+      setLoading(false);
     }
-  }, [forceRefresh, enableLocal, enableValidation, onError, onSuccess]);
-  
-  // Auto-fetch on mount
+  }, [forceRefresh, enableValidation, onError, onSuccess]);
+
+  const refetch = useCallback(() => {
+    fetchData(true);
+  }, [fetchData]);
+
+  // Initial fetch on mount
   useEffect(() => {
     if (!skipAutoFetch) {
       fetchData();
     }
-    
-    return () => {
-      isMountedRef.current = false;
-    };
   }, [fetchData, skipAutoFetch]);
-  
+
   return {
     data,
     loading,
     error,
-    refetch: fetchData,
+    source,
+    refetch,
   };
 };
+
+export default useEnhancedProfileData;
