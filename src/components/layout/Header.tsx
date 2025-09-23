@@ -1,7 +1,7 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
-import { ThemeToggle } from "../common/ThemeToggle";
-import "./Header.css";
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+import { ThemeToggle } from '../common/ThemeToggle';
+import './Header.css';
 
 interface HeaderProps {
   onMenuToggle: () => void;
@@ -9,11 +9,11 @@ interface HeaderProps {
 }
 
 const pageLabels: Record<string, string> = {
-  "/": "Home",
-  "/experience": "Experience",
-  "/projects": "Projects",
-  "/tech-stack": "Tech Stack",
-  "/contact": "Contact",
+  '/': 'Home',
+  '/experience': 'Experience',
+  '/projects': 'Projects',
+  '/tech-stack': 'Tech Stack',
+  '/contact': 'Contact',
 };
 
 export const Header: React.FC<HeaderProps> = ({
@@ -21,7 +21,7 @@ export const Header: React.FC<HeaderProps> = ({
   showMenuButton = true,
 }) => {
   const location = useLocation();
-  const currentPageLabel = pageLabels[location.pathname] || "Portfolio";
+  const currentPageLabel = pageLabels[location.pathname] || 'Portfolio';
 
   return (
     <header className="header">

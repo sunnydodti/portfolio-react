@@ -32,7 +32,7 @@ export const Spinner: React.FC<SpinnerProps> = ({
     .join(' ');
 
   return (
-    <div 
+    <div
       className={spinnerClasses}
       role="status"
       aria-label={ariaLabel}
@@ -123,7 +123,7 @@ export const Skeleton: React.FC<SkeletonProps> = ({
   };
 
   return (
-    <div 
+    <div
       className={skeletonClasses}
       style={style}
       role="status"
@@ -157,7 +157,9 @@ export const LoadingContainer: React.FC<LoadingContainerProps> = ({
 }) => {
   if (error) {
     return (
-      <div className={`loading-container loading-container--error ${className}`}>
+      <div
+        className={`loading-container loading-container--error ${className}`}
+      >
         {errorComponent || (
           <div className="loading-container__error">
             <div className="loading-container__error-icon">⚠️</div>
@@ -170,7 +172,9 @@ export const LoadingContainer: React.FC<LoadingContainerProps> = ({
 
   if (loading) {
     return (
-      <div className={`loading-container loading-container--loading ${className}`}>
+      <div
+        className={`loading-container loading-container--loading ${className}`}
+      >
         {loadingComponent || (
           <div className="loading-container__loading">
             <Spinner size="lg" />
@@ -181,9 +185,5 @@ export const LoadingContainer: React.FC<LoadingContainerProps> = ({
     );
   }
 
-  return (
-    <div className={`loading-container ${className}`}>
-      {children}
-    </div>
-  );
+  return <div className={`loading-container ${className}`}>{children}</div>;
 };

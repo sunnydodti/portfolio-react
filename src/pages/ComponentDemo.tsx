@@ -3,17 +3,17 @@
    ========================================================================== */
 
 import React, { useState } from 'react';
-import { 
-  Button, 
-  Card, 
-  CardHeader, 
-  CardBody, 
-  CardFooter, 
-  Badge, 
-  SkillBadge, 
-  Spinner, 
-  LoadingContainer, 
-  Skeleton 
+import {
+  Button,
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Badge,
+  SkillBadge,
+  Spinner,
+  LoadingContainer,
+  Skeleton,
 } from '../components/common';
 import './ComponentDemo.css';
 
@@ -24,7 +24,7 @@ export const ComponentDemo: React.FC = () => {
   const handleLoadingTest = () => {
     setLoading(true);
     setError(null);
-    
+
     setTimeout(() => {
       setLoading(false);
     }, 2000);
@@ -44,7 +44,10 @@ export const ComponentDemo: React.FC = () => {
     <div className="component-demo">
       <div className="demo-section">
         <h2>🎨 Component Demo & Testing</h2>
-        <p>Interactive showcase of all common components with various states and configurations.</p>
+        <p>
+          Interactive showcase of all common components with various states and
+          configurations.
+        </p>
       </div>
 
       {/* Button Demo */}
@@ -60,7 +63,7 @@ export const ComponentDemo: React.FC = () => {
               <Button variant="ghost">Ghost</Button>
             </div>
           </div>
-          
+
           <div className="demo-item">
             <h4>Sizes</h4>
             <div className="button-group">
@@ -69,7 +72,7 @@ export const ComponentDemo: React.FC = () => {
               <Button size="lg">Large</Button>
             </div>
           </div>
-          
+
           <div className="demo-item">
             <h4>States</h4>
             <div className="button-group">
@@ -90,26 +93,41 @@ export const ComponentDemo: React.FC = () => {
               <h4>Default Card</h4>
             </CardHeader>
             <CardBody>
-              <p>This is a default card with header, body, and footer sections.</p>
+              <p>
+                This is a default card with header, body, and footer sections.
+              </p>
             </CardBody>
             <CardFooter>
-              <Button size="sm" variant="outline">Action</Button>
+              <Button size="sm" variant="outline">
+                Action
+              </Button>
             </CardFooter>
           </Card>
-          
+
           <Card variant="elevated" padding="lg" hover>
             <CardHeader>
               <h4>Elevated Card</h4>
             </CardHeader>
             <CardBody>
-              <p>This card has elevation and hover effects for better visual hierarchy.</p>
+              <p>
+                This card has elevation and hover effects for better visual
+                hierarchy.
+              </p>
             </CardBody>
           </Card>
-          
-          <Card variant="glass" padding="md" interactive onClick={() => alert('Card clicked!')}>
+
+          <Card
+            variant="glass"
+            padding="md"
+            interactive
+            onClick={() => alert('Card clicked!')}
+          >
             <CardBody>
               <h4>Interactive Glass Card</h4>
-              <p>This glass card is interactive and clickable with beautiful backdrop effects.</p>
+              <p>
+                This glass card is interactive and clickable with beautiful
+                backdrop effects.
+              </p>
             </CardBody>
           </Card>
         </div>
@@ -130,34 +148,34 @@ export const ComponentDemo: React.FC = () => {
               <Badge variant="info">Info</Badge>
             </div>
           </div>
-          
+
           <div className="demo-item">
             <h4>Skill Badges</h4>
             <div className="badge-group">
-              <SkillBadge 
-                skill="React" 
-                proficiency="expert" 
-                yearsExperience={5} 
-                showProficiency 
+              <SkillBadge
+                skill="React"
+                proficiency="expert"
+                yearsExperience={5}
+                showProficiency
                 icon={<span>⚛️</span>}
               />
-              <SkillBadge 
-                skill="TypeScript" 
-                proficiency="advanced" 
-                yearsExperience={3} 
-                showProficiency 
+              <SkillBadge
+                skill="TypeScript"
+                proficiency="advanced"
+                yearsExperience={3}
+                showProficiency
                 icon={<span>🔷</span>}
               />
-              <SkillBadge 
-                skill="Node.js" 
-                proficiency="intermediate" 
-                yearsExperience={2} 
-                showProficiency 
+              <SkillBadge
+                skill="Node.js"
+                proficiency="intermediate"
+                yearsExperience={2}
+                showProficiency
                 icon={<span>🟢</span>}
               />
             </div>
           </div>
-          
+
           <div className="demo-item">
             <h4>Removable & Shapes</h4>
             <div className="badge-group">
@@ -184,7 +202,7 @@ export const ComponentDemo: React.FC = () => {
               <Spinner size="xl" variant="secondary" />
             </div>
           </div>
-          
+
           <div className="demo-item">
             <h4>Skeleton Loading</h4>
             <div className="skeleton-group">
@@ -194,20 +212,29 @@ export const ComponentDemo: React.FC = () => {
               <Skeleton variant="circular" width="40px" height="40px" />
             </div>
           </div>
-          
+
           <div className="demo-item">
             <h4>Loading Container</h4>
             <div className="loading-test-controls">
-              <Button size="sm" onClick={handleLoadingTest}>Test Loading</Button>
-              <Button size="sm" onClick={handleErrorTest} variant="outline">Test Error</Button>
-              <Button size="sm" onClick={handleReset} variant="ghost">Reset</Button>
+              <Button size="sm" onClick={handleLoadingTest}>
+                Test Loading
+              </Button>
+              <Button size="sm" onClick={handleErrorTest} variant="outline">
+                Test Error
+              </Button>
+              <Button size="sm" onClick={handleReset} variant="ghost">
+                Reset
+              </Button>
             </div>
-            
+
             <LoadingContainer loading={loading} error={error}>
               <Card padding="md">
                 <CardBody>
                   <h4>Content Loaded Successfully! ✅</h4>
-                  <p>This content is shown when not loading and no error occurred.</p>
+                  <p>
+                    This content is shown when not loading and no error
+                    occurred.
+                  </p>
                 </CardBody>
               </Card>
             </LoadingContainer>
@@ -224,23 +251,26 @@ export const ComponentDemo: React.FC = () => {
           </CardHeader>
           <CardBody>
             <div className="test-area">
-              <p>Use the buttons above to test different loading states and interactions.</p>
+              <p>
+                Use the buttons above to test different loading states and
+                interactions.
+              </p>
               <div className="test-actions">
-                <Button 
-                  variant="primary" 
+                <Button
+                  variant="primary"
                   icon={<span>🎯</span>}
                   onClick={() => alert('Primary action executed!')}
                 >
                   Primary Action
                 </Button>
-                <Button 
+                <Button
                   variant="secondary"
                   onClick={() => console.log('Secondary action logged')}
                 >
                   Log Action
                 </Button>
-                <SkillBadge 
-                  skill="Interactive" 
+                <SkillBadge
+                  skill="Interactive"
                   onClick={() => alert('Skill badge clicked!')}
                   icon={<span>👆</span>}
                 />

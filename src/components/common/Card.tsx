@@ -66,7 +66,7 @@ export const Card: React.FC<CardProps> = ({
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       aria-label={ariaLabel}
-      role={interactive ? (role || 'button') : role}
+      role={interactive ? role || 'button' : role}
       tabIndex={interactive ? (tabIndex ?? 0) : tabIndex}
     >
       {children}
@@ -83,14 +83,10 @@ export interface CardHeaderProps {
   className?: string;
 }
 
-export const CardHeader: React.FC<CardHeaderProps> = ({ 
-  children, 
-  className = '' 
-}) => (
-  <div className={`card__header ${className}`}>
-    {children}
-  </div>
-);
+export const CardHeader: React.FC<CardHeaderProps> = ({
+  children,
+  className = '',
+}) => <div className={`card__header ${className}`}>{children}</div>;
 
 /* ==========================================================================
    Card Body Component
@@ -101,14 +97,10 @@ export interface CardBodyProps {
   className?: string;
 }
 
-export const CardBody: React.FC<CardBodyProps> = ({ 
-  children, 
-  className = '' 
-}) => (
-  <div className={`card__body ${className}`}>
-    {children}
-  </div>
-);
+export const CardBody: React.FC<CardBodyProps> = ({
+  children,
+  className = '',
+}) => <div className={`card__body ${className}`}>{children}</div>;
 
 /* ==========================================================================
    Card Footer Component
@@ -119,11 +111,7 @@ export interface CardFooterProps {
   className?: string;
 }
 
-export const CardFooter: React.FC<CardFooterProps> = ({ 
-  children, 
-  className = '' 
-}) => (
-  <div className={`card__footer ${className}`}>
-    {children}
-  </div>
-);
+export const CardFooter: React.FC<CardFooterProps> = ({
+  children,
+  className = '',
+}) => <div className={`card__footer ${className}`}>{children}</div>;

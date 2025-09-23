@@ -7,7 +7,14 @@ import './Badge.css';
 
 export interface BadgeProps {
   children: React.ReactNode;
-  variant?: 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info';
+  variant?:
+    | 'default'
+    | 'primary'
+    | 'secondary'
+    | 'success'
+    | 'warning'
+    | 'error'
+    | 'info';
   size?: 'sm' | 'md' | 'lg';
   shape?: 'rounded' | 'pill' | 'square';
   icon?: React.ReactNode;
@@ -57,27 +64,21 @@ export const Badge: React.FC<BadgeProps> = ({
   };
 
   return (
-    <span
-      id={id}
-      className={badgeClasses}
-      aria-label={ariaLabel}
-    >
+    <span id={id} className={badgeClasses} aria-label={ariaLabel}>
       {icon && iconPosition === 'left' && (
         <span className="badge__icon badge__icon--left" aria-hidden="true">
           {icon}
         </span>
       )}
-      
-      <span className="badge__text">
-        {children}
-      </span>
-      
+
+      <span className="badge__text">{children}</span>
+
       {icon && iconPosition === 'right' && !removable && (
         <span className="badge__icon badge__icon--right" aria-hidden="true">
           {icon}
         </span>
       )}
-      
+
       {removable && (
         <button
           className="badge__remove"
@@ -163,8 +164,8 @@ export const SkillBadge: React.FC<SkillBadgeProps> = ({
   };
 
   return (
-    <div 
-      className={badgeClasses} 
+    <div
+      className={badgeClasses}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       role={onClick ? 'button' : undefined}
@@ -172,13 +173,15 @@ export const SkillBadge: React.FC<SkillBadgeProps> = ({
       aria-label={onClick ? `View details for ${skill}` : undefined}
     >
       <Badge
-        variant={showProficiency ? getProficiencyVariant(proficiency) : 'primary'}
+        variant={
+          showProficiency ? getProficiencyVariant(proficiency) : 'primary'
+        }
         icon={icon}
         className="skill-badge__main"
       >
         {skill}
       </Badge>
-      
+
       {showProficiency && (proficiency || yearsExperience) && (
         <div className="skill-badge__details">
           {proficiency && (

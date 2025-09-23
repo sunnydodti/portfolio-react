@@ -3,13 +3,13 @@ import {
   Routes,
   Route,
   Navigate,
-} from "react-router-dom";
-import { PortfolioProvider } from "./context/PortfolioProvider";
-import { Layout } from "./components/layout";
-import { Home, Experience, Projects, TechStack, Contact } from "./pages";
-import { ComponentDemo } from "./pages/ComponentDemo";
-import { DataIntegrationDemo } from "./components/debug/DataIntegrationDemo";
-import "./App.css";
+} from 'react-router-dom';
+import { PortfolioProvider } from './context/PortfolioProvider';
+import { Layout } from './components/layout';
+import { Home, Experience, Projects, TechStack, Contact } from './pages';
+import { ComponentDemo } from './pages/ComponentDemo';
+import { DataIntegrationDemo } from './components/debug/DataIntegrationDemo';
+import './App.css';
 
 function App() {
   return (

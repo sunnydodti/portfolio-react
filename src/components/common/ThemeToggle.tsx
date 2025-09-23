@@ -10,7 +10,9 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '' }) => {
 
   // Load saved theme on mount
   useEffect(() => {
-    const savedTheme = localStorage.getItem('portfolio-theme') as 'light' | 'dark';
+    const savedTheme = localStorage.getItem('portfolio-theme') as
+      | 'light'
+      | 'dark';
     if (savedTheme && ['light', 'dark'].includes(savedTheme)) {
       setTheme(savedTheme);
     }
@@ -21,13 +23,13 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '' }) => {
     const root = document.documentElement;
     root.classList.remove('light', 'dark');
     root.classList.add(theme);
-    
+
     // Save to localStorage
     localStorage.setItem('portfolio-theme', theme);
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
   };
 
   return (
@@ -39,9 +41,7 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '' }) => {
     >
       <div className="toggle-track">
         <div className="toggle-thumb">
-          <span className="theme-icon">
-            {theme === 'light' ? '🌙' : '☀️'}
-          </span>
+          <span className="theme-icon">{theme === 'light' ? '🌙' : '☀️'}</span>
         </div>
       </div>
     </button>

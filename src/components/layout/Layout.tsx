@@ -1,8 +1,8 @@
-import React from "react";
-import { Sidebar } from "./Sidebar";
-import { Header } from "./Header";
-import { usePortfolio } from "../../hooks/usePortfolio";
-import "./Layout.css";
+import React from 'react';
+import { Sidebar } from './Sidebar';
+import { Header } from './Header';
+import { usePortfolio } from '../../hooks/usePortfolio';
+import './Layout.css';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -42,10 +42,10 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 
       {/* Mobile backdrop overlay */}
       {state.sidebarOpen && (
-        <div 
-          className="sidebar-backdrop" 
+        <div
+          className="sidebar-backdrop"
           onClick={handleSidebarClose}
-          onKeyDown={(e) => {
+          onKeyDown={e => {
             if (e.key === 'Escape') {
               handleSidebarClose();
             }
