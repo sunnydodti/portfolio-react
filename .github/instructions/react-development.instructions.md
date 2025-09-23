@@ -23,11 +23,9 @@ This document provides React-specific guidelines for building Sunny Dodti's port
 ### UI & Styling
 ```json
 {
-  "tailwindcss": "^3.2.0",
-  "@tailwindcss/typography": "^0.5.0",
-  "@tailwindcss/forms": "^0.5.0",
   "framer-motion": "^8.0.0",
-  "react-icons": "^4.7.0"
+  "react-icons": "^4.7.0",
+  "clsx": "^2.0.0"
 }
 ```
 
@@ -35,13 +33,26 @@ This document provides React-specific guidelines for building Sunny Dodti's port
 ```json
 {
   "vite": "^4.1.0",
-  "@vitejs/plugin-react": "^3.1.0",
-  "autoprefixer": "^10.4.0",
-  "postcss": "^8.4.0"
+  "@vitejs/plugin-react": "^3.1.0"
 }
 ```
 
-## 🏗️ Component Architecture
+## � Design Implementation Guidelines
+
+### Wireframes vs Design Clarification
+**IMPORTANT**: The wireframes are structural references only, NOT the final design:
+
+- **Wireframes** (`/context/wireframes/`): Use for layout structure, component placement, content organization
+- **Actual Design** (`/data/styles/pallet-demo-dark-light.html`): Follow this beautiful palette for colors, styling, typography, shadows, gradients
+
+### Visual Design Priority
+1. **Color Palette**: Follow the stunning blue theme from palette demo
+2. **Layout Structure**: Use wireframes as building blocks for component organization  
+3. **Typography**: Inter font family with proper weights and hierarchy
+4. **Visual Effects**: Implement gradients, shadows, and animations from palette demo
+5. **Theme Support**: Ensure both light and dark modes work beautifully
+
+## �🏗️ Component Architecture
 
 ### Component Categories
 
@@ -125,119 +136,103 @@ interface SkillCardProps {
 
 ## 🎨 Styling Guidelines
 
-### Tailwind Configuration
-```typescript
-// tailwind.config.js
-module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}'],
-  darkMode: 'class',
-  theme: {
-    extend: {
-      colors: {
-        // Design tokens from main portfolio system
-        primary: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          // ... rest from style.json
-          500: '#3b82f6',  // Primary blue light
-          600: '#2563eb',
-          // ...
-        },
-        background: {
-          light: '#ffffff',
-          dark: '#0f172a',
-        },
-        surface: {
-          light: '#f8fafc',
-          dark: '#1e293b',
-        },
-        text: {
-          primary: {
-            light: '#0f172a',
-            dark: '#f8fafc',
-          },
-          secondary: {
-            light: '#475569',
-            dark: '#e2e8f0',
-          },
-        },
-      },
-      fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        mono: ['JetBrains Mono', 'Menlo', 'monospace'],
-      },
-      spacing: {
-        '18': '4.5rem',
-        '88': '22rem',
-      },
-    },
-  },
-  plugins: [
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/forms'),
-  ],
-};
-```
-
-### CSS Custom Properties
+### CSS Variables Configuration
 ```css
 /* src/styles/globals.css */
 :root {
-  /* Light mode colors */
-  --color-primary: theme('colors.primary.500');
-  --color-background: theme('colors.background.light');
-  --color-surface: theme('colors.surface.light');
-  --color-text-primary: theme('colors.text.primary.light');
-  --color-text-secondary: theme('colors.text.secondary.light');
+  /* Design tokens from main portfolio system - Light Mode */
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-500: #3b82f6;  /* Primary blue light */
+  --color-primary-600: #2563eb;
+  --color-primary-400: #60a5fa;  /* Primary blue dark */
+  
+  --color-background: #ffffff;
+  --color-surface: #f8fafc;
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+  --color-border-primary: #e2e8f0;
+  
+  /* Typography */
+  --font-family-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-family-mono: 'JetBrains Mono', 'Menlo', 'Monaco', monospace;
+  
+  /* Spacing scale */
+  --spacing-xs: 0.25rem;  /* 4px */
+  --spacing-sm: 0.5rem;   /* 8px */
+  --spacing-md: 1rem;     /* 16px */
+  --spacing-lg: 1.5rem;   /* 24px */
+  --spacing-xl: 2rem;     /* 32px */
+  --spacing-2xl: 3rem;    /* 48px */
+  
+  /* Border radius */
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 0.75rem;
 }
 
 .dark {
-  /* Dark mode colors */
-  --color-primary: theme('colors.primary.400');
-  --color-background: theme('colors.background.dark');
-  --color-surface: theme('colors.surface.dark');
-  --color-text-primary: theme('colors.text.primary.dark');
-  --color-text-secondary: theme('colors.text.secondary.dark');
+  /* Dark mode overrides */
+  --color-primary-400: #60a5fa;
+  --color-background: #0f172a;
+  --color-surface: #1e293b;
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #e2e8f0;
+  --color-border-primary: #334155;
+}
+
+/* Base styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
 }
 ```
 
 ### Component Styling Patterns
 ```typescript
-// ✅ Good: Use Tailwind utility classes
+// ✅ Good: Use CSS classes with CSS variables
 const Card: React.FC<CardProps> = ({ children, className = '', hover = false }) => {
+  const cardStyle: React.CSSProperties = {
+    backgroundColor: 'var(--color-surface)',
+    border: '2px solid var(--color-border-primary)',
+    borderRadius: 'var(--border-radius-lg)',
+    padding: 'var(--spacing-lg)',
+    transition: hover ? 'border-color 0.2s ease' : undefined,
+  };
+
+  const hoverStyle: React.CSSProperties = hover ? {
+    ':hover': {
+      borderColor: 'var(--color-primary-400)',
+    }
+  } : {};
+
   return (
-    <div className={`
-      bg-surface-dark border-2 border-gray-600 rounded-lg p-6
-      ${hover ? 'hover:border-primary-400 transition-colors duration-200' : ''}
-      ${className}
-    `}>
+    <div 
+      className={`card ${hover ? 'card-hover' : ''} ${className}`}
+      style={cardStyle}
+    >
       {children}
     </div>
   );
 };
 
-// ✅ Good: Conditional styling with clsx
+// ✅ Good: CSS classes with conditional styling
 import clsx from 'clsx';
 
 const Button: React.FC<ButtonProps> = ({ variant, size, disabled, children, ...props }) => {
   return (
     <button
-      className={clsx(
-        'font-medium rounded-md transition-colors duration-200',
-        {
-          'bg-primary-500 text-white hover:bg-primary-600': variant === 'primary',
-          'bg-gray-600 text-white hover:bg-gray-700': variant === 'secondary',
-          'border-2 border-primary-500 text-primary-500 hover:bg-primary-50': variant === 'outline',
-        },
-        {
-          'px-3 py-1.5 text-sm': size === 'sm',
-          'px-4 py-2 text-base': size === 'md',
-          'px-6 py-3 text-lg': size === 'lg',
-        },
-        {
-          'opacity-50 cursor-not-allowed': disabled,
-        }
-      )}
+      className={clsx('btn', `btn-${variant}`, `btn-${size}`, {
+        'btn-disabled': disabled,
+      })}
       disabled={disabled}
       {...props}
     >
@@ -245,6 +240,57 @@ const Button: React.FC<ButtonProps> = ({ variant, size, disabled, children, ...p
     </button>
   );
 };
+
+/* Corresponding CSS */
+.btn {
+  font-weight: 500;
+  border-radius: var(--border-radius-md);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  font-family: var(--font-family-sans);
+}
+
+.btn-primary {
+  background-color: var(--color-primary-500);
+  color: white;
+}
+
+.btn-primary:hover:not(.btn-disabled) {
+  background-color: var(--color-primary-600);
+}
+
+.btn-secondary {
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-primary);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-primary-500);
+  border: 2px solid var(--color-primary-500);
+}
+
+.btn-sm {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: 0.875rem;
+}
+
+.btn-md {
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: 1rem;
+}
+
+.btn-lg {
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: 1.125rem;
+}
+
+.btn-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 ```
 
 ## 📊 Data Management
@@ -521,23 +567,43 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   const breakpoint = useBreakpoint();
   const isMobile = ['sm', 'md'].includes(breakpoint);
 
+  const sidebarStyle: React.CSSProperties = {
+    position: isMobile ? 'fixed' : 'static',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    zIndex: 50,
+    width: '16rem', // 64 * 0.25rem
+    backgroundColor: 'var(--color-surface-dark)',
+    transform: isMobile ? (isOpen ? 'translateX(0)' : 'translateX(-100%)') : 'translateX(0)',
+    transition: 'transform 0.3s ease',
+  };
+
+  const backdropStyle: React.CSSProperties = {
+    position: 'fixed',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    zIndex: 40,
+  };
+
   return (
     <>
       {/* Mobile backdrop */}
       {isMobile && isOpen && (
         <div 
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+          style={backdropStyle}
           onClick={onClose}
         />
       )}
       
       {/* Sidebar */}
-      <aside className={`
-        fixed lg:static inset-y-0 left-0 z-50
-        w-64 bg-gray-900 transform transition-transform duration-300
-        ${isMobile ? (isOpen ? 'translate-x-0' : '-translate-x-full') : 'translate-x-0'}
-        lg:translate-x-0
-      `}>
+      <aside 
+        className="sidebar"
+        style={sidebarStyle}
+      >
         {/* Sidebar content */}
       </aside>
     </>

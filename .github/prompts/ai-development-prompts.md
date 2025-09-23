@@ -12,19 +12,20 @@ Use these prompts when working with AI assistants on the portfolio-react reposit
 I'm working on a React TypeScript portfolio implementation for Sunny Dodti. This is part of a multi-technology portfolio ecosystem. Here's the key context:
 
 **Project**: React implementation of Sunny Dodti's professional portfolio
-**Tech Stack**: React 18+, TypeScript, Tailwind CSS, Vite, React Router
+**Tech Stack**: React 18+, TypeScript, Vanilla CSS with CSS Variables, Vite, React Router
 **Design**: Dark theme, sidebar layout, single viewport (no scrolling)
 **Data Source**: Fetches from main repository's JSON endpoints
 **Local Context**: `/context/` folder contains wireframes, data samples, and style guides
 
 **Key Requirements**:
-1. Follow wireframes in `/context/wireframes/` exactly
-2. Use design tokens from `/context/data/styles/style.json`
-3. Implement TypeScript strictly (no `any` types)
-4. Maintain Tailwind utility-first approach
-5. Ensure responsive design (mobile-first)
-6. Target Lighthouse score 95+
-7. Follow WCAG 2.1 AA accessibility standards
+1. Use wireframes in `/context/wireframes/` as layout structure reference only (NOT exact design - just building blocks)
+2. Follow the beautiful color palette from `/data/styles/pallet-demo-dark-light.html` for actual styling
+3. Use design tokens from `/context/data/styles/style.json`
+4. Implement TypeScript strictly (no `any` types)
+5. Maintain CSS variables and semantic class approach
+6. Ensure responsive design (mobile-first)
+7. Target Lighthouse score 95+
+8. Follow WCAG 2.1 AA accessibility standards
 
 Please help me with [SPECIFIC_TASK] while adhering to these standards.
 ```
@@ -41,7 +42,7 @@ I need to create a new React component based on the wireframe reference. Here ar
 **Component Purpose**: [DESCRIPTION]
 **Required Props**: [PROP_LIST]
 **Styling Requirements**: 
-- Use Tailwind classes following our design system
+- Use CSS variables and semantic classes following our design system
 - Dark theme colors from style tokens
 - Responsive behavior: [BREAKPOINT_REQUIREMENTS]
 - Accessibility features: [A11Y_REQUIREMENTS]
@@ -58,7 +59,7 @@ I need to refactor an existing component to better match our standards:
 **Wireframe Reference**: [WIREFRAME_SECTION]
 **Requirements**:
 - Improve TypeScript types
-- Optimize Tailwind classes
+- Optimize CSS classes and variables
 - Enhance accessibility
 - Match wireframe design more closely
 - Maintain existing functionality
@@ -83,7 +84,7 @@ I need to implement styling that matches our design system:
 - Responsive behavior for mobile/tablet/desktop
 - Hover states and transitions
 
-Create Tailwind classes that implement this design system correctly.
+Create CSS classes with variables that implement this design system correctly.
 ```
 
 ### Responsive Design
@@ -101,7 +102,7 @@ I need to make this component responsive following our mobile-first approach:
 - Grid adjustments per breakpoint
 - Single viewport rule (no scrolling on desktop)
 
-Please implement responsive classes using Tailwind breakpoint prefixes.
+Please implement responsive classes using CSS media queries with our breakpoint system.
 ```
 
 ---
@@ -263,7 +264,7 @@ I need help setting up/configuring this development tool:
 **Tool**: [TOOL_NAME]
 **Project Requirements**:
 - React 18+ with TypeScript
-- Tailwind CSS configuration
+- CSS variables configuration
 - Vite build system
 - ESLint + Prettier
 - Vitest testing

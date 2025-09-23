@@ -43,7 +43,7 @@ I'm encountering an issue in the React portfolio that needs diagnosis and resolu
 
 **Styling Problems**:
 
-- Tailwind class conflicts or missing classes
+- CSS variable conflicts or missing custom properties
 - CSS custom property application
 - Responsive behavior across breakpoints
 - Dark/light theme implementation

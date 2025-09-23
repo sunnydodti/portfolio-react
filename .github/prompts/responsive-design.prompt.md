@@ -57,7 +57,7 @@ I need to implement responsive design following our mobile-first approach and en
 - Images: Responsive sizing and optimization
 - Forms: Stack → Side-by-side layouts
 
-**Tailwind Implementation**:
+**CSS Media Query Implementation**:
 
 ```css
 /* Mobile-first utility classes */

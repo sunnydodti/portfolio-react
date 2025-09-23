@@ -10,7 +10,7 @@ This file provides essential context for AI assistants working on the Sunny Dodt
 
 **Repository**: `portfolio-react` (React implementation of Sunny Dodti's multi-technology portfolio)
 **Purpose**: Professional portfolio showcasing software development skills and experience
-**Tech Stack**: React 18+ | TypeScript | Tailwind CSS | Vite | React Router
+**Tech Stack**: React 18+ | TypeScript | Vanilla CSS with CSS Variables | Vite | React Router
 **Deployment**: github pages/pages.dev (primary domain: sunnydodti.com)
 
 ---
@@ -28,9 +28,9 @@ portfolio-react/
 │   ├── services/           # API & data services
 │   └── styles/             # Global styles & theme
 ├── context/                # Local dev context (gitignored)
-│   ├── wireframes/         # HTML wireframe references
+│   ├── wireframes/         # Layout structure references (NOT exact design)
 │   ├── data/               # JSON data samples  
-│   └── styles/             # Design system tokens
+│   └── styles/             # Design system tokens + beautiful palette demo
 └── .github/
     ├── instructions/       # Development guidelines
     └── prompts/            # AI assistant prompts
@@ -101,10 +101,10 @@ interface ProfileData {
 - **SEO**: Proper meta tags and structure
 
 ### Styling Rules
-- **Framework**: Tailwind CSS utility-first
+- **Framework**: Vanilla CSS with CSS Variables
 - **Tokens**: Use design system from `/context/styles/style.json`
-- **No Hardcoding**: Always use CSS custom properties or Tailwind classes
-- **Responsive**: Mobile-first breakpoint strategy
+- **No Hardcoding**: Always use CSS custom properties and semantic classes
+- **Responsive**: Mobile-first with CSS media queries
 
 ---
 
@@ -121,7 +121,7 @@ interface ProfileData {
 
 ### Configuration Files
 - `vite.config.ts` - Build configuration with aliases
-- `tailwind.config.js` - Tailwind setup with custom colors
+- `src/styles/variables.css` - CSS variables setup with design tokens
 - `tsconfig.json` - TypeScript strict configuration
 - `package.json` - Dependencies and scripts
 
@@ -130,9 +130,9 @@ interface ProfileData {
 ## 🚀 Common Tasks & Patterns
 
 ### Creating Components
-1. Reference wireframe in `/context/wireframes/`
+1. Reference wireframe structure in `/context/wireframes/` (layout only)
 2. Define TypeScript interfaces for props
-3. Implement using Tailwind classes
+3. Implement using CSS variables and semantic classes
 4. Add accessibility attributes
 5. Create tests with React Testing Library
 6. Document with JSDoc comments
@@ -146,7 +146,7 @@ interface ProfileData {
 
 ### Styling Implementation
 1. Import design tokens from context
-2. Use Tailwind utility classes
+2. Use CSS variables and semantic classes
 3. Implement responsive behavior
 4. Add hover/focus states
 5. Ensure dark theme compatibility
@@ -157,7 +157,8 @@ interface ProfileData {
 ## ⚠️ Critical Constraints
 
 ### Must Follow
-- ✅ Wireframe layout fidelity
+- ✅ Wireframe layout structure (not exact design)
+- ✅ Beautiful styling from palette demo
 - ✅ TypeScript strict typing
 - ✅ Accessibility standards
 - ✅ Performance targets
@@ -169,7 +170,7 @@ interface ProfileData {
 - ❌ Use `any` TypeScript types  
 - ❌ Break responsive design
 - ❌ Ignore accessibility features
-- ❌ Deviate from wireframes
+- ❌ Follow wireframe colors/styles exactly (use palette demo instead)
 - ❌ Add vertical scrolling on desktop
 
 ---
@@ -191,7 +192,8 @@ interface ProfileData {
 ## 📞 Quick Help
 
 ### When You Need To...
-- **Match a wireframe**: Check `/context/wireframes/[page].html`
+- **Layout structure**: Check `/context/wireframes/[page].html` for basic structure
+- **Beautiful styling**: Follow `/data/styles/pallet-demo-dark-light.html` for colors & design
 - **Style a component**: Reference `/context/styles/style.json`
 - **Type data structures**: Use `/context/data/default.json` as reference
 - **Debug responsiveness**: Test mobile/tablet/desktop breakpoints
@@ -200,8 +202,8 @@ interface ProfileData {
 
 ### Common Patterns
 - **Fetch data**: Use custom hooks with error/loading states
-- **Style components**: Tailwind + CSS custom properties
-- **Handle responsive**: `useBreakpoint` hook + Tailwind prefixes  
+- **Style components**: CSS variables + semantic classes
+- **Handle responsive**: `useBreakpoint` hook + CSS media queries  
 - **Manage state**: Context API + useReducer for global state
 - **Test components**: RTL + user-centric testing approach
 

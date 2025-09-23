@@ -12,10 +12,11 @@ This is the **React implementation** of Sunny Dodti's multi-technology portfolio
 
 ### Repository Role
 - **Primary Purpose**: React/TypeScript implementation of Sunny Dodti's portfolio
-- **Technology Stack**: React 18+, TypeScript, Tailwind CSS, Vite
+- **Technology Stack**: React 18+, TypeScript, Vanilla CSS with CSS Variables, Vite
 - **Target Deployment**: github pages/pages.dev (primary domain: sunnydodti.com)
 - **Data Source**: Fetches profile data from main repository's JSON endpoints
-- **Design Reference**: `/context/wireframes/` (local copies of wireframes for development)
+- **Layout Reference**: `/context/wireframes/` (structural building blocks - not exact design)
+- **Design Reference**: `/data/styles/pallet-demo-dark-light.html` (beautiful color palette and styling)
 
 ### Connection to Main Portfolio System
 ```
@@ -35,43 +36,73 @@ sunnydodti (main repo)
 
 ### Color Palette & Theming
 - **Primary Source**: Main repo `/data/styles/style.json`
-- **Implementation**: CSS custom properties + Tailwind config
+- **Implementation**: CSS custom properties (CSS variables) + vanilla CSS
 - **Theme Support**: Light/dark mode switching
 - **Consistency Rule**: NEVER hardcode colors - always use design tokens
 
-```typescript
-// Required: Use design tokens from main portfolio system
-const theme = {
-  colors: {
-    primary: {
-      light: '#3b82f6',  // From style.json
-      dark: '#60a5fa'
-    },
-    background: {
-      light: '#ffffff',
-      dark: '#0f172a'
-    }
-    // ... other colors from style.json
-  }
+```css
+/* Required: Use CSS variables from design tokens */
+:root {
+  /* Light mode colors from style.json */
+  --color-primary-50: #eff6ff;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-background: #ffffff;
+  --color-surface: #f8fafc;
+  --color-text-primary: #0f172a;
+  /* ... other design tokens from style.json */
+}
+
+.dark {
+  /* Dark mode colors from style.json */
+  --color-primary-400: #60a5fa;
+  --color-background: #0f172a;
+  --color-surface: #1e293b;
+  --color-text-primary: #f8fafc;
+  /* ... other dark mode tokens */
 }
 ```
 
 ### Component Standards
-- **Dark Theme First**: Default dark theme matching reference design
-- **Sidebar Navigation**: Left sidebar layout as per wireframes
+- **Beautiful Design**: Follow the stunning color palette from `/data/styles/pallet-demo-dark-light.html`
+- **Wireframes as Structure**: Use `/context/wireframes/` as layout building blocks (NOT exact design)
+- **Dark Theme First**: Default dark theme with light/dark toggle
+- **Sidebar Navigation**: Left sidebar layout structure from wireframes
 - **Single Viewport**: All content visible without scrolling (responsive)
-- **Wireframe Fidelity**: Match `/context/wireframes/` layouts exactly
 - **Accessibility**: WCAG 2.1 AA compliance
 - **Performance**: Lighthouse score 95+
 
-## 🏗️ React Architecture Guidelines
+## � Wireframes vs Design Guidelines
+
+### Wireframe Usage (Structure Only)
+The wireframes in `/context/wireframes/` are **structural references only**:
+- ✅ **Use for**: Layout structure, component placement, content hierarchy
+- ✅ **Use for**: Section organization (Hero, Experience, Projects, etc.)
+- ✅ **Use for**: Responsive breakpoints and viewport organization
+- ❌ **DO NOT use for**: Colors, typography, visual styling, exact spacing
+
+### Actual Design Reference (Beautiful Styling)
+Follow `/data/styles/pallet-demo-dark-light.html` for the actual beautiful design:
+- ✅ **Use for**: Color palette, gradients, shadows, visual effects
+- ✅ **Use for**: Typography hierarchy and text styling
+- ✅ **Use for**: Button styles, card designs, component aesthetics
+- ✅ **Use for**: Theme switching (light/dark mode)
+- ✅ **Use for**: Professional, polished visual appearance
+
+### Development Approach
+1. **Structure First**: Build component layout based on wireframe structure
+2. **Style Second**: Apply beautiful styling from palette demo
+3. **Enhance Third**: Add animations, interactions, and polish
+4. **Theme Integration**: Ensure both light/dark modes work perfectly
+
+## �🏗️ React Architecture Guidelines
 
 ### Technology Stack
 ```json
 {
   "framework": "React 18+",
   "language": "TypeScript",
-  "styling": "Tailwind CSS",
+  "styling": "Vanilla CSS with CSS Variables",
   "build": "Vite",
   "routing": "React Router v6",
   "state": "Context API + useReducer",
@@ -126,11 +157,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
 #### 2. Styling Guidelines
 ```typescript
-// ✅ Use Tailwind classes based on design tokens
-<div className="bg-background-dark text-text-primary border-border-primary">
+// ✅ Use CSS classes with CSS variables
+<div className="background-dark text-primary border-primary">
   
-// ✅ Custom styles for complex layouts
-<div className="sidebar-layout">
+// ✅ CSS variables for dynamic styling
+<div style={{ 
+  backgroundColor: 'var(--color-background)', 
+  color: 'var(--color-text-primary)',
+  border: '1px solid var(--color-border-primary)'
+}}>
   
 // ❌ Never hardcode colors
 <div style={{ backgroundColor: '#1a1a1a' }}>
@@ -155,14 +190,14 @@ const useProfileData = () => {
 
 ## 📱 Responsive Design Requirements
 
-### Breakpoints (Tailwind)
+### Responsive Breakpoints
 ```css
-/* Mobile First Approach */
-sm: 640px   /* Small tablets */
-md: 768px   /* Tablets */
-lg: 1024px  /* Small desktops */
-xl: 1280px  /* Large desktops */
-2xl: 1536px /* Extra large screens */
+/* Mobile First Approach with CSS Media Queries */
+@media (min-width: 640px) { /* Small tablets */ }
+@media (min-width: 768px) { /* Tablets */ }  
+@media (min-width: 1024px) { /* Small desktops */ }
+@media (min-width: 1280px) { /* Large desktops */ }
+@media (min-width: 1536px) { /* Extra large screens */ }
 ```
 
 ### Layout Specifications

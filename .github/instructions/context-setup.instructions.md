@@ -12,18 +12,18 @@ The `/context/` folder contains local copies of essential files from the main po
 
 ```
 /context/                           # Local development context (gitignored)
-├── wireframes/                    # Wireframe references
-│   ├── home.html                  # Home page wireframe
-│   ├── experience.html            # Experience page wireframe  
-│   ├── projects.html              # Projects page wireframe
-│   ├── tech_stack.html            # Tech stack wireframe
-│   └── contact.html               # Contact page wireframe
+├── wireframes/                    # Layout structure references (NOT exact design)
+│   ├── home.html                  # Home layout structure
+│   ├── experience.html            # Experience layout structure
+│   ├── projects.html              # Projects layout structure
+│   ├── tech_stack.html            # Tech stack layout structure
+│   └── contact.html               # Contact layout structure
 ├── data/                          # Data references
 │   ├── default.json               # Profile data copy
 │   └── sample-responses/          # API response samples
 ├── styles/                        # Style system references
 │   ├── style.json                 # Design system tokens
-│   └── palette-demo.html          # Color palette preview
+│   └── pallet-demo-dark-light.html # Beautiful color palette & design reference
 └── docs/                          # Development documentation
     ├── wireframe-analysis.md      # Wireframe breakdown
     ├── component-mapping.md       # Component specifications
@@ -144,7 +144,7 @@ const sampleResponses = {
 // Import design tokens
 import styleTokens from '../context/styles/style.json';
 
-// Generate Tailwind config from tokens
+// Generate CSS variables from tokens
 const colors = {
   primary: styleTokens.colors.light_mode.primary,
   background: styleTokens.colors.light_mode.background,

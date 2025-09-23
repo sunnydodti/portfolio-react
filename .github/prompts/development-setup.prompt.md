@@ -10,7 +10,7 @@ I need help setting up and configuring development tools for the React portfolio
 
 - **Framework**: React 18+ with TypeScript strict mode
 - **Build Tool**: Vite with optimized configuration
-- **Styling**: Tailwind CSS with design system integration
+- **Styling**: Vanilla CSS with CSS Variables and design system integration
 - **Code Quality**: ESLint + Prettier with strict rules
 - **Testing**: Vitest + React Testing Library
 - **Development**: Hot reload, fast builds, and debugging support
@@ -36,7 +36,7 @@ I need help setting up and configuring development tools for the React portfolio
 - Declaration file generation
 - Build targets and module resolution
 
-**Tailwind CSS Integration**:
+**CSS Variables Integration**:
 
 - Design token imports from `/context/styles/style.json`
 - Custom utility generation
@@ -77,7 +77,7 @@ I need help setting up and configuring development tools for the React portfolio
 ```
 ├── vite.config.ts          # Vite configuration
 ├── tsconfig.json           # TypeScript config
-├── tailwind.config.js      # Tailwind setup
+├── src/styles/variables.css # CSS Variables setup
 ├── eslint.config.js        # ESLint rules
 ├── vitest.config.ts        # Test configuration
 ├── .env.example            # Environment variables
@@ -88,7 +88,7 @@ I need help setting up and configuring development tools for the React portfolio
 
 **Integration Requirements**:
 
-- Context file access for wireframes and data
+- Context file access for layout references and design tokens
 - Design token processing from JSON
 - Automatic type generation from data
 - Hot reload for all file changes
