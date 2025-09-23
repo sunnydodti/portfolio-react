@@ -135,9 +135,9 @@ src/
 
 ### Data Sources
 
-- **Primary**: Remote JSON from main repository
-- **Fallback**: Local `/context/data/default.json`
-- **Strategy**: Fetch remote → fallback local → graceful error handling
+- **SINGLE SOURCE OF TRUTH**: GitHub API endpoint ONLY
+- **NO FALLBACK**: User explicitly requires GitHub data only
+- **Strategy**: Fetch from GitHub API → handle errors gracefully → NO local fallback
 
 ### Key Interfaces Needed
 
@@ -338,9 +338,9 @@ Section Components (Page-specific):
 
 ### Data Handling
 
-- Primary: Remote JSON fetch
-- Fallback: Local context data
-- Graceful error handling
+- **SINGLE SOURCE**: GitHub API endpoint ONLY (user requirement)
+- **NO FALLBACK**: User explicitly rejected fallback approach
+- Graceful error handling with user feedback
 - Loading states for all async operations
 
 ### Performance Targets
@@ -380,9 +380,10 @@ Section Components (Page-specific):
 **Step 2 - Data & Types Architecture (COMPLETE)**
 
 - ✅ **TypeScript Interfaces** (4/4): portfolio.ts, ui.ts, api.ts, index.ts - Complete type system
-- ✅ **Data Fetching Hooks** (2/2): useProfileData.ts with specialized hooks, comprehensive error handling
+- ✅ **SINGLE SOURCE DATA**: useProfileData.ts - GitHub API ONLY (NO FALLBACK per user requirement)
 - ✅ **Context System** (2/2): PortfolioContext.tsx with state management, usePortfolio.ts hooks
 - ✅ **Type Safety** (1/1): Strict TypeScript mode, no 'any' types, comprehensive interfaces
+- ✅ **VIEWPORT OPTIMIZATION**: 720p screen compatibility without scrolling
 
 ### Next Actions Planned
 
