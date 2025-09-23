@@ -8,6 +8,7 @@ import {
 import { PortfolioProvider } from "./context/PortfolioProvider";
 import { Layout } from "./components/layout";
 import { Home, Experience, Projects, TechStack, Contact } from "./pages";
+import { ComponentDemo } from "./pages/ComponentDemo";
 import "./App.css";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/tech-stack" element={<TechStack />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/demo" element={<ComponentDemo />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </Layout>

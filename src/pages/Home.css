@@ -237,3 +237,93 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* ==========================================================================
+   New Component-Based Sections
+   ========================================================================== */
+
+/* Actions Section */
+.actions-section {
+  margin-top: var(--spacing-xl);
+}
+
+.actions-card {
+  text-align: center;
+  background: linear-gradient(
+    135deg,
+    rgba(96, 165, 250, 0.1) 0%,
+    rgba(59, 130, 246, 0.05) 100%
+  );
+  border: 1px solid rgba(96, 165, 250, 0.2);
+}
+
+.actions-card h3 {
+  color: var(--color-text-primary);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+}
+
+.actions-card p {
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.6;
+}
+
+.actions-buttons {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+/* Demo Link Section */
+.demo-link-section {
+  margin-top: var(--spacing-lg);
+}
+
+.demo-link-content {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  cursor: pointer;
+}
+
+.demo-link-content span:first-child {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.demo-link-content h4 {
+  color: var(--color-text-primary);
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin: 0 0 var(--spacing-xs) 0;
+}
+
+.demo-link-content p {
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.demo-link-content > div {
+  flex: 1;
+}
+
+/* Responsive adjustments for new sections */
+@media (max-width: 767px) {
+  .actions-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .demo-link-content {
+    gap: var(--spacing-sm);
+  }
+  
+  .demo-link-content span:first-child {
+    font-size: 1.25rem;
+  }
+}
