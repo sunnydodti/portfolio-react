@@ -1,0 +1,441 @@
+/* ==========================================================================
+   Card Components - Container and content card styles
+   ========================================================================== */
+
+/* ========================================
+   Base Card
+   ======================================== */
+
+.card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  border-color: var(--color-primary-300);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   Card Variants
+   ======================================== */
+
+/* Elevated Card */
+.card-elevated {
+  box-shadow: var(--shadow-md);
+  border: none;
+}
+
+.card-elevated:hover {
+  box-shadow: var(--shadow-xl);
+}
+
+/* Outlined Card */
+.card-outlined {
+  border: 2px solid var(--color-border);
+  box-shadow: none;
+}
+
+.card-outlined:hover {
+  border-color: var(--color-primary-400);
+}
+
+/* Gradient Card */
+.card-gradient {
+  background: var(--gradient-surface);
+  border: 1px solid var(--color-border-subtle);
+}
+
+.card-gradient:hover {
+  border-color: var(--color-primary-300);
+}
+
+/* Glass Card */
+.card-glass {
+  background: var(--glass-surface);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+}
+
+/* ========================================
+   Card Sizes
+   ======================================== */
+
+.card-xs {
+  padding: var(--spacing-xs);
+  border-radius: var(--border-radius-sm);
+}
+
+.card-sm {
+  padding: var(--spacing-sm);
+}
+
+.card-md {
+  padding: var(--spacing-md);
+}
+
+.card-lg {
+  padding: var(--spacing-lg);
+}
+
+.card-xl {
+  padding: var(--spacing-xl);
+}
+
+/* ========================================
+   Card Components
+   ======================================== */
+
+/* Card Header */
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.card-subtitle {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  margin: var(--spacing-xs) 0 0 0;
+}
+
+/* Card Body */
+.card-body {
+  flex: 1;
+}
+
+.card-content {
+  color: var(--color-text-primary);
+  line-height: 1.6;
+}
+
+.card-description {
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin: var(--spacing-sm) 0;
+}
+
+/* Card Footer */
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid var(--color-border);
+}
+
+.card-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
+/* ========================================
+   Portfolio Specific Cards
+   ======================================== */
+
+/* Experience Card */
+.experience-card {
+  position: relative;
+  background: var(--gradient-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  transition: all 0.3s ease;
+}
+
+.experience-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--gradient-primary);
+  border-radius: 2px 0 0 2px;
+}
+
+.experience-card:hover {
+  transform: translateX(4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary-300);
+}
+
+.experience-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-md);
+}
+
+.experience-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.experience-company {
+  font-size: 1rem;
+  color: var(--color-primary-500);
+  font-weight: 500;
+}
+
+.experience-period {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  text-align: right;
+}
+
+.experience-location {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+/* Project Card */
+.project-card {
+  background: var(--gradient-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--color-primary-300);
+}
+
+.project-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background: var(--gradient-primary);
+}
+
+.project-content {
+  padding: var(--spacing-lg);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.project-description {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-md);
+  flex: 1;
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
+}
+
+.project-links {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+/* Skill Card */
+.skill-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-md);
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-primary);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.skill-card:hover::before {
+  transform: scaleX(1);
+}
+
+.skill-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary-300);
+}
+
+.skill-icon {
+  font-size: 2rem;
+  color: var(--color-primary-500);
+  margin-bottom: var(--spacing-sm);
+}
+
+.skill-name {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.skill-level {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+/* Stats Card */
+.stats-card {
+  background: var(--gradient-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.stats-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.stats-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-primary-500);
+  line-height: 1;
+  margin-bottom: var(--spacing-xs);
+}
+
+.stats-label {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Contact Card */
+.contact-card {
+  background: var(--gradient-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-xl);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary-300);
+}
+
+.contact-icon {
+  font-size: 3rem;
+  color: var(--color-primary-500);
+  margin-bottom: var(--spacing-md);
+}
+
+.contact-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.contact-info {
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+}
+
+/* ========================================
+   Interactive States
+   ======================================== */
+
+.card-clickable {
+  cursor: pointer;
+}
+
+.card-clickable:hover {
+  border-color: var(--color-primary-400);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-selected {
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 2px var(--color-primary-100);
+}
+
+/* ========================================
+   Responsive Cards
+   ======================================== */
+
+@media (max-width: 767px) {
+  .mobile\:card-full {
+    margin: 0 calc(-1 * var(--spacing-md));
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+  
+  .mobile\:card-sm {
+    padding: var(--spacing-sm);
+  }
+  
+  .experience-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .experience-period {
+    text-align: left;
+    margin-top: var(--spacing-xs);
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:card-horizontal {
+    display: flex;
+    align-items: center;
+  }
+  
+  .md\:card-horizontal .card-content {
+    flex: 1;
+  }
+}

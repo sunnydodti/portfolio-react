@@ -1,0 +1,66 @@
+/* Layout Component Styles */
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--color-background, #0f172a);
+  color: var(--color-text-primary, #f8fafc);
+  font-family: var(--font-family-sans, Inter, system-ui, sans-serif);
+  overflow: hidden; /* Single viewport - no scrolling */
+}
+
+/* Main Content Area */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface, #1e293b);
+  border: 2px solid var(--color-border-primary, #334155);
+  margin: var(--spacing-sm, 0.5rem);
+  border-radius: var(--border-radius-lg, 0.75rem);
+  overflow: hidden;
+}
+
+/* Page Content Container */
+.page-content {
+  flex: 1;
+  padding: var(--spacing-lg, 1.5rem);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Mobile Backdrop Overlay */
+.sidebar-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 40;
+  display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 1023px) {
+  .layout {
+    overflow: visible;
+  }
+  
+  .main-content {
+    margin: 0;
+    border-radius: 0;
+    border: none;
+  }
+  
+  .sidebar-backdrop {
+    display: block;
+  }
+}
+
+@media (max-width: 767px) {
+  .page-content {
+    padding: var(--spacing-md, 1rem);
+  }
+}

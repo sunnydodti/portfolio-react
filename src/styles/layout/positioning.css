@@ -1,0 +1,244 @@
+/* ==========================================================================
+   Positioning Utilities
+   ========================================================================== */
+
+/* ========================================
+   Position
+   ======================================== */
+
+.static { position: static; }
+.fixed { position: fixed; }
+.absolute { position: absolute; }
+.relative { position: relative; }
+.sticky { position: sticky; }
+
+/* ========================================
+   Top / Right / Bottom / Left
+   ======================================== */
+
+.inset-0 { 
+  top: 0px; 
+  right: 0px; 
+  bottom: 0px; 
+  left: 0px; 
+}
+
+.inset-x-0 { 
+  left: 0px; 
+  right: 0px; 
+}
+
+.inset-y-0 { 
+  top: 0px; 
+  bottom: 0px; 
+}
+
+.top-0 { top: 0px; }
+.right-0 { right: 0px; }
+.bottom-0 { bottom: 0px; }
+.left-0 { left: 0px; }
+
+.top-auto { top: auto; }
+.right-auto { right: auto; }
+.bottom-auto { bottom: auto; }
+.left-auto { left: auto; }
+
+/* Common positioning values */
+.top-4 { top: 1rem; }
+.right-4 { right: 1rem; }
+.bottom-4 { bottom: 1rem; }
+.left-4 { left: 1rem; }
+
+.top-8 { top: 2rem; }
+.right-8 { right: 2rem; }
+.bottom-8 { bottom: 2rem; }
+.left-8 { left: 2rem; }
+
+/* ========================================
+   Z-Index
+   ======================================== */
+
+.z-0 { z-index: 0; }
+.z-10 { z-index: 10; }
+.z-20 { z-index: 20; }
+.z-30 { z-index: 30; }
+.z-40 { z-index: 40; }
+.z-50 { z-index: 50; }
+
+/* Semantic z-index values */
+.z-dropdown { z-index: var(--z-dropdown); }
+.z-sticky { z-index: var(--z-sticky); }
+.z-fixed { z-index: var(--z-fixed); }
+.z-overlay { z-index: var(--z-overlay); }
+.z-modal { z-index: var(--z-modal); }
+.z-popover { z-index: var(--z-popover); }
+.z-tooltip { z-index: var(--z-tooltip); }
+
+/* ========================================
+   Portfolio Positioning Patterns
+   ======================================== */
+
+/* Overlay patterns */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--overlay-background);
+  z-index: var(--z-overlay);
+}
+
+/* Modal positioning */
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-lg);
+  z-index: var(--z-modal);
+}
+
+/* Dropdown positioning */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: var(--spacing-xs);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-lg);
+  z-index: var(--z-dropdown);
+}
+
+/* Sidebar positioning */
+.sidebar-mobile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--portfolio-sidebar-width);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: var(--z-fixed);
+}
+
+.sidebar-mobile.open {
+  transform: translateX(0);
+}
+
+/* Sticky header */
+.header-sticky {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  background-color: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Floating action button */
+.fab {
+  position: fixed;
+  bottom: var(--spacing-xl);
+  right: var(--spacing-xl);
+  z-index: var(--z-fixed);
+}
+
+/* Badge positioning */
+.badge-container {
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  z-index: 1;
+}
+
+/* Avatar with status indicator */
+.avatar-container {
+  position: relative;
+}
+
+.status-indicator {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--color-background);
+}
+
+/* ========================================
+   Centering Utilities
+   ======================================== */
+
+.center-absolute {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.center-fixed {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ========================================
+   Responsive Positioning
+   ======================================== */
+
+@media (max-width: 767px) {
+  .mobile\:relative { position: relative; }
+  .mobile\:absolute { position: absolute; }
+  .mobile\:fixed { position: fixed; }
+  .mobile\:static { position: static; }
+  
+  .mobile\:inset-0 {
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:relative { position: relative; }
+  .md\:absolute { position: absolute; }
+  .md\:static { position: static; }
+  
+  .md\:top-0 { top: 0px; }
+  .md\:right-0 { right: 0px; }
+  .md\:bottom-0 { bottom: 0px; }
+  .md\:left-0 { left: 0px; }
+}
+
+@media (min-width: 1024px) {
+  .lg\:relative { position: relative; }
+  .lg\:absolute { position: absolute; }
+  .lg\:static { position: static; }
+  
+  .lg\:top-0 { top: 0px; }
+  .lg\:right-0 { right: 0px; }
+  .lg\:bottom-0 { bottom: 0px; }
+  .lg\:left-0 { left: 0px; }
+}

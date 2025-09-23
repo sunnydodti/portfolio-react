@@ -1,0 +1,332 @@
+/* ==========================================================================
+   Responsive Breakpoint System - Mobile-First Approach
+   ========================================================================== */
+
+/* ========================================
+   Breakpoint Variables
+   ======================================== */
+
+:root {
+  /* Breakpoint values */
+  --bp-sm: 640px;    /* Small tablets */
+  --bp-md: 768px;    /* Tablets */
+  --bp-lg: 1024px;   /* Small desktops */
+  --bp-xl: 1280px;   /* Large desktops */
+  --bp-2xl: 1536px;  /* Extra large screens */
+  
+  /* Container max-widths */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+  --container-2xl: 1536px;
+}
+
+/* ========================================
+   Base Mobile-First Styles
+   ======================================== */
+
+/* Mobile base (320px and up) */
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-md);
+  padding-right: var(--spacing-md);
+}
+
+/* ========================================
+   Responsive Container Classes
+   ======================================== */
+
+/* Small devices and up (640px) */
+@media (min-width: 640px) {
+  .container {
+    max-width: var(--container-sm);
+  }
+  
+  .container-sm {
+    max-width: var(--container-sm);
+  }
+}
+
+/* Medium devices and up (768px) */
+@media (min-width: 768px) {
+  .container {
+    max-width: var(--container-md);
+  }
+  
+  .container-md {
+    max-width: var(--container-md);
+  }
+}
+
+/* Large devices and up (1024px) */
+@media (min-width: 1024px) {
+  .container {
+    max-width: var(--container-lg);
+  }
+  
+  .container-lg {
+    max-width: var(--container-lg);
+  }
+}
+
+/* Extra large devices and up (1280px) */
+@media (min-width: 1280px) {
+  .container {
+    max-width: var(--container-xl);
+  }
+  
+  .container-xl {
+    max-width: var(--container-xl);
+  }
+}
+
+/* 2XL devices and up (1536px) */
+@media (min-width: 1536px) {
+  .container {
+    max-width: var(--container-2xl);
+  }
+  
+  .container-2xl {
+    max-width: var(--container-2xl);
+  }
+}
+
+/* ========================================
+   Responsive Display Utilities
+   ======================================== */
+
+/* Hide/Show utilities for different screen sizes */
+
+/* Mobile only (hide on sm and up) */
+@media (min-width: 640px) {
+  .hide-sm-up,
+  .mobile-only {
+    display: none !important;
+  }
+}
+
+/* Hide on mobile (show on sm and up) */
+@media (max-width: 639px) {
+  .hide-mobile,
+  .sm-up-only {
+    display: none !important;
+  }
+}
+
+/* Tablet only (md and down, but not mobile) */
+@media (max-width: 639px), (min-width: 1024px) {
+  .tablet-only {
+    display: none !important;
+  }
+}
+
+/* Desktop only (lg and up) */
+@media (max-width: 1023px) {
+  .desktop-only {
+    display: none !important;
+  }
+}
+
+/* Large desktop only (xl and up) */
+@media (max-width: 1279px) {
+  .xl-up-only {
+    display: none !important;
+  }
+}
+
+/* ========================================
+   Responsive Spacing Utilities
+   ======================================== */
+
+/* Mobile spacing (default) */
+.responsive-padding {
+  padding: var(--spacing-md);
+}
+
+.responsive-margin {
+  margin: var(--spacing-md);
+}
+
+/* Tablet spacing */
+@media (min-width: 768px) {
+  .responsive-padding {
+    padding: var(--spacing-lg);
+  }
+  
+  .responsive-margin {
+    margin: var(--spacing-lg);
+  }
+}
+
+/* Desktop spacing */
+@media (min-width: 1024px) {
+  .responsive-padding {
+    padding: var(--spacing-xl);
+  }
+  
+  .responsive-margin {
+    margin: var(--spacing-xl);
+  }
+}
+
+/* ========================================
+   Responsive Text Alignment
+   ======================================== */
+
+/* Text alignment utilities with responsive variants */
+.text-left-mobile {
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .text-center-tablet {
+    text-align: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .text-left-desktop {
+    text-align: left;
+  }
+}
+
+/* ========================================
+   Mobile-First Layout Patterns
+   ======================================== */
+
+/* Stack on mobile, side-by-side on tablet+ */
+.responsive-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+  .responsive-stack {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-lg);
+  }
+}
+
+/* Full width on mobile, constrained on desktop */
+.responsive-width {
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .responsive-width {
+    width: auto;
+    max-width: 75%;
+  }
+}
+
+/* ========================================
+   Touch-Friendly Interactive Elements
+   ======================================== */
+
+/* Minimum touch target size for mobile */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 1024px) {
+  .touch-target {
+    min-height: 32px;
+    min-width: 32px;
+  }
+}
+
+/* ========================================
+   Responsive Image Utilities
+   ======================================== */
+
+.responsive-image {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+/* Different aspect ratios for different screens */
+.responsive-aspect {
+  aspect-ratio: 1/1; /* Square on mobile */
+}
+
+@media (min-width: 768px) {
+  .responsive-aspect {
+    aspect-ratio: 4/3; /* 4:3 on tablet */
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-aspect {
+    aspect-ratio: 16/9; /* 16:9 on desktop */
+  }
+}
+
+/* ========================================
+   Layout Breakpoint Helpers
+   ======================================== */
+
+/* CSS Custom Properties for JavaScript breakpoint detection */
+:root {
+  --current-breakpoint: mobile;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --current-breakpoint: sm;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --current-breakpoint: md;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --current-breakpoint: lg;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --current-breakpoint: xl;
+  }
+}
+
+@media (min-width: 1536px) {
+  :root {
+    --current-breakpoint: 2xl;
+  }
+}
+
+/* ========================================
+   Print-Friendly Responsive Overrides
+   ======================================== */
+
+@media print {
+  .hide-print {
+    display: none !important;
+  }
+  
+  .container {
+    max-width: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .responsive-stack {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+}

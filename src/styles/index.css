@@ -1,0 +1,303 @@
+/* ==========================================================================
+   Portfolio Design System - Master Stylesheet
+   ========================================================================== */
+
+/* ========================================
+   Foundation Layer - Core System Setup
+   ======================================== */
+
+@import './foundation/reset.css';
+@import './foundation/variables.css';
+@import './foundation/typography.css';
+@import './foundation/breakpoints.css';
+
+/* ========================================
+   Design Tokens Layer - Utilities
+   ======================================== */
+
+@import './tokens/colors.css';
+@import './tokens/spacing.css';
+@import './tokens/shadows.css';
+@import './tokens/gradients.css';
+@import './tokens/borders.css';
+
+/* ========================================
+   Layout System Layer - Layout Utilities
+   ======================================== */
+
+/* Layout System - Spatial organization and positioning */
+@import './layout/grid.css';
+@import './layout/flexbox.css';
+@import './layout/positioning.css';
+@import './layout/containers.css';
+@import './layout/flexbox.css';
+@import './layout/positioning.css';
+@import './layout/containers.css';
+
+/* ========================================
+   Component Styles Layer - Component Patterns
+   ======================================== */
+
+@import './components/buttons.css';
+@import './components/cards.css';
+@import './components/forms.css';
+@import './components/navigation.css';
+@import './components/feedback.css';
+
+/* ========================================
+   Utility Classes Layer - Helpers
+   ======================================== */
+
+@import './utilities/animations.css';
+@import './utilities/accessibility.css';
+@import './utilities/responsive.css';
+@import './utilities/themes.css';
+
+/* ========================================
+   Global Base Styles
+   ======================================== */
+
+html {
+  /* Ensure smooth scrolling */
+  scroll-behavior: smooth;
+  
+  /* Prevent horizontal overflow */
+  overflow-x: hidden;
+  
+  /* Set base font size for rem calculations */
+  font-size: 16px;
+}
+
+body {
+  /* Apply theme transition to body */
+  transition: 
+    background-color var(--duration-normal) var(--timing-ease),
+    color var(--duration-normal) var(--timing-ease);
+  
+  /* Ensure full height */
+  min-height: 100vh;
+  
+  /* Prevent horizontal overflow */
+  overflow-x: hidden;
+}
+
+#root {
+  /* Ensure full height for React app */
+  min-height: 100vh;
+  
+  /* Create stacking context */
+  isolation: isolate;
+}
+
+/* ========================================
+   Portfolio-Specific Global Styles
+   ======================================== */
+
+/* Single viewport layout (desktop) */
+@media (min-width: 1024px) {
+  body {
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  #root {
+    height: 100vh;
+    overflow: hidden;
+  }
+}
+
+/* Sidebar layout variables */
+:root {
+  --portfolio-sidebar-width: var(--sidebar-width);
+  --portfolio-header-height: var(--header-height);
+  --portfolio-content-padding: var(--spacing-lg);
+}
+
+/* Mobile adjustments */
+@media (max-width: 1023px) {
+  :root {
+    --portfolio-sidebar-width: 0;
+    --portfolio-content-padding: var(--spacing-md);
+  }
+}
+
+/* ========================================
+   Focus Management
+   ======================================== */
+
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--surface-primary);
+  color: var(--text-primary);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  z-index: var(--z-max);
+  transition: top var(--duration-fast) var(--timing-ease);
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Focus management for modals/overlays */
+.focus-trap {
+  /* Focus management handled by JavaScript */
+  position: relative;
+}
+
+/* ========================================
+   Print Styles
+   ======================================== */
+
+@media print {
+  /* Hide non-essential elements */
+  .no-print,
+  .sidebar,
+  .navigation,
+  .skip-link {
+    display: none !important;
+  }
+  
+  /* Optimize for printing */
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+  
+  /* Ensure proper page breaks */
+  .print-break-before {
+    page-break-before: always;
+  }
+  
+  .print-break-after {
+    page-break-after: always;
+  }
+  
+  .print-break-inside-avoid {
+    page-break-inside: avoid;
+  }
+}
+
+/* ========================================
+   Performance Optimizations
+   ======================================== */
+
+/* GPU acceleration for smooth animations */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Contain layout shifts */
+.layout-contained {
+  contain: layout style paint;
+}
+
+/* Optimize for scrolling performance */
+.scroll-optimized {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+/* ========================================
+   Development Helpers
+   ======================================== */
+
+/* Debug mode - show layout boundaries */
+.debug * {
+  outline: 1px solid red !important;
+}
+
+.debug .container {
+  outline: 2px solid blue !important;
+}
+
+.debug .component {
+  outline: 1px solid green !important;
+}
+
+/* Hide debug helpers in production */
+@media not screen and (max-width: 0) {
+  .debug-only {
+    display: none !important;
+  }
+}
+
+/* ========================================
+   Theme Loading States
+   ======================================== */
+
+/* Prevent flash of unstyled content during theme load */
+.theme-loading * {
+  transition: none !important;
+}
+
+/* Skeleton loading states */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--surface-secondary) 25%,
+    var(--surface-elevated) 50%,
+    var(--surface-secondary) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ========================================
+   Accessibility Enhancements
+   ======================================== */
+
+/* Ensure sufficient color contrast in high contrast mode */
+@media (prefers-contrast: high) {
+  * {
+    background-color: ButtonFace !important;
+    color: ButtonText !important;
+    border-color: ButtonText !important;
+  }
+  
+  a {
+    color: LinkText !important;
+  }
+  
+  button {
+    background-color: ButtonFace !important;
+    color: ButtonText !important;
+    border: 2px solid ButtonText !important;
+  }
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+    background: var(--surface-secondary);
+  }
+}
+
+/* Support forced colors mode (Windows High Contrast) */
+@media (forced-colors: active) {
+  .border-gradient-primary::before,
+  .border-animated::before {
+    display: none;
+  }
+  
+  .text-gradient,
+  .text-gradient-hero,
+  .text-gradient-primary {
+    background: none;
+    color: CanvasText;
+    -webkit-text-fill-color: unset;
+  }
+}
