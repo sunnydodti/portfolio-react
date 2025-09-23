@@ -51,11 +51,25 @@ This document provides React-specific guidelines for building Sunny Dodti's port
 
 ### Visual Design Priority
 
-1. **Color Palette**: Follow the stunning blue theme from palette demo
-2. **Layout Structure**: Use wireframes as building blocks for component organization
-3. **Typography**: Inter font family with proper weights and hierarchy
-4. **Visual Effects**: Implement gradients, shadows, and animations from palette demo
-5. **Theme Support**: Ensure both light and dark modes work beautifully
+**FOCUS: CREATE A VISUALLY STUNNING PORTFOLIO**
+
+1. **Gorgeous Color Palette**: Follow the beautiful blue theme from palette demo with rich gradients
+2. **Sophisticated Visual Effects**: Rich shadows, elegant gradients, smooth animations, micro-interactions  
+3. **Layout Structure**: Use wireframes as building blocks for component organization (structure only)
+4. **Beautiful Typography**: Inter font family with elegant hierarchy, proper spacing, and visual rhythm
+5. **Interactive Polish**: Hover effects, button animations, loading states, visual feedback
+6. **Scrollable Experience**: Allow natural scrolling with smooth section transitions and reveal animations
+7. **Theme Support**: Ensure both light and dark modes work beautifully with smooth toggle transitions
+8. **Professional Depth**: Layered shadows, visual depth, modern card designs, elegant spacing
+
+### Key Visual Elements to Implement
+
+- **Hero Section**: Dramatic gradients, elegant typography, smooth call-to-action animations
+- **Project Cards**: Rich cards with hover effects, image overlays, interactive elements
+- **Skills Section**: Beautiful progress indicators, animated skill bars, or elegant badges
+- **Navigation**: Smooth sidebar or modern navigation with elegant transitions
+- **Micro-interactions**: Button hover effects, click feedback, loading animations
+- **Section Transitions**: Smooth scroll-triggered animations and visual separators
 
 ## �🏗️ Component Architecture
 

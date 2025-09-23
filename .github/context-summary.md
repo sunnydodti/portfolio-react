@@ -49,20 +49,25 @@ Context/Local Fallback (for development)
 
 ## 🎨 Design System
 
-### Visual Identity
+### Visual Identity - **STUNNING VISUAL DESIGN**
 
-- **Theme**: Dark-first design (#1a1a1a background, #2a2a2a surfaces)
-- **Primary Color**: #4a90e2 (blue for interactive elements)
-- **Layout**: Sidebar navigation + main content area
-- **Viewport**: Single screen display (no scrolling on desktop)
-- **Typography**: Inter font family, proper hierarchy
+- **Theme**: Beautiful dark-first design with rich gradients and elegant shadows
+- **Color Palette**: Follow gorgeous `/data/styles/pallet-demo-dark-light.html` 
+- **Visual Effects**: Rich gradients, layered shadows, smooth animations, micro-interactions
+- **Layout**: Modern navigation + scrollable content with smooth transitions
+- **Typography**: Inter font family with elegant hierarchy and visual rhythm
+- **Interactive Elements**: Sophisticated hover effects, button animations, visual feedback
 
-### Component Patterns
+### Component Patterns - **VISUAL EXCELLENCE**
 
-- **Sidebar**: 240px width, profile + navigation + social links
-- **Cards**: Rounded borders, hover effects, consistent padding
-- **Buttons**: Multiple variants (primary/secondary/outline)
-- **Responsive**: Mobile-first, sidebar collapses on small screens
+- **Navigation**: Beautiful sidebar or modern navigation with smooth animations
+- **Cards**: Rich design with shadows, gradients, hover effects, visual depth
+- **Buttons**: Multiple elegant variants with smooth animations and micro-interactions
+- **Hero Section**: Dramatic backgrounds, elegant typography, smooth call-to-actions
+- **Projects**: Rich project cards with image overlays and interactive elements
+- **Skills**: Beautiful progress indicators, animated elements, visual grouping
+- **Scrolling**: Natural scroll experience with section reveal animations
+- **Responsive**: Mobile-first with stunning visuals maintained across all breakpoints
 
 ---
 
@@ -108,12 +113,16 @@ interface ProfileData {
 - **Accessibility**: WCAG 2.1 AA compliance
 - **SEO**: Proper meta tags and structure
 
-### Styling Rules
+### Styling Rules - **VISUAL EXCELLENCE FOCUS**
 
-- **Framework**: Vanilla CSS with CSS Variables
-- **Tokens**: Use design system from `/context/styles/style.json`
+- **PRIORITY**: Create visually stunning, modern portfolio design
+- **Framework**: Vanilla CSS with CSS Variables for rich visual effects
+- **Design Source**: Follow beautiful `/data/styles/pallet-demo-dark-light.html` for colors and styling
+- **Tokens**: Use design system from `/context/styles/style.json` for consistency
+- **Visual Effects**: Rich gradients, elegant shadows, smooth animations, micro-interactions
 - **No Hardcoding**: Always use CSS custom properties and semantic classes
-- **Responsive**: Mobile-first with CSS media queries
+- **Scrollable**: Allow natural scrolling with smooth section transitions
+- **Responsive**: Mobile-first with stunning visuals maintained across all breakpoints
 
 ---
 

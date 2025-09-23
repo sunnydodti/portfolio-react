@@ -13,19 +13,22 @@ I'm working on a React TypeScript portfolio implementation for Sunny Dodti. This
 
 **Project**: React implementation of Sunny Dodti's professional portfolio
 **Tech Stack**: React 18+, TypeScript, Vanilla CSS with CSS Variables, Vite, React Router
-**Design**: Dark theme, sidebar layout, single viewport (no scrolling)
+**Design**: Visually stunning modern portfolio with scrollable sections and rich visual effects
 **Data Source**: Fetches from main repository's JSON endpoints
 **Local Context**: `/context/` folder contains wireframes, data samples, and style guides
 
 **Key Requirements**:
-1. Use wireframes in `/context/wireframes/` as layout structure reference only (NOT exact design - just building blocks)
-2. Follow the beautiful color palette from `/data/styles/pallet-demo-dark-light.html` for actual styling
-3. Use design tokens from `/context/data/styles/style.json`
-4. Implement TypeScript strictly (no `any` types)
-5. Maintain CSS variables and semantic class approach
-6. Ensure responsive design (mobile-first)
-7. Target Lighthouse score 95+
-8. Follow WCAG 2.1 AA accessibility standards
+1. **CREATE VISUALLY GORGEOUS DESIGN** - Focus on stunning visual appeal and modern aesthetics
+2. Use wireframes in `/context/wireframes/` as layout structure reference only (NOT exact design - just building blocks)
+3. Follow the beautiful color palette from `/data/styles/pallet-demo-dark-light.html` for actual styling
+4. Add rich visual elements: gradients, shadows, animations, micro-interactions
+5. Allow natural scrolling with smooth section transitions and animations
+6. Use design tokens from `/context/data/styles/style.json`
+7. Implement TypeScript strictly (no `any` types)
+8. Maintain CSS variables and semantic class approach
+9. Ensure responsive design (mobile-first)
+10. Target Lighthouse score 95+
+11. Follow WCAG 2.1 AA accessibility standards
 
 Please help me with [SPECIFIC_TASK] while adhering to these standards.
 ```

@@ -9,24 +9,29 @@ I need to create a new React component based on the wireframe reference.
 **Wireframe Reference**: Check `/context/wireframes/[page].html` for the specific section
 **Component Requirements**:
 
+- **CREATE VISUALLY STUNNING COMPONENTS**: Focus on beautiful, modern design
 - Use TypeScript with strict typing (no `any` types)
 - Follow CSS variables and semantic class approach
 - Use wireframes for layout structure only (NOT exact styling)
 - Follow beautiful design from `/data/styles/pallet-demo-dark-light.html`
-- Implement proper responsive behavior
+- Add rich visual effects: animations, hover states, micro-interactions
+- Allow natural scrolling with smooth section transitions
+- Implement sophisticated responsive behavior
 - Include accessibility features (ARIA labels, keyboard navigation)
 - Use design tokens from `/context/data/styles/style.json`
 
-**Styling Guidelines**:
+**Visual Excellence Guidelines**:
 
-- **CRITICAL**: Follow the beautiful palette demo styling, not wireframe colors
+- **CRITICAL**: Create gorgeous components using the beautiful palette demo styling
 - Dark mode: --bg-primary: #0f172a, --primary: #60a5fa, --surface: #1e293b
 - Light mode: --bg-primary: #ffffff, --primary: #3b82f6, --surface: #f8fafc
-- Use gradients: --gradient-hero, --gradient-card, --gradient-button
-- Apply shadows: --shadow-sm, --shadow-md, --shadow-lg for depth
+- Rich gradients: --gradient-hero, --gradient-card, --gradient-button for visual depth
+- Elegant shadows: --shadow-sm, --shadow-md, --shadow-lg for layered effects
+- Sophisticated animations: smooth transitions, hover effects, loading states
+- Beautiful typography: proper hierarchy, spacing, and visual rhythm
+- Interactive elements: button animations, card hover effects, visual feedback
 - Responsive breakpoints: mobile (<768px), tablet (768-1023px), desktop (1024px+)
-- Single viewport rule (no scrolling on desktop)
-- Smooth transitions and hover states with elegant animations
+- Scrollable experience: smooth scroll behavior with section reveal animations
 
 **Component Structure**:
 
