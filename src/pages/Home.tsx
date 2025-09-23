@@ -5,7 +5,6 @@ import {
   Card,
   CardBody,
   Button,
-  Badge,
   SkillBadge,
 } from '../components/common';
 import './Home.css';
@@ -16,130 +15,156 @@ export const Home: React.FC = () => {
   return (
     <div className="page-container home-page">
       <LoadingContainer loading={loading} error={error}>
-        {/* Hero Section */}
+        {/* Hero Introduction - Focused and Clean */}
         <section className="hero-section">
           <div className="hero-content">
-            <h1 className="hero-title">
-              {profile?.profile?.name || 'Sunny Dodti'}
-            </h1>
-            <h2 className="hero-subtitle">
-              {profile?.profile?.title || 'Senior Software Developer'}
-            </h2>
+            <div className="hero-main">
+              <h1 className="hero-title">
+                {profile?.profile?.name || 'Sunny Dodti'}
+              </h1>
+              <h2 className="hero-subtitle">
+                {profile?.profile?.title || 'Software Developer'}
+              </h2>
+            </div>
             <p className="hero-description">
               {profile?.profile?.about ||
                 'Developer at heart. Building apps & solving problems is my hobby.'}
             </p>
-            <div className="hero-location">
-              📍 {profile?.profile?.location || 'Mumbai, India'}
+            <div className="hero-actions">
+              <Button variant="primary" size="md">
+                View My Work
+              </Button>
+              <Button variant="outline" size="md">
+                Get In Touch
+              </Button>
             </div>
           </div>
         </section>
 
-        {/* Quick Stats */}
-        <section className="stats-section">
-          <div className="stats-grid">
-            <div className="stat-card">
-              <div className="stat-value">3+</div>
-              <div className="stat-label">Years Experience</div>
+        {/* Professional Metrics - Clean Stats Row */}
+        <section className="metrics-section">
+          <h3 className="section-title">Professional Overview</h3>
+          <div className="metrics-grid">
+            <div className="metric-item">
+              <div className="metric-value">3+</div>
+              <div className="metric-label">Years Experience</div>
             </div>
-            <div className="stat-card">
-              <div className="stat-value">
+            <div className="metric-item">
+              <div className="metric-value">
                 {profile?.work_experience?.length || 2}
               </div>
-              <div className="stat-label">Companies</div>
+              <div className="metric-label">Companies</div>
             </div>
-            <div className="stat-card">
-              <div className="stat-value">
-                {profile?.projects?.work?.length || 5}
-              </div>
-              <div className="stat-label">Projects</div>
+            <div className="metric-item">
+              <div className="metric-value">6+</div>
+              <div className="metric-label">Projects</div>
             </div>
-            <div className="stat-card">
-              <div className="stat-value">10+</div>
-              <div className="stat-label">Technologies</div>
+            <div className="metric-item">
+              <div className="metric-value">10+</div>
+              <div className="metric-label">Technologies</div>
             </div>
           </div>
         </section>
 
-        {/* Skills Preview */}
-        <section className="skills-preview">
-          <h3 className="section-title">Core Technologies</h3>
-          <div className="skills-grid">
-            <SkillBadge
-              skill="React"
-              proficiency="expert"
-              icon={<span>⚛️</span>}
-            />
-            <SkillBadge
-              skill="TypeScript"
-              proficiency="advanced"
-              icon={<span>🔷</span>}
-            />
-            <SkillBadge
-              skill="Node.js"
-              proficiency="advanced"
-              icon={<span>🟢</span>}
-            />
-            <SkillBadge
-              skill="Python"
-              proficiency="intermediate"
-              icon={<span>🐍</span>}
-            />
-            <SkillBadge
-              skill="AWS"
-              proficiency="intermediate"
-              icon={<span>☁️</span>}
-            />
-            <SkillBadge
-              skill="Docker"
-              proficiency="advanced"
-              icon={<span>🐳</span>}
-            />
+        {/* Current Focus - What I'm Working With */}
+        <section className="current-focus-section">
+          <h3 className="section-title">Current Technology Stack</h3>
+          <div className="tech-categories">
+            <div className="tech-category">
+              <h4 className="category-title">Frontend</h4>
+              <div className="tech-badges">
+                <SkillBadge
+                  skill="React"
+                  proficiency="expert"
+                  icon={<span>⚛️</span>}
+                />
+                <SkillBadge
+                  skill="TypeScript"
+                  proficiency="advanced"
+                  icon={<span>🔷</span>}
+                />
+                <SkillBadge skill="Next.js" proficiency="advanced" />
+              </div>
+            </div>
+
+            <div className="tech-category">
+              <h4 className="category-title">Backend</h4>
+              <div className="tech-badges">
+                <SkillBadge
+                  skill="Node.js"
+                  proficiency="advanced"
+                  icon={<span>🟢</span>}
+                />
+                <SkillBadge
+                  skill="Python"
+                  proficiency="intermediate"
+                  icon={<span>🐍</span>}
+                />
+                <SkillBadge skill="Django" proficiency="intermediate" />
+              </div>
+            </div>
+
+            <div className="tech-category">
+              <h4 className="category-title">Cloud & DevOps</h4>
+              <div className="tech-badges">
+                <SkillBadge
+                  skill="AWS"
+                  proficiency="intermediate"
+                  icon={<span>☁️</span>}
+                />
+                <SkillBadge
+                  skill="Docker"
+                  proficiency="advanced"
+                  icon={<span>🐳</span>}
+                />
+                <SkillBadge skill="Azure" proficiency="intermediate" />
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* Quick Access Actions */}
-        <section className="actions-section">
-          <Card variant="glass" padding="lg" className="actions-card">
-            <CardBody>
-              <h3>Ready to Connect?</h3>
-              <p>
-                Let&apos;s discuss your next project or explore collaboration
-                opportunities.
-              </p>
-              <div className="actions-buttons">
-                <Button variant="primary" size="lg" icon={<span>📧</span>}>
-                  Get In Touch
-                </Button>
-                <Button variant="outline" size="lg" icon={<span>📄</span>}>
-                  View Resume
-                </Button>
-              </div>
-            </CardBody>
-          </Card>
-        </section>
-
-        {/* Development Demo Link */}
-        <section className="demo-link-section">
-          <Card
-            variant="bordered"
-            padding="md"
-            interactive
-            onClick={() => window.open('/demo', '_blank')}
-          >
-            <CardBody>
-              <div className="demo-link-content">
-                <span>🎨</span>
-                <div>
-                  <h4>Component Demo</h4>
-                  <p>View all UI components and their variations</p>
+        {/* Recent Work Highlight */}
+        <section className="recent-work-section">
+          <h3 className="section-title">Recent Work</h3>
+          <div className="work-highlight">
+            <Card variant="glass" padding="lg">
+              <CardBody>
+                <div className="work-current">
+                  <div className="work-info">
+                    <h4>Software Engineer</h4>
+                    <p className="company-name">Xoriant Solutions</p>
+                    <p className="work-period">Aug 2023 - Present</p>
+                  </div>
+                  <div className="work-description">
+                    <p>
+                      Leading development of AI-powered document processing
+                      systems and serverless architectures, delivering features
+                      ahead of schedule with positive client feedback.
+                    </p>
+                  </div>
                 </div>
-                <Badge variant="info" size="sm">
-                  New
-                </Badge>
-              </div>
-            </CardBody>
-          </Card>
+              </CardBody>
+            </Card>
+          </div>
+        </section>
+
+        {/* Next Steps - Clear Call to Action */}
+        <section className="next-steps-section">
+          <div className="next-steps-content">
+            <h3>Let's Build Something Amazing Together</h3>
+            <p>
+              Ready to discuss your next project or explore collaboration
+              opportunities?
+            </p>
+            <div className="next-steps-actions">
+              <Button variant="primary" size="lg">
+                Start a Conversation
+              </Button>
+              <Button variant="outline" size="lg">
+                View Full Resume
+              </Button>
+            </div>
+          </div>
         </section>
       </LoadingContainer>
     </div>
