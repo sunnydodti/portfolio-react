@@ -3,8 +3,7 @@
    ========================================================================== */
 
 import { useContext } from 'react';
-import { PortfolioContext } from '../context/PortfolioContextDefinition';
-import type { PortfolioContextValue } from '../context/PortfolioContext';
+import { PortfolioContext, type PortfolioContextValue } from '../context/PortfolioContextDefinition';
 
 /* ========================================
    Main Hook
@@ -106,14 +105,6 @@ export const useLoadingState = () => {
 /* ========================================
    Development Helpers
    ======================================== */
-
-/**
- * Development hook to access raw dispatch (for debugging)
- */
-export const usePortfolioDispatch = () => {
-  const { dispatch } = usePortfolio();
-  return dispatch;
-};
 
 /**
  * Development hook to get all context state (for debugging)

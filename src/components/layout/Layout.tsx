@@ -9,14 +9,14 @@ interface LayoutProps {
 }
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const { state, dispatch } = usePortfolio();
+  const { state, toggleSidebar, setSidebarOpen } = usePortfolio();
 
   const handleSidebarToggle = () => {
-    dispatch({ type: "TOGGLE_SIDEBAR" });
+    toggleSidebar();
   };
 
   const handleSidebarClose = () => {
-    dispatch({ type: "SET_SIDEBAR_OPEN", payload: false });
+    setSidebarOpen(false);
   };
 
   return (

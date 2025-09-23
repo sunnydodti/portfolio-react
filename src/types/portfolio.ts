@@ -12,8 +12,12 @@ export interface ProfileData {
   projects: ProjectsCollection;
   tech_stack: TechStack;
   education: Education[];
+  certifications: Certification[];
   awards: Award[];
-  social_links: ExtendedSocialLinks;
+  testimonials: Testimonial[];
+  references: Reference[];
+  interests_hobbies: InterestsHobbies;
+  social_media: SocialMedia;
   preferences: Preferences;
   metadata: Metadata;
 }
@@ -75,14 +79,14 @@ export interface WorkExperience {
   position: string;
   location: string;
   start_date: string; // ISO date string (YYYY-MM-DD)
-  end_date: string | null; // null if current position
+  end_date: string; // empty string if current position
   current: boolean;
   description: string;
-  responsibilities: string[];
-  achievements: string[];
-  awards: number[]; // References to award IDs
+  responsibilities: string; // Changed from array to string based on API
+  achievements: string; // Changed from array to string based on API
+  awards: string; // Changed from number[] to string based on API
   tech_stack: WorkTechStack;
-  projects: string[]; // Project IDs
+  projects: string; // Changed from array to string based on API
 }
 
 /**
@@ -247,11 +251,12 @@ export interface Education {
 export interface Award {
   id: number;
   title: string;
+  date: string; // ISO date string
+  issuing_organization: string;
   description: string;
-  issuer: string;
-  date_received: string; // ISO date string
-  category: AwardCategory;
-  verification_url?: string;
+  category: string;
+  link: string;
+  social_media_posts: string;
 }
 
 /**
@@ -264,6 +269,76 @@ export type AwardCategory =
   | 'competition'
   | 'recognition'
   | 'achievement';
+
+/* ========================================
+   Additional Data Types
+   ======================================== */
+
+/**
+ * Certification information
+ */
+export interface Certification {
+  name: string;
+  issuing_organization: string;
+  issue_date: string;
+  expiration_date: string;
+  credential_id: string;
+  verification_link: string;
+  description: string;
+}
+
+/**
+ * Testimonial information
+ */
+export interface Testimonial {
+  name: string;
+  position: string;
+  company: string;
+  relationship: string;
+  text: string;
+  date: string;
+  permission_to_contact: boolean;
+}
+
+/**
+ * Reference information
+ */
+export interface Reference {
+  name: string;
+  position: string;
+  company: string;
+  email: string;
+  phone: string;
+  relationship: string;
+  years_known: string;
+  permission_granted: boolean;
+}
+
+/**
+ * Interests and hobbies
+ */
+export interface InterestsHobbies {
+  professional_interests: string[];
+  personal_hobbies: string[];
+  volunteer_work: string[];
+  community_involvement: string[];
+}
+
+/**
+ * Social media links
+ */
+export interface SocialMedia {
+  twitter: string;
+  instagram: string;
+  facebook: string;
+  youtube: string;
+  medium: string;
+  dev_to: string;
+  hashnode: string;
+  stackoverflow: string;
+  discord: string;
+  telegram: string;
+}
 
 /* ========================================
    Preferences & Settings

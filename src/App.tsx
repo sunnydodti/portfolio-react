@@ -1,4 +1,3 @@
-import React from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -9,6 +8,7 @@ import { PortfolioProvider } from "./context/PortfolioProvider";
 import { Layout } from "./components/layout";
 import { Home, Experience, Projects, TechStack, Contact } from "./pages";
 import { ComponentDemo } from "./pages/ComponentDemo";
+import { DataIntegrationDemo } from "./components/debug/DataIntegrationDemo";
 import "./App.css";
 
 function App() {
@@ -23,6 +23,7 @@ function App() {
             <Route path="/tech-stack" element={<TechStack />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/demo" element={<ComponentDemo />} />
+            <Route path="/data-demo" element={<DataIntegrationDemo />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </Layout>

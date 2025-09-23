@@ -1,5 +1,5 @@
 ---
-applyTo: "**"
+applyTo: '**'
 ---
 
 # React Development Guidelines - Sunny Dodti Portfolio
@@ -11,6 +11,7 @@ This document provides React-specific guidelines for building Sunny Dodti's port
 ## 📦 Required Dependencies
 
 ### Core Dependencies
+
 ```json
 {
   "react": "^18.2.0",
@@ -21,6 +22,7 @@ This document provides React-specific guidelines for building Sunny Dodti's port
 ```
 
 ### UI & Styling
+
 ```json
 {
   "framer-motion": "^8.0.0",
@@ -30,6 +32,7 @@ This document provides React-specific guidelines for building Sunny Dodti's port
 ```
 
 ### Build & Development
+
 ```json
 {
   "vite": "^4.1.0",
@@ -40,14 +43,16 @@ This document provides React-specific guidelines for building Sunny Dodti's port
 ## � Design Implementation Guidelines
 
 ### Wireframes vs Design Clarification
+
 **IMPORTANT**: The wireframes are structural references only, NOT the final design:
 
 - **Wireframes** (`/context/wireframes/`): Use for layout structure, component placement, content organization
 - **Actual Design** (`/data/styles/pallet-demo-dark-light.html`): Follow this beautiful palette for colors, styling, typography, shadows, gradients
 
 ### Visual Design Priority
+
 1. **Color Palette**: Follow the stunning blue theme from palette demo
-2. **Layout Structure**: Use wireframes as building blocks for component organization  
+2. **Layout Structure**: Use wireframes as building blocks for component organization
 3. **Typography**: Inter font family with proper weights and hierarchy
 4. **Visual Effects**: Implement gradients, shadows, and animations from palette demo
 5. **Theme Support**: Ensure both light and dark modes work beautifully
@@ -57,6 +62,7 @@ This document provides React-specific guidelines for building Sunny Dodti's port
 ### Component Categories
 
 #### 1. Layout Components (`/src/components/layout/`)
+
 ```typescript
 // Sidebar.tsx - Main navigation sidebar
 interface SidebarProps {
@@ -65,7 +71,7 @@ interface SidebarProps {
   currentPage: string;
 }
 
-// Header.tsx - Top navigation bar  
+// Header.tsx - Top navigation bar
 interface HeaderProps {
   title: string;
   onMenuToggle: () => void;
@@ -80,6 +86,7 @@ interface LayoutProps {
 ```
 
 #### 2. Common Components (`/src/components/common/`)
+
 ```typescript
 // Card.tsx - Reusable card component
 interface CardProps {
@@ -107,6 +114,7 @@ interface BadgeProps {
 ```
 
 #### 3. Section Components (`/src/components/sections/`)
+
 ```typescript
 // HeroSection.tsx - Landing hero section
 interface HeroSectionProps {
@@ -137,34 +145,35 @@ interface SkillCardProps {
 ## 🎨 Styling Guidelines
 
 ### CSS Variables Configuration
+
 ```css
 /* src/styles/globals.css */
 :root {
   /* Design tokens from main portfolio system - Light Mode */
   --color-primary-50: #eff6ff;
   --color-primary-100: #dbeafe;
-  --color-primary-500: #3b82f6;  /* Primary blue light */
+  --color-primary-500: #3b82f6; /* Primary blue light */
   --color-primary-600: #2563eb;
-  --color-primary-400: #60a5fa;  /* Primary blue dark */
-  
+  --color-primary-400: #60a5fa; /* Primary blue dark */
+
   --color-background: #ffffff;
   --color-surface: #f8fafc;
   --color-text-primary: #0f172a;
   --color-text-secondary: #475569;
   --color-border-primary: #e2e8f0;
-  
+
   /* Typography */
   --font-family-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-family-mono: 'JetBrains Mono', 'Menlo', 'Monaco', monospace;
-  
+
   /* Spacing scale */
-  --spacing-xs: 0.25rem;  /* 4px */
-  --spacing-sm: 0.5rem;   /* 8px */
-  --spacing-md: 1rem;     /* 16px */
-  --spacing-lg: 1.5rem;   /* 24px */
-  --spacing-xl: 2rem;     /* 32px */
-  --spacing-2xl: 3rem;    /* 48px */
-  
+  --spacing-xs: 0.25rem; /* 4px */
+  --spacing-sm: 0.5rem; /* 8px */
+  --spacing-md: 1rem; /* 16px */
+  --spacing-lg: 1.5rem; /* 24px */
+  --spacing-xl: 2rem; /* 32px */
+  --spacing-2xl: 3rem; /* 48px */
+
   /* Border radius */
   --border-radius-sm: 0.25rem;
   --border-radius-md: 0.5rem;
@@ -197,6 +206,7 @@ body {
 ```
 
 ### Component Styling Patterns
+
 ```typescript
 // ✅ Good: Use CSS classes with CSS variables
 const Card: React.FC<CardProps> = ({ children, className = '', hover = false }) => {
@@ -215,7 +225,7 @@ const Card: React.FC<CardProps> = ({ children, className = '', hover = false }) 
   } : {};
 
   return (
-    <div 
+    <div
       className={`card ${hover ? 'card-hover' : ''} ${className}`}
       style={cardStyle}
     >
@@ -296,6 +306,7 @@ const Button: React.FC<ButtonProps> = ({ variant, size, disabled, children, ...p
 ## 📊 Data Management
 
 ### TypeScript Types
+
 ```typescript
 // src/types/portfolio.ts
 export interface ProfileData {
@@ -359,6 +370,7 @@ export interface TechSkill {
 ```
 
 ### Data Fetching Hooks
+
 ```typescript
 // src/hooks/useProfileData.ts
 import { useState, useEffect } from 'react';
@@ -375,18 +387,20 @@ export const useProfileData = () => {
         setLoading(true);
         // Fetch from main repository
         const response = await fetch(
-          'https://raw.githubusercontent.com/sunnydodti/sunnydodti/main/data/profiles/default.json'
+          'https://raw.githubusercontent.com/sunnydodti/sunnydodti/refs/heads/dev/data/profiles/default.json'
         );
-        
+
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        
+
         const profileData = await response.json();
         setData(profileData);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to fetch profile data');
-        
+        setError(
+          err instanceof Error ? err.message : 'Failed to fetch profile data'
+        );
+
         // Fallback to local data if available
         try {
           const fallbackData = await import('../data/default.json');
@@ -407,6 +421,7 @@ export const useProfileData = () => {
 ```
 
 ### Context for Global State
+
 ```typescript
 // src/context/PortfolioContext.tsx
 import React, { createContext, useContext, useReducer } from 'react';
@@ -441,6 +456,7 @@ export const usePortfolio = () => {
 ## 🚀 Performance Guidelines
 
 ### Code Splitting
+
 ```typescript
 // src/pages/index.ts
 import { lazy } from 'react';
@@ -453,6 +469,7 @@ export const Contact = lazy(() => import('./Contact'));
 ```
 
 ### Image Optimization
+
 ```typescript
 // src/components/common/OptimizedImage.tsx
 interface OptimizedImageProps {
@@ -494,6 +511,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
 ## 🧪 Testing Guidelines
 
 ### Component Testing
+
 ```typescript
 // src/components/__tests__/Button.test.tsx
 import { render, screen, fireEvent } from '@testing-library/react';
@@ -502,7 +520,7 @@ import { Button } from '../common/Button';
 describe('Button', () => {
   it('renders with correct variant styles', () => {
     render(<Button variant="primary" size="md">Test Button</Button>);
-    
+
     const button = screen.getByRole('button');
     expect(button).toHaveClass('bg-primary-500');
   });
@@ -510,7 +528,7 @@ describe('Button', () => {
   it('handles click events', () => {
     const handleClick = jest.fn();
     render(<Button variant="primary" size="md" onClick={handleClick}>Click me</Button>);
-    
+
     fireEvent.click(screen.getByRole('button'));
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
@@ -518,11 +536,12 @@ describe('Button', () => {
 ```
 
 ### Accessibility Testing
+
 ```typescript
 // src/utils/accessibility.ts
 export const checkAccessibility = async () => {
   const axe = await import('@axe-core/react');
-  
+
   if (process.env.NODE_ENV === 'development') {
     axe.default(React, ReactDOM, 1000);
   }
@@ -532,6 +551,7 @@ export const checkAccessibility = async () => {
 ## 📱 Responsive Implementation
 
 ### Breakpoint Usage
+
 ```typescript
 // src/hooks/useBreakpoint.ts
 import { useState, useEffect } from 'react';
@@ -561,6 +581,7 @@ export const useBreakpoint = (): Breakpoint => {
 ```
 
 ### Mobile-First Components
+
 ```typescript
 // Example: Responsive sidebar
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
@@ -593,14 +614,14 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     <>
       {/* Mobile backdrop */}
       {isMobile && isOpen && (
-        <div 
+        <div
           style={backdropStyle}
           onClick={onClose}
         />
       )}
-      
+
       {/* Sidebar */}
-      <aside 
+      <aside
         className="sidebar"
         style={sidebarStyle}
       >
@@ -614,6 +635,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
 ## 🔧 Development Scripts
 
 ### Package.json Scripts
+
 ```json
 {
   "scripts": {

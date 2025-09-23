@@ -10,9 +10,13 @@ export {
   useSidebar,
   useProfile,
   useLoadingState,
-  usePortfolioDispatch,
   usePortfolioState,
 } from './usePortfolio';
+
+// Enhanced data fetching hooks
+export {
+  useEnhancedProfileData,
+} from './useEnhancedProfileData';
 
 // Data fetching hooks
 export {

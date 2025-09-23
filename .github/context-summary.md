@@ -18,6 +18,7 @@ This file provides essential context for AI assistants working on the Sunny Dodt
 ## 🏗️ Architecture Summary
 
 ### Repository Structure
+
 ```
 portfolio-react/
 ├── src/
@@ -29,7 +30,7 @@ portfolio-react/
 │   └── styles/             # Global styles & theme
 ├── context/                # Local dev context (gitignored)
 │   ├── wireframes/         # Layout structure references (NOT exact design)
-│   ├── data/               # JSON data samples  
+│   ├── data/               # JSON data samples
 │   └── styles/             # Design system tokens + beautiful palette demo
 └── .github/
     ├── instructions/       # Development guidelines
@@ -37,6 +38,7 @@ portfolio-react/
 ```
 
 ### Data Flow
+
 ```
 Main Repo JSON → Fetch API → React Hooks → Components → UI
      ↓
@@ -48,6 +50,7 @@ Context/Local Fallback (for development)
 ## 🎨 Design System
 
 ### Visual Identity
+
 - **Theme**: Dark-first design (#1a1a1a background, #2a2a2a surfaces)
 - **Primary Color**: #4a90e2 (blue for interactive elements)
 - **Layout**: Sidebar navigation + main content area
@@ -55,6 +58,7 @@ Context/Local Fallback (for development)
 - **Typography**: Inter font family, proper hierarchy
 
 ### Component Patterns
+
 - **Sidebar**: 240px width, profile + navigation + social links
 - **Cards**: Rounded borders, hover effects, consistent padding
 - **Buttons**: Multiple variants (primary/secondary/outline)
@@ -65,13 +69,15 @@ Context/Local Fallback (for development)
 ## 📊 Content Structure
 
 ### Page Hierarchy
+
 1. **Home** (`/`) - Hero + stats + skills preview
-2. **Experience** (`/experience`) - Work timeline with expandable cards  
+2. **Experience** (`/experience`) - Work timeline with expandable cards
 3. **Projects** (`/projects`) - Featured project grid with tech tags
 4. **Tech Stack** (`/tech-stack`) - Categorized skills with ratings
 5. **Contact** (`/contact`) - Contact info + social links
 
 ### Data Schema
+
 ```typescript
 interface ProfileData {
   basic_info: PersonalInfo;
@@ -88,6 +94,7 @@ interface ProfileData {
 ## 🔧 Development Standards
 
 ### Code Quality
+
 - **TypeScript**: Strict mode, no `any` types
 - **ESLint**: Configured for React + TypeScript
 - **Prettier**: Consistent code formatting
@@ -95,12 +102,14 @@ interface ProfileData {
 - **Coverage**: 95%+ target
 
 ### Performance Targets
+
 - **Lighthouse**: 95+ score across all metrics
 - **Bundle Size**: Optimized with code splitting
 - **Accessibility**: WCAG 2.1 AA compliance
 - **SEO**: Proper meta tags and structure
 
 ### Styling Rules
+
 - **Framework**: Vanilla CSS with CSS Variables
 - **Tokens**: Use design system from `/context/styles/style.json`
 - **No Hardcoding**: Always use CSS custom properties and semantic classes
@@ -111,8 +120,9 @@ interface ProfileData {
 ## 📁 Key Files Reference
 
 ### Essential Context Files (in `/context/`)
+
 - `wireframes/home.html` - Home page layout reference
-- `wireframes/experience.html` - Experience page structure  
+- `wireframes/experience.html` - Experience page structure
 - `wireframes/projects.html` - Projects grid layout
 - `wireframes/tech_stack.html` - Skills categorization
 - `wireframes/contact.html` - Contact page design
@@ -120,6 +130,7 @@ interface ProfileData {
 - `styles/style.json` - Design system tokens & colors
 
 ### Configuration Files
+
 - `vite.config.ts` - Build configuration with aliases
 - `src/styles/variables.css` - CSS variables setup with design tokens
 - `tsconfig.json` - TypeScript strict configuration
@@ -130,6 +141,7 @@ interface ProfileData {
 ## 🚀 Common Tasks & Patterns
 
 ### Creating Components
+
 1. Reference wireframe structure in `/context/wireframes/` (layout only)
 2. Define TypeScript interfaces for props
 3. Implement using CSS variables and semantic classes
@@ -138,6 +150,7 @@ interface ProfileData {
 6. Document with JSDoc comments
 
 ### Data Integration
+
 1. Create custom hooks for API calls
 2. Implement fallback to local context data
 3. Add loading and error states
@@ -145,6 +158,7 @@ interface ProfileData {
 5. Handle edge cases gracefully
 
 ### Styling Implementation
+
 1. Import design tokens from context
 2. Use CSS variables and semantic classes
 3. Implement responsive behavior
@@ -157,6 +171,7 @@ interface ProfileData {
 ## ⚠️ Critical Constraints
 
 ### Must Follow
+
 - ✅ Wireframe layout structure (not exact design)
 - ✅ Beautiful styling from palette demo
 - ✅ TypeScript strict typing
@@ -166,8 +181,9 @@ interface ProfileData {
 - ✅ Single viewport rule (desktop)
 
 ### Never Do
+
 - ❌ Hardcode colors or spacing
-- ❌ Use `any` TypeScript types  
+- ❌ Use `any` TypeScript types
 - ❌ Break responsive design
 - ❌ Ignore accessibility features
 - ❌ Follow wireframe colors/styles exactly (use palette demo instead)
@@ -178,11 +194,13 @@ interface ProfileData {
 ## 🔗 External Dependencies
 
 ### Data Sources
-- **Primary**: `https://raw.githubusercontent.com/sunnydodti/sunnydodti/main/data/profiles/default.json`
+
+- **Primary**: `https://raw.githubusercontent.com/sunnydodti/sunnydodti/refs/heads/dev/data/profiles/default.json`
 - **Fallback**: `/context/data/default.json`
 - **Styles**: `/context/styles/style.json`
 
 ### Related Repositories
+
 - **Main Repo**: `sunnydodti/sunnydodti` (data & wireframes source)
 - **Flutter**: `sunnydodti/portfolio-flutter` (sister implementation)
 - **Angular**: `sunnydodti/portfolio-angular` (sister implementation)
@@ -192,6 +210,7 @@ interface ProfileData {
 ## 📞 Quick Help
 
 ### When You Need To...
+
 - **Layout structure**: Check `/context/wireframes/[page].html` for basic structure
 - **Beautiful styling**: Follow `/data/styles/pallet-demo-dark-light.html` for colors & design
 - **Style a component**: Reference `/context/styles/style.json`
@@ -201,9 +220,10 @@ interface ProfileData {
 - **Optimize performance**: Use React DevTools Profiler
 
 ### Common Patterns
+
 - **Fetch data**: Use custom hooks with error/loading states
 - **Style components**: CSS variables + semantic classes
-- **Handle responsive**: `useBreakpoint` hook + CSS media queries  
+- **Handle responsive**: `useBreakpoint` hook + CSS media queries
 - **Manage state**: Context API + useReducer for global state
 - **Test components**: RTL + user-centric testing approach
 

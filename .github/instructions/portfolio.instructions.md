@@ -1,5 +1,5 @@
 ---
-applyTo: "**"
+applyTo: '**'
 ---
 
 # Portfolio React - Development Guidelines
@@ -11,6 +11,7 @@ This is the **React implementation** of Sunny Dodti's multi-technology portfolio
 ## 📊 Portfolio Ecosystem Architecture
 
 ### Repository Role
+
 - **Primary Purpose**: React/TypeScript implementation of Sunny Dodti's portfolio
 - **Technology Stack**: React 18+, TypeScript, Vanilla CSS with CSS Variables, Vite
 - **Target Deployment**: github pages/pages.dev (primary domain: sunnydodti.com)
@@ -19,6 +20,7 @@ This is the **React implementation** of Sunny Dodti's multi-technology portfolio
 - **Design Reference**: `/data/styles/pallet-demo-dark-light.html` (beautiful color palette and styling)
 
 ### Connection to Main Portfolio System
+
 ```
 sunnydodti (main repo)
 ├── /data/profiles/default.json        # Source of truth for profile data
@@ -35,6 +37,7 @@ sunnydodti (main repo)
 ## 🎨 Design System Implementation
 
 ### Color Palette & Theming
+
 - **Primary Source**: Main repo `/data/styles/style.json`
 - **Implementation**: CSS custom properties (CSS variables) + vanilla CSS
 - **Theme Support**: Light/dark mode switching
@@ -64,6 +67,7 @@ sunnydodti (main repo)
 ```
 
 ### Component Standards
+
 - **Beautiful Design**: Follow the stunning color palette from `/data/styles/pallet-demo-dark-light.html`
 - **Wireframes as Structure**: Use `/context/wireframes/` as layout building blocks (NOT exact design)
 - **Dark Theme First**: Default dark theme with light/dark toggle
@@ -75,14 +79,18 @@ sunnydodti (main repo)
 ## � Wireframes vs Design Guidelines
 
 ### Wireframe Usage (Structure Only)
+
 The wireframes in `/context/wireframes/` are **structural references only**:
+
 - ✅ **Use for**: Layout structure, component placement, content hierarchy
 - ✅ **Use for**: Section organization (Hero, Experience, Projects, etc.)
 - ✅ **Use for**: Responsive breakpoints and viewport organization
 - ❌ **DO NOT use for**: Colors, typography, visual styling, exact spacing
 
 ### Actual Design Reference (Beautiful Styling)
+
 Follow `/data/styles/pallet-demo-dark-light.html` for the actual beautiful design:
+
 - ✅ **Use for**: Color palette, gradients, shadows, visual effects
 - ✅ **Use for**: Typography hierarchy and text styling
 - ✅ **Use for**: Button styles, card designs, component aesthetics
@@ -90,6 +98,7 @@ Follow `/data/styles/pallet-demo-dark-light.html` for the actual beautiful desig
 - ✅ **Use for**: Professional, polished visual appearance
 
 ### Development Approach
+
 1. **Structure First**: Build component layout based on wireframe structure
 2. **Style Second**: Apply beautiful styling from palette demo
 3. **Enhance Third**: Add animations, interactions, and polish
@@ -98,6 +107,7 @@ Follow `/data/styles/pallet-demo-dark-light.html` for the actual beautiful desig
 ## �🏗️ React Architecture Guidelines
 
 ### Technology Stack
+
 ```json
 {
   "framework": "React 18+",
@@ -113,6 +123,7 @@ Follow `/data/styles/pallet-demo-dark-light.html` for the actual beautiful desig
 ```
 
 ### Project Structure
+
 ```
 src/
 ├── components/           # Reusable UI components
@@ -136,6 +147,7 @@ src/
 ### Component Development Rules
 
 #### 1. Component Naming & Structure
+
 ```typescript
 // ✅ Good: Clear naming and proper typing
 interface HeroSectionProps {
@@ -143,9 +155,9 @@ interface HeroSectionProps {
   onContactClick: () => void;
 }
 
-export const HeroSection: React.FC<HeroSectionProps> = ({ 
-  profile, 
-  onContactClick 
+export const HeroSection: React.FC<HeroSectionProps> = ({
+  profile,
+  onContactClick
 }) => {
   return (
     <section className="hero-section">
@@ -156,34 +168,38 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 ```
 
 #### 2. Styling Guidelines
+
 ```typescript
 // ✅ Use CSS classes with CSS variables
 <div className="background-dark text-primary border-primary">
-  
+
 // ✅ CSS variables for dynamic styling
-<div style={{ 
-  backgroundColor: 'var(--color-background)', 
+<div style={{
+  backgroundColor: 'var(--color-background)',
   color: 'var(--color-text-primary)',
   border: '1px solid var(--color-border-primary)'
 }}>
-  
+
 // ❌ Never hardcode colors
 <div style={{ backgroundColor: '#1a1a1a' }}>
 ```
 
 #### 3. Data Fetching
+
 ```typescript
 // ✅ Fetch from main repository endpoints
 const useProfileData = () => {
   const [profile, setProfile] = useState<ProfileData | null>(null);
-  
+
   useEffect(() => {
     // Fetch from main repo's JSON endpoint
-    fetch('https://raw.githubusercontent.com/sunnydodti/sunnydodti/main/data/profiles/default.json')
+    fetch(
+      'https://raw.githubusercontent.com/sunnydodti/sunnydodti/refs/heads/dev/data/profiles/default.json'
+    )
       .then(res => res.json())
       .then(setProfile);
   }, []);
-  
+
   return profile;
 };
 ```
@@ -191,16 +207,28 @@ const useProfileData = () => {
 ## 📱 Responsive Design Requirements
 
 ### Responsive Breakpoints
+
 ```css
 /* Mobile First Approach with CSS Media Queries */
-@media (min-width: 640px) { /* Small tablets */ }
-@media (min-width: 768px) { /* Tablets */ }  
-@media (min-width: 1024px) { /* Small desktops */ }
-@media (min-width: 1280px) { /* Large desktops */ }
-@media (min-width: 1536px) { /* Extra large screens */ }
+@media (min-width: 640px) {
+  /* Small tablets */
+}
+@media (min-width: 768px) {
+  /* Tablets */
+}
+@media (min-width: 1024px) {
+  /* Small desktops */
+}
+@media (min-width: 1280px) {
+  /* Large desktops */
+}
+@media (min-width: 1536px) {
+  /* Extra large screens */
+}
 ```
 
 ### Layout Specifications
+
 - **Desktop (1024px+)**: Sidebar + main content layout
 - **Tablet (768-1023px)**: Collapsible sidebar with hamburger menu
 - **Mobile (<768px)**: Full-width layout with bottom navigation
@@ -209,6 +237,7 @@ const useProfileData = () => {
 ## 🚀 Development Workflow
 
 ### Local Development Setup
+
 1. **Context Sync**: Copy wireframes and data to `/context/` folder
 2. **Environment Setup**: Configure Vite with proper proxy settings
 3. **Theme Implementation**: Set up CSS custom properties from style.json
@@ -217,6 +246,7 @@ const useProfileData = () => {
 6. **Testing**: Cross-browser testing and accessibility validation
 
 ### File Dependencies
+
 ```bash
 # Required context files (copied from main repo)
 /context/wireframes/home.html           # Home page wireframe reference
@@ -231,6 +261,7 @@ const useProfileData = () => {
 ## 📋 Page Implementation Checklist
 
 ### Home Page (`/`)
+
 - [ ] Sidebar with profile picture and navigation
 - [ ] Hero section with name, title, and description
 - [ ] Stats cards (experience years, current organization)
@@ -239,6 +270,7 @@ const useProfileData = () => {
 - [ ] Dark theme implementation
 
 ### Experience Page (`/experience`)
+
 - [ ] Work experience timeline
 - [ ] Expandable company cards
 - [ ] Key responsibilities tabs
@@ -247,6 +279,7 @@ const useProfileData = () => {
 - [ ] Professional achievements
 
 ### Projects Page (`/projects`)
+
 - [ ] Featured projects grid (2x2 layout)
 - [ ] Project cards with descriptions
 - [ ] Technology tags per project
@@ -255,6 +288,7 @@ const useProfileData = () => {
 - [ ] Hover animations
 
 ### Tech Stack Page (`/tech-stack`)
+
 - [ ] Category tabs (Frontend, Backend, Database, DevOps, Cloud, Domain)
 - [ ] Skill cards with proficiency ratings
 - [ ] Years of experience per technology
@@ -262,6 +296,7 @@ const useProfileData = () => {
 - [ ] Skill search and filtering
 
 ### Contact Page (`/contact`)
+
 - [ ] "Let's Connect" hero section
 - [ ] Email and location cards
 - [ ] Social media integration
@@ -272,6 +307,7 @@ const useProfileData = () => {
 ## 🎯 Success Criteria
 
 ### Technical Requirements
+
 - [ ] TypeScript strict mode enabled
 - [ ] Zero ESLint warnings/errors
 - [ ] 100% component type coverage
@@ -281,6 +317,7 @@ const useProfileData = () => {
 - [ ] Cross-browser compatibility (Chrome, Firefox, Safari, Edge)
 
 ### Design Requirements
+
 - [ ] Perfect wireframe fidelity
 - [ ] Consistent dark theme implementation
 - [ ] Smooth animations and transitions
@@ -289,6 +326,7 @@ const useProfileData = () => {
 - [ ] Interactive elements with proper feedback
 
 ### Data Requirements
+
 - [ ] Real data integration from main repository
 - [ ] Fallback handling for data loading states
 - [ ] Error boundaries for robust error handling
@@ -298,12 +336,14 @@ const useProfileData = () => {
 ## 🔗 Integration Points
 
 ### Main Repository Dependencies
-- **Profile Data**: `https://raw.githubusercontent.com/sunnydodti/sunnydodti/main/data/profiles/default.json`
+
+- **Profile Data**: `https://raw.githubusercontent.com/sunnydodti/sunnydodti/refs/heads/dev/data/profiles/default.json`
 - **Style System**: Reference main repo's `/data/styles/style.json`
 - **Wireframes**: Local copies in `/context/wireframes/`
 - **Assets**: Shared images and icons from main repository
 
 ### Cross-Portfolio Consistency
+
 - Same color palette across all technology implementations
 - Consistent navigation structure and user experience
 - Unified content and messaging
@@ -313,13 +353,16 @@ const useProfileData = () => {
 ## 📞 Development Support
 
 ### Context Files Location
+
 All development context files are stored in `/context/` directory:
+
 - Wireframes for visual reference
 - Data samples for development
 - Style guides and design tokens
 - Component specifications
 
 ### Best Practices
+
 1. **Always refer to wireframes** before implementing components
 2. **Use TypeScript strictly** - no `any` types allowed
 3. **Follow accessibility guidelines** - proper ARIA labels and keyboard navigation

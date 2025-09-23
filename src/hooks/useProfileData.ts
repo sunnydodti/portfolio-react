@@ -11,15 +11,15 @@ import type { ProfileData, FetchResult } from '../types';
 
 const API_CONFIG = {
   // Primary data source from main repository
-  PRIMARY_ENDPOINT: 'https://raw.githubusercontent.com/sunnydodti/sunnydodti/main/data/profiles/default.json',
+  PRIMARY_ENDPOINT: 'https://raw.githubusercontent.com/sunnydodti/sunnydodti/refs/heads/dev/data/profiles/default.json',
   
   // Fallback endpoints (if needed)
   FALLBACK_ENDPOINTS: [
-    // Add additional fallback endpoints here if available
+    'https://raw.githubusercontent.com/sunnydodti/sunnydodti/refs/heads/dev/data/profiles/default.json',
   ],
   
   // Local fallback data path
-  LOCAL_DATA_PATH: '/context/data/profiles/default.json',
+  LOCAL_DATA_PATH: '/data/profiles/default.json',
   
   // Request configuration
   TIMEOUT: 10000, // 10 seconds
@@ -448,10 +448,7 @@ export const useSocialLinks = () => {
   const { data, loading, error, refetch } = useProfileData();
   
   return {
-    data: {
-      links: data?.links || null,
-      social_links: data?.social_links || null,
-    },
+    data,
     loading,
     error,
     refetch,

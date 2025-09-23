@@ -15,14 +15,14 @@ export const DevTestPanel: React.FC = () => {
       const status = response.ok ? '✅ Success' : `❌ ${response.status}`;
       setTestResults(prev => ({
         ...prev,
-        [name]: `${status} (${response.status})`
+        [name]: `${status} (${response.status})`,
       }));
       return response;
     } catch (error) {
       const errorMsg = error instanceof Error ? error.message : 'Unknown error';
       setTestResults(prev => ({
         ...prev,
-        [name]: `❌ Error: ${errorMsg}`
+        [name]: `❌ Error: ${errorMsg}`,
       }));
       throw error;
     }
@@ -30,19 +30,25 @@ export const DevTestPanel: React.FC = () => {
 
   const runAllTests = async () => {
     console.log('🧪 Running development tests...');
-    
+
     // Test 1: Local context file
-    await runNetworkTest('Local Context', '/context/data/profiles/default.json');
-    
+    await runNetworkTest(
+      'Local Context',
+      '/context/data/profiles/default.json'
+    );
+
     // Test 2: GitHub raw content
-    await runNetworkTest('GitHub Raw', 'https://raw.githubusercontent.com/sunnydodti/sunnydodti/main/data/profiles/default.json');
-    
+    await runNetworkTest(
+      'GitHub Raw',
+      'https://raw.githubusercontent.com/sunnydodti/sunnydodti/refs/heads/dev/data/profiles/default.json'
+    );
+
     // Test 3: CORS test
     try {
       await fetch('https://httpbin.org/get');
-      setTestResults(prev => ({ ...prev, 'CORS': '✅ CORS enabled' }));
-    } catch (error) {
-      setTestResults(prev => ({ ...prev, 'CORS': '❌ CORS blocked' }));
+      setTestResults(prev => ({ ...prev, CORS: '✅ CORS enabled' }));
+    } catch {
+      setTestResults(prev => ({ ...prev, CORS: '❌ CORS blocked' }));
     }
   };
 
@@ -58,20 +64,22 @@ export const DevTestPanel: React.FC = () => {
   };
 
   return (
-    <div style={{ 
-      position: 'fixed',
-      top: '10px',
-      right: '10px',
-      backgroundColor: 'var(--color-surface)',
-      border: '2px solid var(--color-border-primary)',
-      borderRadius: 'var(--border-radius-lg)',
-      padding: 'var(--spacing-md)',
-      maxWidth: '300px',
-      zIndex: 1000,
-      fontSize: '12px'
-    }}>
+    <div
+      style={{
+        position: 'fixed',
+        top: '10px',
+        right: '10px',
+        backgroundColor: 'var(--color-surface)',
+        border: '2px solid var(--color-border-primary)',
+        borderRadius: 'var(--border-radius-lg)',
+        padding: 'var(--spacing-md)',
+        maxWidth: '300px',
+        zIndex: 1000,
+        fontSize: '12px',
+      }}
+    >
       <h3 style={{ margin: '0 0 var(--spacing-sm) 0' }}>🛠️ Dev Panel</h3>
-      
+
       {/* Current State */}
       <div style={{ marginBottom: 'var(--spacing-sm)' }}>
         <strong>Current State:</strong>
@@ -81,7 +89,7 @@ export const DevTestPanel: React.FC = () => {
       </div>
 
       {/* Theme Test */}
-      <button 
+      <button
         onClick={testThemeToggle}
         style={{
           backgroundColor: 'var(--color-primary)',
@@ -91,14 +99,14 @@ export const DevTestPanel: React.FC = () => {
           borderRadius: 'var(--border-radius-sm)',
           marginBottom: 'var(--spacing-xs)',
           cursor: 'pointer',
-          width: '100%'
+          width: '100%',
         }}
       >
         Toggle Theme
       </button>
 
       {/* Sidebar Test */}
-      <button 
+      <button
         onClick={testSidebarToggle}
         style={{
           backgroundColor: 'var(--color-surface-light)',
@@ -108,14 +116,14 @@ export const DevTestPanel: React.FC = () => {
           borderRadius: 'var(--border-radius-sm)',
           marginBottom: 'var(--spacing-sm)',
           cursor: 'pointer',
-          width: '100%'
+          width: '100%',
         }}
       >
         Toggle Sidebar
       </button>
 
       {/* Network Tests */}
-      <button 
+      <button
         onClick={runAllTests}
         style={{
           backgroundColor: 'var(--color-warning)',
@@ -125,7 +133,7 @@ export const DevTestPanel: React.FC = () => {
           borderRadius: 'var(--border-radius-sm)',
           marginBottom: 'var(--spacing-sm)',
           cursor: 'pointer',
-          width: '100%'
+          width: '100%',
         }}
       >
         Run Network Tests
