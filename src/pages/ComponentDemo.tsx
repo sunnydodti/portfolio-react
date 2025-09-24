@@ -15,6 +15,7 @@ import {
   LoadingContainer,
   Skeleton,
 } from '../components/common';
+import { ProjectsIcon, ReactIcon, TypeScriptIcon, NodeIcon, TechIcon } from '../components/icons';
 import './ComponentDemo.css';
 
 export const ComponentDemo: React.FC = () => {
@@ -43,7 +44,7 @@ export const ComponentDemo: React.FC = () => {
   return (
     <div className="component-demo">
       <div className="demo-section">
-        <h2>🎨 Component Demo & Testing</h2>
+        <h2>Component Demo & Testing</h2>
         <p>
           Interactive showcase of all common components with various states and
           configurations.
@@ -78,7 +79,7 @@ export const ComponentDemo: React.FC = () => {
             <div className="button-group">
               <Button loading>Loading</Button>
               <Button disabled>Disabled</Button>
-              <Button icon={<span>🚀</span>}>With Icon</Button>
+              <Button icon={<ProjectsIcon size={16} />}>With Icon</Button>
             </div>
           </div>
         </div>
@@ -157,21 +158,21 @@ export const ComponentDemo: React.FC = () => {
                 proficiency="expert"
                 yearsExperience={5}
                 showProficiency
-                icon={<span>⚛️</span>}
+                icon={<ReactIcon size={16} />}
               />
               <SkillBadge
                 skill="TypeScript"
                 proficiency="advanced"
                 yearsExperience={3}
                 showProficiency
-                icon={<span>🔷</span>}
+                icon={<TypeScriptIcon size={16} />}
               />
               <SkillBadge
                 skill="Node.js"
                 proficiency="intermediate"
                 yearsExperience={2}
                 showProficiency
-                icon={<span>🟢</span>}
+                icon={<NodeIcon size={16} />}
               />
             </div>
           </div>
@@ -258,7 +259,7 @@ export const ComponentDemo: React.FC = () => {
               <div className="test-actions">
                 <Button
                   variant="primary"
-                  icon={<span>🎯</span>}
+                  icon={<TechIcon size={16} />}
                   onClick={() => alert('Primary action executed!')}
                 >
                   Primary Action

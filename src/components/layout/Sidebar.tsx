@@ -1,6 +1,13 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useProfileData } from "../../hooks/useProfileData";
+import {
+  HomeIcon,
+  ExperienceIcon,
+  ProjectsIcon,
+  TechStackIcon,
+  ContactIcon,
+} from "../icons";
 import "./Sidebar.css";
 
 interface SidebarProps {
@@ -12,15 +19,15 @@ interface SidebarProps {
 interface NavigationItem {
   path: string;
   label: string;
-  icon: string;
+  icon: React.ReactNode;
 }
 
 const navigationItems: NavigationItem[] = [
-  { path: "/", label: "Home", icon: "🏠" },
-  { path: "/experience", label: "Experience", icon: "💼" },
-  { path: "/projects", label: "Projects", icon: "🚀" },
-  { path: "/tech-stack", label: "Tech Stack", icon: "⚡" },
-  { path: "/contact", label: "Contact", icon: "📧" },
+  { path: "/", label: "Home", icon: <HomeIcon size={18} /> },
+  { path: "/experience", label: "Experience", icon: <ExperienceIcon size={18} /> },
+  { path: "/projects", label: "Projects", icon: <ProjectsIcon size={18} /> },
+  { path: "/tech-stack", label: "Tech Stack", icon: <TechStackIcon size={18} /> },
+  { path: "/contact", label: "Contact", icon: <ContactIcon size={18} /> },
 ];
 
 const socialLinks = [
