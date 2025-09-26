@@ -28,6 +28,45 @@
   overflow-x: hidden;
   scroll-behavior: smooth;
   max-height: calc(100vh - 2rem); /* Ensure proper height constraint */
+  
+  /* Beautiful custom scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-surface-light) var(--color-background);
+}
+
+/* Enhanced scrollbar for page content */
+.page-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.page-content::-webkit-scrollbar-track {
+  background: var(--color-background);
+  border-radius: var(--border-radius-md);
+  margin: var(--spacing-sm) 0;
+}
+
+.page-content::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    135deg,
+    var(--color-surface-light),
+    var(--color-border-secondary)
+  );
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--color-border-primary);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-content::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-400),
+    var(--color-primary-600)
+  );
+  border-color: var(--color-primary);
+  box-shadow: 
+    0 2px 8px rgba(96, 165, 250, 0.25),
+    0 0 0 1px rgba(96, 165, 250, 0.1);
+  transform: scaleX(1.2);
 }
 
 /* Mobile Backdrop Overlay */

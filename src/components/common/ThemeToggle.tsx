@@ -80,7 +80,9 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '' }) => {
     >
       <div className="toggle-track">
         <div className="toggle-thumb">
-          <span className="theme-icon">{theme === 'light' ? <MoonIcon /> : <SunIcon />}</span>
+          <span className="theme-icon">
+            {theme === 'light' ? <MoonIcon /> : <SunIcon />}
+          </span>
         </div>
       </div>
     </button>

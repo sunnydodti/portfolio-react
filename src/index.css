@@ -113,3 +113,205 @@ html {
   background-color: var(--color-primary);
   color: white;
 }
+
+/* ========================================================================== */
+/* Beautiful Custom Scrollbars */
+/* ========================================================================== */
+
+/* Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+  border-radius: var(--border-radius-md);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    135deg,
+    var(--color-surface-light),
+    var(--color-border-secondary)
+  );
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--color-border-primary);
+  transition: all 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-400),
+    var(--color-primary-600)
+  );
+  border-color: var(--color-primary);
+  box-shadow: 0 2px 4px rgba(96, 165, 250, 0.2);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-600),
+    var(--color-primary)
+  );
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--color-background);
+}
+
+/* Firefox scrollbars */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-surface-light) var(--color-background);
+}
+
+/* Thin scrollbars for specific containers */
+.thin-scrollbar::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.thin-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-border-secondary);
+  border-radius: var(--border-radius-sm);
+}
+
+.thin-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-400);
+}
+
+/* Light mode scrollbar adjustments */
+.light::-webkit-scrollbar-track {
+  background: var(--color-surface);
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.05);
+}
+
+.light::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    135deg,
+    var(--color-surface-dark),
+    var(--color-border-primary)
+  );
+  border: 1px solid var(--color-border-secondary);
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.light::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-400),
+    var(--color-primary-600)
+  );
+  border-color: var(--color-primary);
+  box-shadow: 
+    0 2px 6px rgba(59, 130, 246, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.light::-webkit-scrollbar-corner {
+  background: var(--color-surface);
+}
+
+/* Enhanced light mode page content scrollbar */
+.light .page-content::-webkit-scrollbar-track {
+  background: var(--color-surface);
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.05);
+}
+
+.light .page-content::-webkit-scrollbar-thumb:hover {
+  box-shadow: 
+    0 3px 10px rgba(59, 130, 246, 0.25),
+    0 0 0 1px rgba(59, 130, 246, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* Firefox light mode */
+.light {
+  scrollbar-color: var(--color-border-primary) var(--color-surface);
+}
+
+/* Enhanced scrollbar animations */
+::-webkit-scrollbar-thumb {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ========================================================================== */
+/* Scrollbar Utility Classes */
+/* ========================================================================== */
+
+/* Elegant scrollbar - appears on hover only */
+.elegant-scrollbar {
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  transition: scrollbar-color 0.3s ease;
+}
+
+.elegant-scrollbar:hover {
+  scrollbar-color: var(--color-surface-light) var(--color-background);
+}
+
+.elegant-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.elegant-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.elegant-scrollbar::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: var(--border-radius-md);
+  transition: background 0.3s ease;
+}
+
+.elegant-scrollbar:hover::-webkit-scrollbar-thumb {
+  background: var(--color-surface-light);
+}
+
+.elegant-scrollbar:hover::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-400);
+}
+
+/* Invisible scrollbar but still scrollable */
+.invisible-scrollbar {
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.invisible-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Colorful accent scrollbar */
+.accent-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    45deg,
+    var(--color-primary-400),
+    var(--color-primary-600),
+    var(--color-primary)
+  );
+  border: none;
+  box-shadow: 
+    0 2px 4px rgba(96, 165, 250, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.accent-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    45deg,
+    var(--color-primary),
+    var(--color-primary-300),
+    var(--color-primary-400)
+  );
+  box-shadow: 
+    0 4px 8px rgba(96, 165, 250, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
