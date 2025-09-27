@@ -2,7 +2,6 @@ import React from 'react';
 import { Sidebar } from './Sidebar';
 import { Header } from './Header';
 import { usePortfolio } from '../../hooks/usePortfolio';
-import './Layout.css';
 
 interface LayoutProps {
   children: React.ReactNode;

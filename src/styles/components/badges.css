@@ -1,0 +1,310 @@
+/* =============================================================================
+   BADGE COMPONENT STYLES - Following HSL Color System
+   ============================================================================= */
+
+/* Base Badge Styles */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-family: var(--font-family-sans);
+  font-weight: 500;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  user-select: none;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+/* Badge Sizes */
+.badge--sm {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+.badge--md {
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-size: 0.875rem;
+  line-height: 1;
+}
+
+.badge--lg {
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* Badge Shapes */
+.badge--rounded {
+  border-radius: var(--border-radius-md);
+}
+
+.badge--pill {
+  border-radius: 9999px;
+}
+
+.badge--square {
+  border-radius: var(--border-radius-sm);
+}
+
+/* Badge Variants */
+.badge--default {
+  background-color: var(--bg-raised);
+  color: var(--text-secondary);
+  border-color: var(--border-primary);
+}
+
+.badge--primary {
+  background-color: var(--primary-500);
+  color: white;
+}
+
+.badge--secondary {
+  background-color: var(--bg-raised);
+  color: var(--text-primary);
+  border-color: var(--border-primary);
+}
+
+.badge--success {
+  background-color: var(--color-success);
+  color: white;
+}
+
+.badge--warning {
+  background-color: var(--color-warning);
+  color: white;
+}
+
+.badge--error {
+  background-color: var(--color-error);
+  color: white;
+}
+
+.badge--info {
+  background-color: var(--color-info);
+  color: white;
+}
+
+/* Badge Content Elements */
+.badge__text {
+  display: flex;
+  align-items: center;
+}
+
+.badge__icon {
+  display: flex;
+  align-items: center;
+  font-size: 1em;
+}
+
+.badge__icon--left {
+  margin-right: calc(var(--spacing-xs) * -0.5);
+}
+
+.badge__icon--right {
+  margin-left: calc(var(--spacing-xs) * -0.5);
+}
+
+/* Removable Badge */
+.badge--removable {
+  padding-right: var(--spacing-xs);
+}
+
+.badge__remove {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 2px;
+  margin-left: var(--spacing-xs);
+  border-radius: var(--border-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.badge__remove:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.badge__remove:focus {
+  outline: 1px solid rgba(0, 0, 0, 0.2);
+  outline-offset: 1px;
+}
+
+/* =============================================================================
+   SKILL BADGE COMPONENT STYLES
+   ============================================================================= */
+
+.skill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--bg-raised);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--border-radius-md);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-badge:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-400);
+}
+
+.skill-badge__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.125rem;
+  color: var(--primary-500);
+}
+
+.skill-badge__name {
+  font-weight: 600;
+}
+
+.skill-badge__proficiency {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  opacity: 0.8;
+}
+
+/* Proficiency Level Indicators */
+.skill-badge--beginner {
+  border-left: 3px solid hsl(0, 70%, 50%); /* Red */
+}
+
+.skill-badge--intermediate {
+  border-left: 3px solid hsl(35, 70%, 50%); /* Orange */
+}
+
+.skill-badge--advanced {
+  border-left: 3px solid hsl(220, 70%, 50%); /* Blue */
+}
+
+.skill-badge--expert {
+  border-left: 3px solid hsl(140, 70%, 45%); /* Green */
+}
+
+/* Progress Bar (optional) */
+.skill-badge__progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background-color: var(--primary-500);
+  transition: width 0.3s ease;
+}
+
+.skill-badge--beginner .skill-badge__progress {
+  width: 25%;
+  background-color: hsl(0, 70%, 50%);
+}
+
+.skill-badge--intermediate .skill-badge__progress {
+  width: 50%;
+  background-color: hsl(35, 70%, 50%);
+}
+
+.skill-badge--advanced .skill-badge__progress {
+  width: 75%;
+  background-color: hsl(220, 70%, 50%);
+}
+
+.skill-badge--expert .skill-badge__progress {
+  width: 100%;
+  background-color: hsl(140, 70%, 45%);
+}
+
+/* Badge Groups */
+.badge-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+/* Interactive Badge States */
+.badge--interactive {
+  cursor: pointer;
+}
+
+.badge--interactive:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.badge--interactive:active {
+  transform: translateY(0);
+}
+
+.badge--interactive:focus {
+  outline: 2px solid var(--primary-400);
+  outline-offset: 2px;
+}
+
+/* Special Badge Types */
+
+/* Category Badge */
+.category-badge {
+  background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.75rem;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-md);
+}
+
+/* Status Badge */
+.status-badge {
+  position: relative;
+}
+
+.status-badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: currentColor;
+  margin-right: var(--spacing-xs);
+}
+
+.status-badge--online::before {
+  background-color: hsl(140, 70%, 45%);
+}
+
+.status-badge--offline::before {
+  background-color: hsl(0, 0%, 60%);
+}
+
+.status-badge--busy::before {
+  background-color: hsl(350, 70%, 45%);
+}
+
+/* Responsive Badge Adjustments */
+@media (max-width: 767px) {
+  .badge--lg {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 0.875rem;
+  }
+  
+  .skill-badge {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 0.8125rem;
+  }
+  
+  .skill-badge__icon {
+    font-size: 1rem;
+  }
+}

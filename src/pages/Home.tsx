@@ -9,7 +9,6 @@ import {
   CloudIcon,
   DockerIcon,
 } from '../components/icons';
-import './Home.css';
 
 export const Home: React.FC = () => {
   const { data: profile, loading, error } = useProfileData();
@@ -48,10 +47,10 @@ export const Home: React.FC = () => {
         <div className="hero-content">
           <div className="hero-main">
             <h1 className="hero-title">
-              {profile?.profile?.name || 'Sunny Dodti'}
+              Sunny Dodti
             </h1>
             <h2 className="hero-subtitle">
-              {profile?.profile?.title || 'Software Developer'}
+              Software Developer
             </h2>
           </div>
           <p className="hero-description">

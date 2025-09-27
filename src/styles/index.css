@@ -1,57 +1,26 @@
 /* ==========================================================================
-   Portfolio Design System - Master Stylesheet
+   Portfolio Design System - Clean HSL Implementation
+   Following colors.instructions.md exactly
    ========================================================================== */
 
 /* ========================================
-   Foundation Layer - Core System Setup
+   Core System - Clean and Simple
    ======================================== */
 
-@import './foundation/reset.css';
-@import './foundation/variables.css';
-@import './foundation/typography.css';
-@import './foundation/breakpoints.css';
+@import './variables.css';
+@import './reset.css';
+@import './typography.css';
 
 /* ========================================
-   Design Tokens Layer - Utilities
+   Component Styles - Only Essential Files
    ======================================== */
 
-@import './tokens/colors.css';
-@import './tokens/spacing.css';
-@import './tokens/shadows.css';
-@import './tokens/gradients.css';
-@import './tokens/borders.css';
-
-/* ========================================
-   Layout System Layer - Layout Utilities
-   ======================================== */
-
-/* Layout System - Spatial organization and positioning */
-@import './layout/grid.css';
-@import './layout/flexbox.css';
-@import './layout/positioning.css';
-@import './layout/containers.css';
-@import './layout/flexbox.css';
-@import './layout/positioning.css';
-@import './layout/containers.css';
-
-/* ========================================
-   Component Styles Layer - Component Patterns
-   ======================================== */
-
+@import './components/layout.css';
 @import './components/buttons.css';
 @import './components/cards.css';
-@import './components/forms.css';
-@import './components/navigation.css';
-@import './components/feedback.css';
-
-/* ========================================
-   Utility Classes Layer - Helpers
-   ======================================== */
-
-@import './utilities/animations.css';
-@import './utilities/accessibility.css';
-@import './utilities/responsive.css';
-@import './utilities/themes.css';
+@import './components/badges.css';
+@import './components/theme-toggle.css';
+@import './pages.css';
 
 /* ========================================
    Global Base Styles
@@ -93,17 +62,9 @@ body {
    Portfolio-Specific Global Styles
    ======================================== */
 
-/* Single viewport layout (desktop) */
+/* Remove single viewport constraints to allow scrolling */
 @media (min-width: 1024px) {
-  body {
-    height: 100vh;
-    overflow: hidden;
-  }
-  
-  #root {
-    height: 100vh;
-    overflow: hidden;
-  }
+  /* Allow natural scrolling on desktop */
 }
 
 /* Sidebar layout variables */

@@ -3,7 +3,6 @@
    ========================================================================== */
 
 import React from 'react';
-import './Card.css';
 
 export interface CardProps {
   children: React.ReactNode;

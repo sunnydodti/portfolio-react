@@ -8,7 +8,6 @@ import {
   TechStackIcon,
   ContactIcon,
 } from "../icons";
-import "./Sidebar.css";
 
 interface SidebarProps {
   isOpen: boolean;

@@ -1,4 +1,4 @@
-/* ==========================================================================
+/* ==============import { ProjectsIcon, ReactIcon, TypeScriptIcon, NodeIcon, TechIcon } from "../components/icons";==========================================================
    Component Demo - Test and showcase all common components
    ========================================================================== */
 
@@ -16,7 +16,6 @@ import {
   Skeleton,
 } from '../components/common';
 import { ProjectsIcon, ReactIcon, TypeScriptIcon, NodeIcon, TechIcon } from '../components/icons';
-import './ComponentDemo.css';
 
 export const ComponentDemo: React.FC = () => {
   const [loading, setLoading] = useState(false);

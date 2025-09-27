@@ -1,441 +1,344 @@
-/* ==========================================================================
-   Card Components - Container and content card styles
-   ========================================================================== */
+/* =============================================================================
+   CARD COMPONENT STYLES - Following HSL Color System
+   ============================================================================= */
 
-/* ========================================
-   Base Card
-   ======================================== */
-
+/* Base Card Styles */
 .card {
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background-color: var(--bg-raised);
+  border: 1px solid var(--border-primary);
   border-radius: var(--border-radius-lg);
-  padding: var(--spacing-lg);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
 }
 
-.card:hover {
-  border-color: var(--color-primary-300);
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-2px);
+/* Card Variants */
+.card--default {
+  /* Default variant - base styles are sufficient */
 }
 
-/* ========================================
-   Card Variants
-   ======================================== */
+.card--bordered {
+  border-width: 2px;
+  border-color: var(--border-primary);
+}
 
-/* Elevated Card */
-.card-elevated {
-  box-shadow: var(--shadow-md);
+.card--elevated {
+  box-shadow: var(--shadow-lg);
   border: none;
 }
 
-.card-elevated:hover {
-  box-shadow: var(--shadow-xl);
+.card--glass {
+  background-color: var(--bg-glass);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-glass);
 }
 
-/* Outlined Card */
-.card-outlined {
-  border: 2px solid var(--color-border);
-  box-shadow: none;
+/* Card Padding Variants */
+.card--padding-none {
+  padding: 0;
 }
 
-.card-outlined:hover {
-  border-color: var(--color-primary-400);
-}
-
-/* Gradient Card */
-.card-gradient {
-  background: var(--gradient-surface);
-  border: 1px solid var(--color-border-subtle);
-}
-
-.card-gradient:hover {
-  border-color: var(--color-primary-300);
-}
-
-/* Glass Card */
-.card-glass {
-  background: var(--glass-surface);
-  border: 1px solid var(--glass-border);
-  backdrop-filter: blur(10px);
-}
-
-/* ========================================
-   Card Sizes
-   ======================================== */
-
-.card-xs {
-  padding: var(--spacing-xs);
-  border-radius: var(--border-radius-sm);
-}
-
-.card-sm {
+.card--padding-sm {
   padding: var(--spacing-sm);
 }
 
-.card-md {
+.card--padding-md {
   padding: var(--spacing-md);
 }
 
-.card-lg {
+.card--padding-lg {
   padding: var(--spacing-lg);
 }
 
-.card-xl {
+.card--padding-xl {
   padding: var(--spacing-xl);
 }
 
-/* ========================================
-   Card Components
-   ======================================== */
+/* Card States */
+.card--hover:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-400);
+}
+
+.card--interactive {
+  cursor: pointer;
+}
+
+.card--interactive:focus {
+  outline: 2px solid var(--primary-400);
+  outline-offset: 2px;
+}
+
+.card--interactive:active {
+  transform: translateY(0);
+}
 
 /* Card Header */
-.card-header {
+.card__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: var(--spacing-md);
-  padding-bottom: var(--spacing-sm);
-  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-primary);
 }
 
-.card-title {
+.card__title {
   font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--color-text-primary);
+  font-weight: 700;
+  color: var(--text-primary);
   margin: 0;
 }
 
-.card-subtitle {
+.card__subtitle {
   font-size: 0.875rem;
-  color: var(--color-text-secondary);
-  margin: var(--spacing-xs) 0 0 0;
+  color: var(--text-secondary);
+  margin: 0;
 }
 
-/* Card Body */
-.card-body {
-  flex: 1;
+.card__actions {
+  display: flex;
+  gap: var(--spacing-sm);
 }
 
-.card-content {
-  color: var(--color-text-primary);
+/* Card Content */
+.card__content {
+  color: var(--text-primary);
   line-height: 1.6;
 }
 
-.card-description {
-  color: var(--color-text-secondary);
-  font-size: 0.875rem;
-  line-height: 1.5;
-  margin: var(--spacing-sm) 0;
-}
-
-/* Card Footer */
-.card-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: var(--spacing-md);
-  padding-top: var(--spacing-sm);
-  border-top: 1px solid var(--color-border);
-}
-
-.card-actions {
-  display: flex;
-  gap: var(--spacing-sm);
-  align-items: center;
-}
-
-/* ========================================
-   Portfolio Specific Cards
-   ======================================== */
-
-/* Experience Card */
-.experience-card {
-  position: relative;
-  background: var(--gradient-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-lg);
-  padding: var(--spacing-lg);
-  transition: all 0.3s ease;
-}
-
-.experience-card::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  background: var(--gradient-primary);
-  border-radius: 2px 0 0 2px;
-}
-
-.experience-card:hover {
-  transform: translateX(4px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--color-primary-300);
-}
-
-.experience-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+.card__content p {
   margin-bottom: var(--spacing-md);
 }
 
-.experience-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--color-text-primary);
-  margin-bottom: var(--spacing-xs);
+.card__content p:last-child {
+  margin-bottom: 0;
 }
 
-.experience-company {
-  font-size: 1rem;
-  color: var(--color-primary-500);
-  font-weight: 500;
+/* Card Footer */
+.card__footer {
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--border-primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.experience-period {
-  font-size: 0.875rem;
-  color: var(--color-text-secondary);
-  text-align: right;
-}
-
-.experience-location {
-  font-size: 0.875rem;
-  color: var(--color-text-secondary);
-}
+/* Special Card Types */
 
 /* Project Card */
 .project-card {
-  background: var(--gradient-surface);
-  border: 1px solid var(--color-border);
+  background-color: var(--bg-raised);
+  border: 1px solid var(--border-primary);
   border-radius: var(--border-radius-lg);
   overflow: hidden;
   transition: all 0.3s ease;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
 }
 
 .project-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-xl);
-  border-color: var(--color-primary-300);
+  border-color: var(--primary-400);
 }
 
-.project-image {
+.project-card__image {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
-  background: var(--gradient-primary);
+  height: 12rem;
+  background-color: var(--bg-base);
+  background-size: cover;
+  background-position: center;
+  position: relative;
 }
 
-.project-content {
+.project-card__image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-card__image::after {
+  opacity: 0.8;
+}
+
+.project-card__content {
   padding: var(--spacing-lg);
-  flex: 1;
-  display: flex;
-  flex-direction: column;
 }
 
-.project-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--color-text-primary);
+.project-card__title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
   margin-bottom: var(--spacing-sm);
 }
 
-.project-description {
-  color: var(--color-text-secondary);
-  line-height: 1.6;
+.project-card__description {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.5;
   margin-bottom: var(--spacing-md);
-  flex: 1;
 }
 
-.project-tech {
+.project-card__tech {
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-xs);
   margin-bottom: var(--spacing-md);
 }
 
-.project-links {
+.project-card__tech-tag {
+  background-color: var(--bg-base);
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--border-primary);
+}
+
+.project-card__links {
   display: flex;
   gap: var(--spacing-sm);
 }
 
+/* Experience Card */
+.experience-card {
+  background-color: var(--bg-raised);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+  transition: all 0.3s ease;
+}
+
+.experience-card:hover {
+  border-color: var(--primary-400);
+  box-shadow: var(--shadow-md);
+}
+
+.experience-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-md);
+}
+
+.experience-card__company {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.experience-card__position {
+  font-size: 1rem;
+  color: var(--primary-500);
+  font-weight: 500;
+}
+
+.experience-card__period {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  text-align: right;
+}
+
+.experience-card__location {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
 /* Skill Card */
 .skill-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background-color: var(--bg-raised);
+  border: 1px solid var(--border-primary);
   border-radius: var(--border-radius-md);
   padding: var(--spacing-md);
   text-align: center;
   transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.skill-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--gradient-primary);
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-}
-
-.skill-card:hover::before {
-  transform: scaleX(1);
 }
 
 .skill-card:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
-  border-color: var(--color-primary-300);
+  border-color: var(--primary-400);
 }
 
-.skill-icon {
+.skill-card__icon {
   font-size: 2rem;
-  color: var(--color-primary-500);
+  color: var(--primary-500);
   margin-bottom: var(--spacing-sm);
 }
 
-.skill-name {
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--color-text-primary);
+.skill-card__name {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.875rem;
   margin-bottom: var(--spacing-xs);
 }
 
-.skill-level {
-  font-size: 0.875rem;
-  color: var(--color-text-secondary);
+.skill-card__level {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
 }
 
 /* Stats Card */
 .stats-card {
-  background: var(--gradient-surface);
-  border: 1px solid var(--color-border);
+  background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
+  color: white;
   border-radius: var(--border-radius-lg);
   padding: var(--spacing-lg);
   text-align: center;
-  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-.stats-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+.stats-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  pointer-events: none;
 }
 
-.stats-number {
-  font-size: 2.5rem;
+.stats-card__number {
+  font-size: 2rem;
   font-weight: 700;
-  color: var(--color-primary-500);
-  line-height: 1;
   margin-bottom: var(--spacing-xs);
 }
 
-.stats-label {
+.stats-card__label {
   font-size: 0.875rem;
-  color: var(--color-text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  opacity: 0.9;
 }
 
-/* Contact Card */
-.contact-card {
-  background: var(--gradient-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-lg);
-  padding: var(--spacing-xl);
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-.contact-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--color-primary-300);
-}
-
-.contact-icon {
-  font-size: 3rem;
-  color: var(--color-primary-500);
-  margin-bottom: var(--spacing-md);
-}
-
-.contact-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--color-text-primary);
-  margin-bottom: var(--spacing-sm);
-}
-
-.contact-info {
-  color: var(--color-text-secondary);
-  font-size: 1rem;
-}
-
-/* ========================================
-   Interactive States
-   ======================================== */
-
-.card-clickable {
-  cursor: pointer;
-}
-
-.card-clickable:hover {
-  border-color: var(--color-primary-400);
-  box-shadow: var(--shadow-lg);
-}
-
-.card-selected {
-  border-color: var(--color-primary-500);
-  box-shadow: 0 0 0 2px var(--color-primary-100);
-}
-
-/* ========================================
-   Responsive Cards
-   ======================================== */
-
+/* Responsive Card Adjustments */
 @media (max-width: 767px) {
-  .mobile\:card-full {
-    margin: 0 calc(-1 * var(--spacing-md));
-    border-radius: 0;
-    border-left: none;
-    border-right: none;
+  .card {
+    border-radius: var(--border-radius-md);
   }
   
-  .mobile\:card-sm {
-    padding: var(--spacing-sm);
+  .card--padding-lg {
+    padding: var(--spacing-md);
   }
   
-  .experience-header {
+  .project-card__image {
+    height: 10rem;
+  }
+  
+  .experience-card__header {
     flex-direction: column;
-    align-items: flex-start;
+    gap: var(--spacing-xs);
   }
   
-  .experience-period {
+  .experience-card__period {
     text-align: left;
-    margin-top: var(--spacing-xs);
-  }
-}
-
-@media (min-width: 768px) {
-  .md\:card-horizontal {
-    display: flex;
-    align-items: center;
-  }
-  
-  .md\:card-horizontal .card-content {
-    flex: 1;
   }
 }

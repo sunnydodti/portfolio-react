@@ -10,7 +10,6 @@ import {
   compareWithExpectedSchema,
   generateProfileDataTypes,
 } from '../../utils/typeGeneration';
-import './DataIntegrationDemo.css';
 
 export const DataIntegrationDemo: React.FC = () => {
   const [activeHook, setActiveHook] = useState<'simple' | 'enhanced'>(

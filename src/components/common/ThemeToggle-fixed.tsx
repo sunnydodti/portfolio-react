@@ -51,27 +51,20 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '' }) => {
     const savedTheme = localStorage.getItem('portfolio-theme') as 'light' | 'dark';
     if (savedTheme && ['light', 'dark'].includes(savedTheme)) {
       setTheme(savedTheme);
+    } else {
+      // Set default theme on first load
+      document.documentElement.setAttribute('data-theme', 'dark');
     }
   }, []);
 
   // Apply theme to document
   useEffect(() => {
     const root = document.documentElement;
-    
-    // Remove existing theme classes
     root.classList.remove('light', 'dark');
-    
-    // Set data-theme attribute (preferred method)
     root.setAttribute('data-theme', theme);
-    
-    // Also add class for backwards compatibility
-    root.classList.add(theme);
 
     // Save to localStorage
     localStorage.setItem('portfolio-theme', theme);
-    
-    // Debug logging
-    console.log(`Theme switched to: ${theme}`);
   }, [theme]);
 
   const toggleTheme = () => {

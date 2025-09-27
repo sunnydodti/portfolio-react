@@ -20,14 +20,14 @@
   justify-content: center;
   height: 50vh;
   text-align: center;
-  color: var(--color-text-secondary, #e2e8f0);
+  color: var(--text-secondary);
 }
 
 .loading-spinner {
   width: 40px;
   height: 40px;
-  border: 3px solid var(--color-border-primary, #334155);
-  border-top: 3px solid var(--color-primary, #60a5fa);
+  border: 3px solid transparent;
+  border-top: 3px solid var(--color-primary);
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: var(--spacing-md, 1rem);
@@ -40,10 +40,10 @@
 
 /* Hero Section - Clean Introduction */
 .hero-section {
-  background: linear-gradient(135deg, var(--color-surface, #1e293b) 0%, var(--color-surface-dark, #0f172a) 100%);
-  border: 2px solid var(--color-border-primary, #334155);
-  border-radius: var(--border-radius-lg, 0.75rem);
-  padding: var(--spacing-2xl, 3rem) var(--spacing-xl, 2rem);
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-2xl) var(--spacing-xl);
   text-align: center;
   box-shadow: var(--shadow-lg, 0 10px 15px rgba(0, 0, 0, 0.1));
   position: relative;
@@ -83,7 +83,7 @@
 .hero-title {
   font-size: 3rem;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--color-primary, #60a5fa) 0%, var(--color-primary-300, #93c5fd) 100%);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

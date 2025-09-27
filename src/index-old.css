@@ -1,0 +1,19 @@
+/* ================================================================
+   ⚠️  MOVED TO ORGANIZED STRUCTURE
+   ================================================================
+   
+   This file has been reorganized into the /styles folder structure.
+   All imports are now handled through /styles/index.css
+   
+   The new structure is:
+   - /styles/foundation/     (variables, reset, typography, breakpoints)  
+   - /styles/tokens/         (colors, spacing, shadows, gradients, borders)
+   - /styles/layout/         (grid, flexbox, containers, positioning)
+   - /styles/components/     (buttons, cards, navigation, feedback)
+   - /styles/utilities/      (scrollbars, animations, accessibility, responsive, themes)
+   
+   Main import is now: './styles/index.css' in main.tsx
+   ================================================================ */
+
+/* Temporary redirect - remove once confirmed working */
+@import './styles/index.css';
