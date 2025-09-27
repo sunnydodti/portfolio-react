@@ -58,7 +58,6 @@
 
 .badge--primary {
   background-color: var(--primary-500);
-  color: white;
 }
 
 .badge--secondary {
@@ -144,21 +143,23 @@
   align-items: center;
   gap: var(--spacing-sm);
   padding: var(--spacing-sm) var(--spacing-md);
-  background-color: var(--bg-raised);
+  background-color: var(--bg-surface);
   border: 1px solid var(--border-primary);
   border-radius: var(--border-radius-md);
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--text-primary);
-  transition: all 0.3s ease;
+  transition: var(--transition);
   position: relative;
   overflow: hidden;
+  box-shadow: var(--shadow);
 }
 
 .skill-badge:hover {
-  transform: translateY(-1px);
+  transform: scale(var(--hover-scale));
   box-shadow: var(--shadow-md);
-  border-color: var(--primary-400);
+  /* border-color: var(--color-primary); */
+  background-color: var(--color-primary-hover);
 }
 
 .skill-badge__icon {
@@ -181,19 +182,23 @@
 
 /* Proficiency Level Indicators */
 .skill-badge--beginner {
-  border-left: 3px solid hsl(0, 70%, 50%); /* Red */
+  border-left: 3px solid hsl(0, 70%, 50%);
+  /* Red */
 }
 
 .skill-badge--intermediate {
-  border-left: 3px solid hsl(35, 70%, 50%); /* Orange */
+  border-left: 3px solid hsl(35, 70%, 50%);
+  /* Orange */
 }
 
 .skill-badge--advanced {
-  border-left: 3px solid hsl(220, 70%, 50%); /* Blue */
+  border-left: 3px solid hsl(220, 70%, 50%);
+  /* Blue */
 }
 
 .skill-badge--expert {
-  border-left: 3px solid hsl(140, 70%, 45%); /* Green */
+  border-left: 3px solid hsl(140, 70%, 45%);
+  /* Green */
 }
 
 /* Progress Bar (optional) */
@@ -298,12 +303,12 @@
     padding: var(--spacing-xs) var(--spacing-sm);
     font-size: 0.875rem;
   }
-  
+
   .skill-badge {
     padding: var(--spacing-xs) var(--spacing-sm);
     font-size: 0.8125rem;
   }
-  
+
   .skill-badge__icon {
     font-size: 1rem;
   }

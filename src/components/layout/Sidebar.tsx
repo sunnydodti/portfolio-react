@@ -55,17 +55,18 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     }
   };
 
+  const initials: string =
+    profile?.profile?.name
+      ?.split(' ')
+      .map((n: string) => n[0]) 
+      .join('') || 'SD';
+
   return (
     <aside className={`sidebar ${isOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
       {/* Profile Header Section */}
       <div className="profile-header">
         <div className="profile-pic">
-          <span className="profile-initials">
-            {profile?.profile?.name
-              ?.split(' ')
-              .map((n: string) => n[0])
-              .join('') || 'SD'}
-          </span>
+          <span className="profile-initials">{initials}</span>
         </div>
         <div className="profile-name">
           {profile?.profile?.name || 'Sunny Dodti'}

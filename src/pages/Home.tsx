@@ -57,16 +57,16 @@ export const Home: React.FC = () => {
             <Button variant="primary" size="md">
               View My Work
             </Button>
-            <Button variant="outline" size="md">
+            <Button variant="primary" size="md">
               Get In Touch
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Professional Metrics - Clean Stats Row */}
+      {/* Career Metrics - Clean Stats Row */}
       <section className="metrics-section">
-        <h3 className="section-title">Professional Overview</h3>
+        <h3 className="section-title">Career Overview</h3>
         <div className="metrics-grid">
           <div className="metric-item">
             <div className="metric-value">3+</div>

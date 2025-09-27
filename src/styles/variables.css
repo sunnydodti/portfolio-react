@@ -1,88 +1,93 @@
 /* ==========================================================================
    HSL Color System - Following colors.instructions.md exactly
+   https://mdigi.tools/color-shades/#429eff
    ========================================================================== */
 
 :root {
-  /* ========================================
-     HSL Hue Variables for Brand/Primary Colors
-     ======================================== */
-  
-  --hue-brand: 220; /* Blue hue for primary colors */
-  
+
+  /* Primary Colors (Blue) */
+  --brand-color: 211;
+
+  --color-primary: hsl(var(--brand-color), 80%, 50%);
+  --color-primary-hover: hsl(var(--brand-color), 80%, 25%);
+  --color-primary-light: hsl(var(--brand-color), 80%, 55%);
+  --color-primary-dark: hsl(var(--brand-color), 80%, 85%);
+
   /* ========================================
      DARK MODE DEFAULTS (portfolio should be dark by default)
      ======================================== */
-  
-  /* Neutral Colors - Low lightness, progressively higher for "raised" elements */
-  --bg-base: hsl(0, 0%, 0%); /* Darkest background */
-  --bg-raised: hsl(0, 0%, 10%); /* Raised elements (higher lightness) */
-  --bg-surface: hsl(0, 0%, 5%); /* Surface elements */
-  
-  /* Text Colors - High lightness for dark backgrounds */
-  --text-primary: hsl(0, 0%, 95%); /* High lightness for dark backgrounds */
-  --text-secondary: hsl(0, 0%, 60%); /* Secondary text */
-  --text-muted: hsl(0, 0%, 40%); /* Muted text */
-  
+
+  --bg-base: hsl(0, 0%, 0%);
+  --bg-raised: hsl(0, 0%, 5%);
+  --bg-surface: hsl(0, 0%, 10%);
+
+  --text-primary: hsl(0, 0%, 90%);
+  --text-muted: hsl(0, 0%, 70%);
+  --text-secondary: hsl(0, 0%, 50%);
+
   /* Border Colors */
   --border-base: hsl(0, 0%, 20%);
   --border-light: hsl(0, 0%, 25%);
-  
-  /* Primary Colors (Blue) - Adjusted for contrast on dark background */
-  --color-primary: hsl(var(--hue-brand), 80%, 65%);
-  --color-primary-hover: hsl(var(--hue-brand), 80%, 75%);
-  --color-primary-light: hsl(var(--hue-brand), 80%, 55%);
-  --color-primary-dark: hsl(var(--hue-brand), 80%, 85%);
-  
+
+
   /* Semantic Colors - Adjusted for dark mode */
-  --color-success: hsl(140, 70%, 60%); /* Green */
-  --color-error: hsl(350, 70%, 65%); /* Red */
-  --color-warning: hsl(35, 80%, 70%); /* Orange/Yellow */
-  --color-info: hsl(200, 80%, 70%); /* Light Blue */
-  
+  --color-success: hsl(140, 70%, 60%);
+  --color-error: hsl(350, 70%, 65%);
+  --color-warning: hsl(35, 80%, 70%);
+  --color-info: hsl(200, 80%, 70%);
+
   /* ========================================
      Typography & Design Tokens
      ======================================== */
-  
+
   --font-family-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-family-mono: 'JetBrains Mono', 'Menlo', 'Monaco', monospace;
-  
+
   /* Spacing Scale */
-  --spacing-xs: 0.25rem;   /* 4px */
-  --spacing-sm: 0.5rem;    /* 8px */
-  --spacing-md: 1rem;      /* 16px */
-  --spacing-lg: 1.5rem;    /* 24px */
-  --spacing-xl: 2rem;      /* 32px */
-  --spacing-2xl: 3rem;     /* 48px */
-  
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+
   /* Border Radius */
   --border-radius-sm: 0.25rem;
   --border-radius-md: 0.5rem;
   --border-radius-lg: 0.75rem;
-  
-  /* Interactive states for dark mode */
-  --bg-hover: hsl(0, 0%, 5%);    /* Slightly lighter for hover */
-  --bg-pressed: hsl(0, 0%, 8%);  /* Even lighter for active */
-  --bg-glass: hsl(0, 0%, 2%, 0.8); /* Semi-transparent glass effect */
+
+  --bg-hover: hsl(0, 0%, 5%);
+  --bg-pressed: hsl(0, 0%, 8%);
+  --bg-glass: hsl(0, 0%, 2%, 0.8);
   --border-glass: hsl(0, 0%, 15%);
 
   /* Font family definitions */
   --font-family-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-family-mono: 'JetBrains Mono', 'Menlo', 'Monaco', monospace;
-  
+
   /* Additional spacing for XL breakpoints */
-  --spacing-3xl: 4rem;     /* 64px */
-  --spacing-4xl: 6rem;     /* 96px */
-  
+  --spacing-3xl: 4rem;
+  --spacing-4xl: 6rem;
+
   /* Shadows - Using HSL (darker for dark mode) */
   --shadow-sm: 0 1px 2px hsl(0, 0%, 0%, 0.3);
   --shadow-md: 0 4px 6px hsl(0, 0%, 0%, 0.4);
   --shadow-lg: 0 10px 15px hsl(0, 0%, 0%, 0.5);
-  
+
   /* Animation Tokens */
   --duration-fast: 0.15s;
   --duration-normal: 0.25s;
   --duration-slow: 0.35s;
   --timing-ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --hover-scale: 1.05;
+  --transition: all 0.3s ease;
+
+  --shadow-color: hsl(0, 0%, 0%, 0.2);
+  --shadow-light: 0px 2px 4px var(--shadow-color);
+
+  --shadow:
+    0px 2px 4px 1px var(--shadow-color)
 }
 
 /* ========================================
@@ -90,41 +95,40 @@
    ======================================== */
 
 [data-theme='light'] {
-  /* Neutral Colors - High lightness, varying for hierarchy */
-  --bg-base: hsl(0, 0%, 100%); /* Base background (lightest) */
-  --bg-raised: hsl(0, 0%, 95%); /* Raised elements background */
-  --bg-surface: hsl(0, 0%, 98%); /* Surface elements */
-  
+  --bg-base: hsl(0, 0%, 90%);
+  --bg-raised: hsl(0, 0%, 95%);
+  --bg-surface: hsl(0, 0%, 100%);
+
+
   /* Text Colors - Low lightness for light backgrounds */
-  --text-primary: hsl(0, 0%, 5%); /* Primary text (not pure black) */
-  --text-secondary: hsl(0, 0%, 40%); /* Secondary text */
-  --text-muted: hsl(0, 0%, 60%); /* Muted text */
-  
+  --text-primary: hsl(0, 0%, 10%);
+  --text-muted: hsl(0, 0%, 30%);
+  --text-secondary: hsl(0, 0%, 50%);
+
   /* Border Colors */
-  --border-base: hsl(0, 0%, 90%);
-  --border-light: hsl(0, 0%, 85%);
-  
+  --border-base: hsl(0, 0%, 70%);
+  --border-light: hsl(0, 0%, 75%);
+
   /* Primary Colors - Adjusted for light background */
-  --color-primary: hsl(var(--hue-brand), 90%, 50%);
-  --color-primary-hover: hsl(var(--hue-brand), 90%, 40%);
-  --color-primary-light: hsl(var(--hue-brand), 90%, 60%);
-  --color-primary-dark: hsl(var(--hue-brand), 90%, 30%);
-  
+  --color-primary: hsl(var(--brand-color), 80%, 50%);
+  --color-primary-hover: hsl(var(--brand-color), 90%, 75%);
+  --color-primary-light: hsl(var(--brand-color), 90%, 60%);
+  --color-primary-dark: hsl(var(--brand-color), 90%, 30%);
+
   /* Semantic Colors - Adjusted for light mode */
   --color-success: hsl(140, 70%, 40%);
   --color-error: hsl(350, 70%, 45%);
   --color-warning: hsl(35, 80%, 50%);
   --color-info: hsl(200, 80%, 50%);
-  
+
   /* Interactive states for light mode */
-  --bg-hover: hsl(0, 0%, 95%);   /* Slightly darker for hover */
-  --bg-pressed: hsl(0, 0%, 92%); /* Darker for active */
-  --bg-glass: hsl(0, 0%, 98%, 0.8); /* Semi-transparent glass effect */
+  --bg-hover: hsl(0, 0%, 95%);
+  --bg-pressed: hsl(0, 0%, 92%);
+  --bg-glass: hsl(0, 0%, 98%, 0.8);
   --border-glass: hsl(0, 0%, 85%);
-  
+
   /* Shadows - Lighter for light mode */
   --shadow-sm: 0 1px 2px hsl(0, 0%, 0%, 0.05);
   --shadow-md: 0 4px 6px hsl(0, 0%, 0%, 0.1);
   --shadow-lg: 0 10px 15px hsl(0, 0%, 0%, 0.1);
 }
-

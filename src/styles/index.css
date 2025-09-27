@@ -29,23 +29,23 @@
 html {
   /* Ensure smooth scrolling */
   scroll-behavior: smooth;
-  
+
   /* Prevent horizontal overflow */
   overflow-x: hidden;
-  
+
   /* Set base font size for rem calculations */
   font-size: 16px;
 }
 
 body {
   /* Apply theme transition to body */
-  transition: 
+  transition:
     background-color var(--duration-normal) var(--timing-ease),
     color var(--duration-normal) var(--timing-ease);
-  
+
   /* Ensure full height */
   min-height: 100vh;
-  
+
   /* Prevent horizontal overflow */
   overflow-x: hidden;
 }
@@ -53,7 +53,7 @@ body {
 #root {
   /* Ensure full height for React app */
   min-height: 100vh;
-  
+
   /* Create stacking context */
   isolation: isolate;
 }
@@ -115,6 +115,7 @@ body {
    ======================================== */
 
 @media print {
+
   /* Hide non-essential elements */
   .no-print,
   .sidebar,
@@ -122,7 +123,7 @@ body {
   .skip-link {
     display: none !important;
   }
-  
+
   /* Optimize for printing */
   body {
     background: white !important;
@@ -130,16 +131,16 @@ body {
     font-size: 12pt;
     line-height: 1.4;
   }
-  
+
   /* Ensure proper page breaks */
   .print-break-before {
     page-break-before: always;
   }
-  
+
   .print-break-after {
     page-break-after: always;
   }
-  
+
   .print-break-inside-avoid {
     page-break-inside: avoid;
   }
@@ -201,19 +202,22 @@ body {
 
 /* Skeleton loading states */
 .skeleton {
-  background: linear-gradient(
-    90deg,
-    var(--surface-secondary) 25%,
-    var(--surface-elevated) 50%,
-    var(--surface-secondary) 75%
-  );
+  background: linear-gradient(90deg,
+      var(--surface-secondary) 25%,
+      var(--surface-elevated) 50%,
+      var(--surface-secondary) 75%);
   background-size: 200% 100%;
   animation: skeleton-loading 1.5s infinite;
 }
 
 @keyframes skeleton-loading {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 /* ========================================
@@ -227,11 +231,11 @@ body {
     color: ButtonText !important;
     border-color: ButtonText !important;
   }
-  
+
   a {
     color: LinkText !important;
   }
-  
+
   button {
     background-color: ButtonFace !important;
     color: ButtonText !important;
@@ -249,11 +253,12 @@ body {
 
 /* Support forced colors mode (Windows High Contrast) */
 @media (forced-colors: active) {
+
   .border-gradient-primary::before,
   .border-animated::before {
     display: none;
   }
-  
+
   .text-gradient,
   .text-gradient-hero,
   .text-gradient-primary {

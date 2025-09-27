@@ -9,7 +9,8 @@
   top: 0;
   left: 0;
   height: 100vh;
-  width: 16rem; /* 256px */
+  width: 16rem;
+  /* 256px */
   background-color: var(--bg-raised);
   border-right: 1px solid var(--border-primary);
   display: flex;
@@ -18,7 +19,8 @@
   transform: translateX(0);
   transition: transform 0.3s ease;
   z-index: 40;
-  overflow-y: hidden; /* Remove scrolling from sidebar */
+  overflow-y: hidden;
+  /* Remove scrolling from sidebar */
 }
 
 .sidebar-closed {
@@ -35,13 +37,16 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-bottom: var(--spacing-lg); /* Reduced from xl */
-  padding-bottom: var(--spacing-md); /* Reduced from lg */
+  margin-bottom: var(--spacing-lg);
+  /* Reduced from xl */
+  padding-bottom: var(--spacing-md);
+  /* Reduced from lg */
   border-bottom: 1px solid var(--border-primary);
 }
 
 .profile-pic {
-  width: 4rem; /* 64px */
+  width: 4rem;
+  /* 64px */
   height: 4rem;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--primary-400) 0%, var(--primary-600) 100%);
@@ -53,7 +58,7 @@
 }
 
 .profile-initials {
-  color: white;
+  color: var(--text-secondary);
   font-size: 1.5rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -76,31 +81,35 @@
 .nav-menu {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xs);
+  gap: var(--spacing-sm);
   margin-bottom: auto;
 }
 
 .nav-item {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm); /* Reduced from md */
-  padding: var(--spacing-sm) var(--spacing-md); /* Reduced vertical padding */
-  border-radius: var(--border-radius-md);
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius-sm);
   color: var(--text-secondary);
   text-decoration: none;
   transition: all 0.2s ease;
   font-weight: 500;
+  background-color: var(--bg-surface);
+  transition: var(--transition);
+  box-shadow: var(--shadow-light);
 }
 
 .nav-item:hover {
-  background-color: var(--bg-hover);
-  color: var(--text-primary);
-  transform: translateX(2px);
+  background-color: var(--color-primary-hover);
+  color: var(--text-muted);
+  transform: scale(var(--hover-scale));
 }
 
 .nav-item.active {
-  background-color: var(--primary-500);
-  color: white;
+  /* background-color: var(--color-primary); */
+  border: 2px solid var(--color-primary);
+  color: var(--text-primary);
   box-shadow: var(--shadow-sm);
 }
 
@@ -118,15 +127,18 @@
 /* Sidebar Footer */
 .sidebar-footer {
   margin-top: auto;
-  padding-top: var(--spacing-md); /* Reduced from lg */
+  padding-top: var(--spacing-md);
+  /* Reduced from lg */
   border-top: 1px solid var(--border-primary);
 }
 
 .social-icons {
   display: flex;
   justify-content: center;
-  gap: var(--spacing-sm); /* Reduced from md */
-  margin-bottom: var(--spacing-md); /* Reduced from lg */
+  gap: var(--spacing-sm);
+  /* Reduced from md */
+  margin-bottom: var(--spacing-md);
+  /* Reduced from lg */
 }
 
 .social-icon {
@@ -139,15 +151,15 @@
   background-color: var(--bg-hover);
   color: var(--text-secondary);
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: var(--transition);
   font-weight: 600;
   font-size: 0.875rem;
 }
 
 .social-icon:hover {
-  background-color: var(--primary-500);
-  color: white;
-  transform: translateY(-2px);
+  background-color: var(--color-primary-hover);
+  color: var(--text-muted);
+  transform: scale(var(--hover-scale));
   box-shadow: var(--shadow-md);
 }
 
@@ -166,7 +178,8 @@
 .header {
   position: sticky;
   top: 0;
-  height: 4rem; /* 64px */
+  height: 4rem;
+  /* 64px */
   background-color: var(--bg-base);
   border-bottom: 1px solid var(--border-primary);
   display: flex;
@@ -175,7 +188,8 @@
   padding: 0 var(--spacing-lg);
   backdrop-filter: blur(8px);
   z-index: 30;
-  flex-shrink: 0; /* Prevent header from shrinking */
+  flex-shrink: 0;
+  /* Prevent header from shrinking */
 }
 
 .header-left {
@@ -191,7 +205,8 @@
 }
 
 .menu-button {
-  display: none; /* Hidden on desktop */
+  display: none;
+  /* Hidden on desktop */
   background: none;
   border: none;
   cursor: pointer;
@@ -227,7 +242,7 @@
 
 .nav-arrow {
   background: none;
-  border: 1px solid var(--border-primary);
+  border: 1px solid var(--border-base);
   border-radius: var(--border-radius-md);
   padding: var(--spacing-sm) var(--spacing-md);
   color: var(--text-secondary);
@@ -238,8 +253,8 @@
 
 .nav-arrow:hover {
   background-color: var(--bg-hover);
-  color: var(--text-primary);
-  border-color: var(--primary-400);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 /* =============================================================================
@@ -248,14 +263,14 @@
 
 .layout {
   display: flex;
-  /* Remove min-height constraint that might prevent scrolling */
   background-color: var(--bg-base);
   position: relative;
 }
 
 .main-content {
   flex: 1;
-  margin-left: 16rem; /* Sidebar width */
+  margin-left: 16rem;
+  /* Sidebar width */
   background-color: var(--bg-base);
   transition: margin-left 0.3s ease;
   /* Use flex layout but allow overflow */
@@ -265,12 +280,14 @@
 }
 
 .page-content {
-  flex: 1 1 auto; /* Grow and shrink as needed */
-  padding: var(--spacing-xl);
+  flex: 1 1 auto;
+  /* Grow and shrink as needed */
+  padding: var(--spacing-xs);
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
-  overflow: visible; /* Ensure content can overflow */
+  overflow: visible;
+  /* Ensure content can overflow */
 }
 
 /* =============================================================================
@@ -288,15 +305,18 @@
 /* Desktop - Always show sidebar */
 @media (min-width: 1024px) {
   .sidebar {
-    transform: translateX(0) !important; /* Always visible on desktop */
+    transform: translateX(0) !important;
+    /* Always visible on desktop */
   }
-  
+
   .main-content {
-    margin-left: 16rem; /* Account for sidebar width */
+    margin-left: 16rem;
+    /* Account for sidebar width */
   }
-  
+
   .menu-button {
-    display: none; /* Hide hamburger on desktop */
+    display: none;
+    /* Hide hamburger on desktop */
   }
 }
 
@@ -305,7 +325,7 @@
   .sidebar {
     transform: translateX(-100%);
   }
-  
+
   .sidebar-open {
     transform: translateX(0);
   }
