@@ -9,8 +9,6 @@ import { Layout } from './components/layout';
 import { Home, Experience, Projects, TechStack, Contact } from './pages';
 import { ComponentDemo } from './pages/ComponentDemo';
 
-
-
 function App() {
   return (
     <PortfolioProvider>

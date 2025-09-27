@@ -15,7 +15,13 @@ import {
   LoadingContainer,
   Skeleton,
 } from '../components/common';
-import { ProjectsIcon, ReactIcon, TypeScriptIcon, NodeIcon, TechIcon } from '../components/icons';
+import {
+  ProjectsIcon,
+  ReactIcon,
+  TypeScriptIcon,
+  NodeIcon,
+  TechIcon,
+} from '../components/icons';
 
 export const ComponentDemo: React.FC = () => {
   const [loading, setLoading] = useState(false);

@@ -10,7 +10,7 @@ All CSS has been reorganized into a clean, maintainable structure:
 ├── foundation/                  # 🏗️ Core system setup
 │   ├── reset.css               # CSS reset & normalize, #root setup
 │   ├── variables.css           # CSS custom properties & design tokens
-│   ├── typography.css          # Font system & text styling  
+│   ├── typography.css          # Font system & text styling
 │   └── breakpoints.css         # Responsive breakpoints
 ├── tokens/                      # 🎨 Design system tokens
 │   ├── colors.css              # Color palette & utilities
@@ -38,12 +38,14 @@ All CSS has been reorganized into a clean, maintainable structure:
 ## 🎯 Import System
 
 ### Main Entry Point
+
 ```tsx
 // src/main.tsx
-import './styles/index.css'  // ✅ Single import for everything
+import './styles/index.css'; // ✅ Single import for everything
 ```
 
 ### Master Index File
+
 ```css
 /* src/styles/index.css */
 /* Foundation Layer */
@@ -52,7 +54,7 @@ import './styles/index.css'  // ✅ Single import for everything
 @import './foundation/typography.css';
 @import './foundation/breakpoints.css';
 
-/* Design Tokens Layer */  
+/* Design Tokens Layer */
 @import './tokens/colors.css';
 @import './tokens/spacing.css';
 @import './tokens/shadows.css';
@@ -80,6 +82,7 @@ import './styles/index.css'  // ✅ Single import for everything
 ## 🎨 Design System Features
 
 ### 🌙 Dark/Light Theme Support
+
 ```css
 :root {
   /* Dark mode (default) */
@@ -89,24 +92,28 @@ import './styles/index.css'  // ✅ Single import for everything
 
 .light {
   /* Light mode overrides */
-  --color-background: #ffffff;  
+  --color-background: #ffffff;
   --color-text-primary: #0f172a;
 }
 ```
 
-### 🎯 HSL Color System  
+### 🎯 HSL Color System
+
 Following `colors.instructions.md`:
+
 - **Primary Colors**: Blue hue (#60a5fa / #3b82f6)
 - **Neutral Colors**: Grayscale backgrounds & text
 - **Semantic Colors**: Success, error, warning states
 
 ### 📏 Design Tokens
+
 - **Spacing**: `--spacing-xs` to `--spacing-2xl`
-- **Typography**: `--font-family-sans`, `--font-family-mono` 
+- **Typography**: `--font-family-sans`, `--font-family-mono`
 - **Shadows**: `--shadow-sm` to `--shadow-lg`
 - **Borders**: `--border-radius-sm` to `--border-radius-lg`
 
 ### 🎚️ Beautiful Scrollbars
+
 - Custom webkit scrollbar styling
 - Light/dark mode adaptive
 - Hover animations & transitions
@@ -115,6 +122,7 @@ Following `colors.instructions.md`:
 ## 🔧 Usage Examples
 
 ### Using Design Tokens
+
 ```css
 .my-component {
   background-color: var(--color-surface);
@@ -126,6 +134,7 @@ Following `colors.instructions.md`:
 ```
 
 ### Utility Classes
+
 ```html
 <!-- Scrollbar variants -->
 <div class="elegant-scrollbar">Content</div>
@@ -139,8 +148,9 @@ Following `colors.instructions.md`:
 ## 📋 Migration Notes
 
 ### ✅ Completed
+
 - [x] Moved `src/index.css` → organized structure
-- [x] Moved `src/App.css` → `/foundation/reset.css` 
+- [x] Moved `src/App.css` → `/foundation/reset.css`
 - [x] Updated `main.tsx` import path
 - [x] Removed `App.css` import from `App.tsx`
 - [x] Created comprehensive scrollbar system
@@ -148,13 +158,14 @@ Following `colors.instructions.md`:
 - [x] Added HSL color system from working implementation
 
 ### 🗑️ Cleanup Needed
+
 - [ ] Remove old `src/index.css` (after verification)
 - [ ] Remove old `src/App.css` (after verification)
 
 ## 🎯 Benefits of Organized Structure
 
 1. **🔍 Easy to Find**: Know exactly where each type of style lives
-2. **🔧 Maintainable**: Small, focused files instead of monoliths  
+2. **🔧 Maintainable**: Small, focused files instead of monoliths
 3. **⚡ Performance**: Better caching & selective imports
 4. **🎨 Design System**: Clear token hierarchy and design consistency
 5. **🌙 Theme Support**: Proper light/dark mode implementation

@@ -1,13 +1,13 @@
-import React from "react";
-import { Link, useLocation } from "react-router-dom";
-import { useProfileData } from "../../hooks/useProfileData";
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { useProfileData } from '../../hooks/useProfileData';
 import {
   HomeIcon,
   ExperienceIcon,
   ProjectsIcon,
   TechStackIcon,
   ContactIcon,
-} from "../icons";
+} from '../icons';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -22,18 +22,26 @@ interface NavigationItem {
 }
 
 const navigationItems: NavigationItem[] = [
-  { path: "/", label: "Home", icon: <HomeIcon size={18} /> },
-  { path: "/experience", label: "Experience", icon: <ExperienceIcon size={18} /> },
-  { path: "/projects", label: "Projects", icon: <ProjectsIcon size={18} /> },
-  { path: "/tech-stack", label: "Tech Stack", icon: <TechStackIcon size={18} /> },
-  { path: "/contact", label: "Contact", icon: <ContactIcon size={18} /> },
+  { path: '/', label: 'Home', icon: <HomeIcon size={18} /> },
+  {
+    path: '/experience',
+    label: 'Experience',
+    icon: <ExperienceIcon size={18} />,
+  },
+  { path: '/projects', label: 'Projects', icon: <ProjectsIcon size={18} /> },
+  {
+    path: '/tech-stack',
+    label: 'Tech Stack',
+    icon: <TechStackIcon size={18} />,
+  },
+  { path: '/contact', label: 'Contact', icon: <ContactIcon size={18} /> },
 ];
 
 const socialLinks = [
-  { url: "https://github.com", icon: "GH", label: "GitHub" },
-  { url: "https://linkedin.com", icon: "LI", label: "LinkedIn" },
-  { url: "mailto:contact@example.com", icon: "@", label: "Email" },
-  { url: "https://twitter.com", icon: "TW", label: "Twitter" },
+  { url: 'https://github.com', icon: 'GH', label: 'GitHub' },
+  { url: 'https://linkedin.com', icon: 'LI', label: 'LinkedIn' },
+  { url: 'mailto:contact@example.com', icon: '@', label: 'Email' },
+  { url: 'https://twitter.com', icon: 'TW', label: 'Twitter' },
 ];
 
 export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
@@ -48,33 +56,33 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   };
 
   return (
-    <aside className={`sidebar ${isOpen ? "sidebar-open" : "sidebar-closed"}`}>
+    <aside className={`sidebar ${isOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
       {/* Profile Header Section */}
       <div className="profile-header">
         <div className="profile-pic">
           <span className="profile-initials">
             {profile?.profile?.name
-              ?.split(" ")
+              ?.split(' ')
               .map((n: string) => n[0])
-              .join("") || "SD"}
+              .join('') || 'SD'}
           </span>
         </div>
         <div className="profile-name">
-          {profile?.profile?.name || "Sunny Dodti"}
+          {profile?.profile?.name || 'Sunny Dodti'}
         </div>
         <div className="profile-title">
-          {profile?.profile?.title || "Senior Software Developer"}
+          {profile?.profile?.title || 'Senior Software Developer'}
         </div>
       </div>
 
       {/* Navigation Menu */}
       <nav className="nav-menu">
-        {navigationItems.map((item) => (
+        {navigationItems.map(item => (
           <Link
             key={item.path}
             to={item.path}
             className={`nav-item ${
-              location.pathname === item.path ? "active" : ""
+              location.pathname === item.path ? 'active' : ''
             }`}
             onClick={handleNavClick}
           >

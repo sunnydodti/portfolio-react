@@ -46,12 +46,8 @@ export const Home: React.FC = () => {
       <section className="hero-section">
         <div className="hero-content">
           <div className="hero-main">
-            <h1 className="hero-title">
-              Sunny Dodti
-            </h1>
-            <h2 className="hero-subtitle">
-              Software Developer
-            </h2>
+            <h1 className="hero-title">Sunny Dodti</h1>
+            <h2 className="hero-subtitle">Software Developer</h2>
           </div>
           <p className="hero-description">
             {profile?.profile?.about ||
