@@ -167,9 +167,9 @@ export const logDataStructure = (data: ProfileData): void => {
   }
   
   if (data.work_experience) {
-    console.log('💼 Work Experience Count:', data.work_experience.length);
+    console.log('Work Experience Count:', data.work_experience.length);
     if (data.work_experience.length > 0) {
-      console.log('💼 Work Experience Keys:', Object.keys(data.work_experience[0]));
+      console.log('Work Experience Keys:', Object.keys(data.work_experience[0]));
     }
   }
   
@@ -183,10 +183,10 @@ export const logDataStructure = (data: ProfileData): void => {
   }
   
   if (data.tech_stack) {
-    console.log('🛠️ Tech Stack Categories:', Object.keys(data.tech_stack));
+    console.log('Tech Stack Categories:', Object.keys(data.tech_stack));
     Object.entries(data.tech_stack).forEach(([category, technologies]) => {
       if (Array.isArray(technologies)) {
-        console.log(`  ⚙️ ${category}: ${technologies.length} items`);
+        console.log(`  ${category}: ${technologies.length} items`);
       }
     });
   }

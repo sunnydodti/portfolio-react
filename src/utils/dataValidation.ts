@@ -208,11 +208,11 @@ export const validateProfileData = (data: unknown): ValidationResult => {
   }
   
   if (warnings.length > 0) {
-    console.warn('⚠️ Data validation warnings:', warnings);
+    console.warn('Data validation warnings:', warnings);
   }
 
   if (errors.length === 0 && warnings.length === 0) {
-    console.log('✅ Data validation passed successfully');
+    console.log('Data validation passed successfully');
   }
 
   return { isValid: errors.length === 0, errors, warnings };

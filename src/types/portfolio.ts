@@ -82,11 +82,11 @@ export interface WorkExperience {
   end_date: string; // empty string if current position
   current: boolean;
   description: string;
-  responsibilities: string; // Changed from array to string based on API
-  achievements: string; // Changed from array to string based on API
-  awards: string; // Changed from number[] to string based on API
+  responsibilities: string[]; // Array of responsibility descriptions
+  achievements: string[]; // Array of achievement descriptions
+  awards: number[]; // Array of award IDs
   tech_stack: WorkTechStack;
-  projects: string; // Changed from array to string based on API
+  projects: string[]; // Array of project IDs
 }
 
 /**

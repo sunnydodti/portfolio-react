@@ -236,7 +236,7 @@ export const ComponentDemo: React.FC = () => {
             <LoadingContainer loading={loading} error={error}>
               <Card padding="md">
                 <CardBody>
-                  <h4>Content Loaded Successfully! ✅</h4>
+                  <h4>Content Loaded Successfully!</h4>
                   <p>
                     This content is shown when not loading and no error
                     occurred.

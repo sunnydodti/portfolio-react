@@ -123,7 +123,7 @@ const fetchWithRetry = async (attempt = 1): Promise<ProfileData> => {
       throw new Error('Invalid data format received');
     }
 
-    console.info('✅ Profile data loaded successfully');
+    console.info('Profile data loaded successfully');
     return data;
 
   } catch (error) {
@@ -131,13 +131,13 @@ const fetchWithRetry = async (attempt = 1): Promise<ProfileData> => {
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
 
     if (isLastAttempt) {
-      console.error(`❌ Failed to fetch profile data after ${attempt} attempts:`, errorMessage);
+      console.error(`Failed to fetch profile data after ${attempt} attempts:`, errorMessage);
       throw new Error(`Failed to load profile data: ${errorMessage}`);
     }
 
     // Exponential backoff with jitter
     const delay = API_CONFIG.RETRY_DELAY * Math.pow(2, attempt - 1) + Math.random() * 1000;
-    console.warn(`⚠️ Attempt ${attempt} failed: ${errorMessage}. Retrying in ${Math.round(delay)}ms...`);
+    console.warn(`Attempt ${attempt} failed: ${errorMessage}. Retrying in ${Math.round(delay)}ms...`);
 
     await new Promise(resolve => setTimeout(resolve, delay));
     return fetchWithRetry(attempt + 1);
@@ -165,7 +165,7 @@ export const useProfileData = (): UseProfileDataResult => {
       if (!forceRefresh) {
         const cachedData = getCachedData();
         if (cachedData) {
-          console.info('📦 Using cached profile data');
+          console.info('Using cached profile data');
           setData(cachedData);
           setLoading(false);
           return;
@@ -183,7 +183,7 @@ export const useProfileData = (): UseProfileDataResult => {
 
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Failed to load profile data';
-      console.error('❌ Profile data fetch failed:', errorMessage);
+      console.error('Profile data fetch failed:', errorMessage);
       setError(errorMessage);
       setData(null);
     } finally {
