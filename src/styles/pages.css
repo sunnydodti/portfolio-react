@@ -267,11 +267,11 @@
 }
 
 /* Add spacing between sections without flex */
-.experience-page > section {
+.experience-page>section {
   margin-bottom: var(--spacing-2xl);
 }
 
-.experience-page > section:last-child {
+.experience-page>section:last-child {
   margin-bottom: 0;
 }
 
@@ -664,35 +664,35 @@
     padding: var(--spacing-lg);
     gap: var(--spacing-md);
   }
-  
+
   .section-title {
     font-size: 1.5rem;
   }
-  
+
   .section-subtitle {
     font-size: 1rem;
   }
-  
+
   .summary-stats {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .job-meta {
     flex-direction: column;
     align-items: flex-start;
     gap: var(--spacing-xs);
   }
-  
+
   .details-tabs {
     overflow-x: auto;
     flex-wrap: nowrap;
   }
-  
+
   .tab {
     white-space: nowrap;
     padding: var(--spacing-sm) var(--spacing-md);
   }
-  
+
   .tab-content {
     padding: var(--spacing-lg);
   }
@@ -707,11 +707,11 @@
   padding: var(--spacing-xl);
 }
 
-.projects-page > section {
+.projects-page>section {
   margin-bottom: var(--spacing-2xl);
 }
 
-.projects-page > section:last-child {
+.projects-page>section:last-child {
   margin-bottom: 0;
 }
 
@@ -955,16 +955,16 @@
     flex-direction: column;
     align-items: stretch;
   }
-  
+
   .filter-buttons {
     justify-content: center;
   }
-  
+
   .project-header {
     flex-direction: column;
     gap: var(--spacing-md);
   }
-  
+
   .project-icon {
     align-self: flex-start;
   }
@@ -980,11 +980,11 @@
 }
 
 /* Add spacing between sections without flex */
-.tech-stack-page > section {
+.tech-stack-page>section {
   margin-bottom: var(--spacing-2xl);
 }
 
-.tech-stack-page > section:last-child {
+.tech-stack-page>section:last-child {
   margin-bottom: 0;
 }
 
@@ -1129,7 +1129,7 @@
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: var(--spacing-sm);
   }
-  
+
   .filter-buttons {
     justify-content: center;
   }
@@ -1145,11 +1145,11 @@
 }
 
 /* Add spacing between sections without flex */
-.contact-page > section {
+.contact-page>section {
   margin-bottom: var(--spacing-2xl);
 }
 
-.contact-page > section:last-child {
+.contact-page>section:last-child {
   margin-bottom: 0;
 }
 
@@ -1409,33 +1409,34 @@
 
 /* Contact Page Mobile Responsive */
 @media (max-width: 767px) {
+
   .contact-cards-grid,
   .social-links-grid {
     grid-template-columns: 1fr;
     gap: var(--spacing-md);
   }
-  
+
   .contact-card-content {
     flex-direction: column;
     text-align: center;
     gap: var(--spacing-sm);
   }
-  
+
   .highlight-item {
     flex-direction: column;
     align-items: flex-start;
     gap: var(--spacing-xs);
   }
-  
+
   .highlight-value {
     text-align: left;
   }
-  
+
   .cta-actions {
     flex-direction: column;
     width: 100%;
   }
-  
+
   .cta-button {
     width: 100%;
     text-align: center;
