@@ -2,16 +2,8 @@
    Hooks Index - Export all custom hooks
    ========================================================================== */
 
-// Portfolio context hooks
-export {
-  usePortfolio,
-  useTheme,
-  useCurrentPage,
-  useSidebar,
-  useProfile,
-  useLoadingState,
-  usePortfolioState,
-} from './usePortfolio';
+// Portfolio context hook
+export { usePortfolio } from '../context/PortfolioProvider';
 
 // Data fetching hooks
 export {
