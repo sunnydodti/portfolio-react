@@ -7,22 +7,19 @@
     <title>Sunny Dodti | Portfolio</title>
     <base href="/portfolio-react/" />
     
-    <!-- GitHub Pages SPA redirect handler - only runs on github.io -->
+    <!-- GitHub Pages SPA redirect handler - only for github.io -->
     <script type="text/javascript">
-      if (window.location.hostname.includes('github.io')) {
-        // Single Page Apps for GitHub Pages
+      // Only handle redirects on GitHub Pages
+      if (window.location.hostname.includes('github.io') && window.location.search[1] === '/') {
+        // Single Page Apps for GitHub Pages - redirect handler
         // MIT License
         // https://github.com/rafgraph/spa-github-pages
-        (function(l) {
-          if (l.search[1] === '/' ) {
-            var decoded = l.search.slice(1).split('&').map(function(s) { 
-              return s.replace(/~and~/g, '&')
-            }).join('?');
-            window.history.replaceState(null, null,
-                l.pathname.slice(0, -1) + decoded + l.hash
-            );
-          }
-        }(window.location))
+        var decoded = window.location.search.slice(1).split('&').map(function(s) { 
+          return s.replace(/~and~/g, '&')
+        }).join('?');
+        window.history.replaceState(null, null,
+            window.location.pathname.slice(0, -1) + decoded + window.location.hash
+        );
       }
     </script>
   </head>
