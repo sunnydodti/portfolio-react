@@ -30,10 +30,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
       {/* Main Content Area */}
       <main className="main-content">
         {/* Top Navigation (mobile header) */}
-        <Header
-          onMenuToggle={handleSidebarToggle}
-          showMenuButton={!state.sidebarOpen}
-        />
+        <Header onMenuToggle={handleSidebarToggle} showMenuButton={true} />
 
         {/* Page Content */}
         <div className="page-content">{children}</div>
@@ -42,7 +39,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
       {/* Mobile backdrop overlay */}
       {state.sidebarOpen && (
         <div
-          className="sidebar-backdrop"
+          className="sidebar-backdrop active"
           onClick={handleSidebarClose}
           onKeyDown={e => {
             if (e.key === 'Escape') {

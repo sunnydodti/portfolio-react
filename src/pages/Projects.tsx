@@ -197,7 +197,7 @@ export const Projects: React.FC = () => {
       <section className="hero-section">
         <div className="hero-content">
           <div className="hero-main">
-            <h1 className="hero-title">Projects Portfolio</h1>
+            <h1 className="hero-title">Projects</h1>
             <h2 className="hero-subtitle">Building Innovative Solutions</h2>
           </div>
           <p className="hero-description">
