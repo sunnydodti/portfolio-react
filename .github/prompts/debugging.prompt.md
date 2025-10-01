@@ -24,7 +24,7 @@ I'm encountering an issue in the React portfolio that needs diagnosis and resolu
 **Project Constraints**:
 
 - **TypeScript Strict Mode**: Must maintain strict typing (no `any` types)
-- **Design Fidelity**: Must match wireframes in `/context/wireframes/`
+- **Design Fidelity**: Must match wireframes in `/project-context/wireframes/`
 - **Accessibility**: Must preserve WCAG 2.1 AA compliance
 - **Performance**: Must maintain Lighthouse score 95+
 - **Component Patterns**: Must follow our established patterns

@@ -3,7 +3,7 @@
    ========================================================================== */
 
 // Portfolio context hook
-export { usePortfolio } from '../context/PortfolioProvider';
+export { usePortfolio } from '../context';
 
 // Data fetching hooks
 export {

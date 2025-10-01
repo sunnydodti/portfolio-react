@@ -46,7 +46,7 @@ This document provides React-specific guidelines for building Sunny Dodti's port
 
 **IMPORTANT**: The wireframes are structural references only, NOT the final design:
 
-- **Wireframes** (`/context/wireframes/`): Use for layout structure, component placement, content organization
+- **Wireframes** (`/project-context/wireframes/`): Use for layout structure, component placement, content organization
 - **Actual Design** (`/data/styles/pallet-demo-dark-light.html`): Follow this beautiful palette for colors, styling, typography, shadows, gradients
 
 ### Visual Design Priority
@@ -54,7 +54,7 @@ This document provides React-specific guidelines for building Sunny Dodti's port
 **FOCUS: CREATE A VISUALLY STUNNING PORTFOLIO**
 
 1. **Gorgeous Color Palette**: Follow the beautiful blue theme from palette demo with rich gradients
-2. **Sophisticated Visual Effects**: Rich shadows, elegant gradients, smooth animations, micro-interactions  
+2. **Sophisticated Visual Effects**: Rich shadows, elegant gradients, smooth animations, micro-interactions
 3. **Layout Structure**: Use wireframes as building blocks for component organization (structure only)
 4. **Beautiful Typography**: Inter font family with elegant hierarchy, proper spacing, and visual rhythm
 5. **Interactive Polish**: Hover effects, button animations, loading states, visual feedback

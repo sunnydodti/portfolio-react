@@ -9,7 +9,7 @@ I need to implement data fetching and TypeScript types for portfolio content.
 **Data Sources**:
 
 - **Primary**: Remote JSON endpoint from main repository
-- **Fallback**: Local context data in `/context/data/default.json`
+- **Fallback**: Local context data in `/project-context/data/default.json`
 - **Reference**: Profile data structure and samples
 
 **Data Fetching Requirements**:
@@ -23,7 +23,7 @@ I need to implement data fetching and TypeScript types for portfolio content.
 **TypeScript Requirements**:
 
 - **Strict TypeScript**: No `any` types allowed
-- Generate types from `/context/data/default.json` structure
+- Generate types from `/project-context/data/default.json` structure
 - Proper interfaces for all data structures
 - Optional/required field specifications
 - Nested object and array types

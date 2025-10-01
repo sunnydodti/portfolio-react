@@ -52,7 +52,7 @@ Context/Local Fallback (for development)
 ### Visual Identity - **STUNNING VISUAL DESIGN**
 
 - **Theme**: Beautiful dark-first design with rich gradients and elegant shadows
-- **Color Palette**: Follow gorgeous `/data/styles/pallet-demo-dark-light.html` 
+- **Color Palette**: Follow gorgeous `/data/styles/pallet-demo-dark-light.html`
 - **Visual Effects**: Rich gradients, layered shadows, smooth animations, micro-interactions
 - **Layout**: Modern navigation + scrollable content with smooth transitions
 - **Typography**: Inter font family with elegant hierarchy and visual rhythm
@@ -151,7 +151,7 @@ interface ProfileData {
 
 ### Creating Components
 
-1. Reference wireframe structure in `/context/wireframes/` (layout only)
+1. Reference wireframe structure in `/project-context/wireframes/` (layout only)
 2. Define TypeScript interfaces for props
 3. Implement using CSS variables and semantic classes
 4. Add accessibility attributes
@@ -205,7 +205,7 @@ interface ProfileData {
 ### Data Sources
 
 - **Primary**: `https://raw.githubusercontent.com/sunnydodti/sunnydodti/refs/heads/dev/data/profiles/default.json`
-- **Fallback**: `/context/data/default.json`
+- **Fallback**: `/project-context/data/default.json`
 - **Styles**: `/context/styles/style.json`
 
 ### Related Repositories
@@ -220,10 +220,10 @@ interface ProfileData {
 
 ### When You Need To...
 
-- **Layout structure**: Check `/context/wireframes/[page].html` for basic structure
+- **Layout structure**: Check `/project-context/wireframes/[page].html` for basic structure
 - **Beautiful styling**: Follow `/data/styles/pallet-demo-dark-light.html` for colors & design
 - **Style a component**: Reference `/context/styles/style.json`
-- **Type data structures**: Use `/context/data/default.json` as reference
+- **Type data structures**: Use `/project-context/data/default.json` as reference
 - **Debug responsiveness**: Test mobile/tablet/desktop breakpoints
 - **Check accessibility**: Run axe-core tests and keyboard navigation
 - **Optimize performance**: Use React DevTools Profiler

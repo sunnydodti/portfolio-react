@@ -9,8 +9,8 @@ I need to implement styling that matches our design system and wireframes.
 **Design System Reference**:
 
 - **IMPORTANT**: Follow the beautiful design from `/data/styles/pallet-demo-dark-light.html`
-- Design tokens in `/context/data/styles/style.json`
-- Wireframes in `/context/wireframes/` for layout structure only (NOT colors/styling)
+- Design tokens in `/project-context/data/styles/style.json`
+- Wireframes in `/project-context/wireframes/` for layout structure only (NOT colors/styling)
 
 **Styling Requirements**:
 
@@ -26,7 +26,7 @@ I need to implement styling that matches our design system and wireframes.
 **Visual Excellence Requirements**:
 
 - **Scrollable Design**: Allow natural scrolling with beautiful section transitions
-- **Rich Visual Elements**: Cards with depth, gradients, and interactive hover states  
+- **Rich Visual Elements**: Cards with depth, gradients, and interactive hover states
 - **Sophisticated Animations**: Smooth page loads, scroll effects, and micro-interactions
 - **Professional Polish**: Button hover effects, loading states, visual feedback
 - **Modern Layout**: Contemporary design patterns with visual hierarchy

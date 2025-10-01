@@ -19,11 +19,11 @@ I'm working on a React TypeScript portfolio implementation for Sunny Dodti. This
 
 **Key Requirements**:
 1. **CREATE VISUALLY GORGEOUS DESIGN** - Focus on stunning visual appeal and modern aesthetics
-2. Use wireframes in `/context/wireframes/` as layout structure reference only (NOT exact design - just building blocks)
+2. Use wireframes in `/project-context/wireframes/` as layout structure reference only (NOT exact design - just building blocks)
 3. Follow the beautiful color palette from `/data/styles/pallet-demo-dark-light.html` for actual styling
 4. Add rich visual elements: gradients, shadows, animations, micro-interactions
 5. Allow natural scrolling with smooth section transitions and animations
-6. Use design tokens from `/context/data/styles/style.json`
+6. Use design tokens from `/project-context/data/styles/style.json`
 7. Implement TypeScript strictly (no `any` types)
 8. Maintain CSS variables and semantic class approach
 9. Ensure responsive design (mobile-first)
@@ -38,13 +38,14 @@ Please help me with [SPECIFIC_TASK] while adhering to these standards.
 ## 🏗️ Component Development Prompts
 
 ### Creating New Components
+
 ```
 I need to create a new React component based on the wireframe reference. Here are the details:
 
-**Wireframe Reference**: `/context/wireframes/[PAGE_NAME].html` - section `[CSS_SELECTOR]`
+**Wireframe Reference**: `/project-context/wireframes/[PAGE_NAME].html` - section `[CSS_SELECTOR]`
 **Component Purpose**: [DESCRIPTION]
 **Required Props**: [PROP_LIST]
-**Styling Requirements**: 
+**Styling Requirements**:
 - Use CSS variables and semantic classes following our design system
 - Dark theme colors from style tokens
 - Responsive behavior: [BREAKPOINT_REQUIREMENTS]
@@ -54,6 +55,7 @@ Please create a TypeScript React component that matches the wireframe exactly, i
 ```
 
 ### Refactoring Components
+
 ```
 I need to refactor an existing component to better match our standards:
 
@@ -75,10 +77,11 @@ Please refactor this component while preserving all current features.
 ## 🎨 Styling & Design Prompts
 
 ### Implementing Design System
+
 ```
 I need to implement styling that matches our design system:
 
-**Design Tokens**: Use colors and spacing from `/context/data/styles/style.json`
+**Design Tokens**: Use colors and spacing from `/project-context/data/styles/style.json`
 **Wireframe Section**: [SPECIFIC_WIREFRAME_AREA]
 **Requirements**:
 - Dark theme primary (#1a1a1a background, #2a2a2a surfaces)
@@ -91,13 +94,14 @@ Create CSS classes with variables that implement this design system correctly.
 ```
 
 ### Responsive Design
+
 ```
 I need to make this component responsive following our mobile-first approach:
 
 **Component**: [COMPONENT_NAME]
-**Breakpoints**: 
+**Breakpoints**:
 - Mobile (<768px): [MOBILE_BEHAVIOR]
-- Tablet (768-1023px): [TABLET_BEHAVIOR]  
+- Tablet (768-1023px): [TABLET_BEHAVIOR]
 - Desktop (1024px+): [DESKTOP_BEHAVIOR]
 
 **Layout Requirements**:
@@ -113,10 +117,11 @@ Please implement responsive classes using CSS media queries with our breakpoint 
 ## 📊 Data Integration Prompts
 
 ### Data Fetching
+
 ```
 I need to implement data fetching for portfolio content:
 
-**Data Source**: Main repository endpoint or `/context/data/default.json` fallback
+**Data Source**: Main repository endpoint or `/project-context/data/default.json` fallback
 **Data Shape**: Based on TypeScript interfaces in `/src/types/portfolio.ts`
 **Requirements**:
 - Fetch from remote JSON endpoint primarily
@@ -129,10 +134,11 @@ Please create a custom hook that handles this data fetching pattern.
 ```
 
 ### Type Definitions
+
 ```
 I need to create/update TypeScript types based on our data structure:
 
-**Data Reference**: `/context/data/default.json`
+**Data Reference**: `/project-context/data/default.json`
 **Requirements**:
 - Strict TypeScript interfaces
 - No `any` types allowed
@@ -149,6 +155,7 @@ Generate complete TypeScript type definitions from the JSON structure.
 ## 🚀 Performance & Optimization Prompts
 
 ### Performance Optimization
+
 ```
 I need to optimize this React component/feature for performance:
 
@@ -166,11 +173,12 @@ Please optimize while maintaining all functionality and accessibility features.
 ```
 
 ### Bundle Analysis
+
 ```
 Help me analyze and optimize the bundle size:
 
 **Current Bundle**: [SIZE_INFO]
-**Goals**: 
+**Goals**:
 - Reduce initial bundle size
 - Implement proper code splitting
 - Optimize dependencies
@@ -189,6 +197,7 @@ Provide optimization recommendations with implementation details.
 ## ♿ Accessibility Prompts
 
 ### Accessibility Implementation
+
 ```
 I need to ensure this component meets WCAG 2.1 AA standards:
 
@@ -205,6 +214,7 @@ Please review and enhance the accessibility features while maintaining the visua
 ```
 
 ### Accessibility Testing
+
 ```
 Help me create accessibility tests for this component:
 
@@ -224,6 +234,7 @@ Provide test code using React Testing Library and axe-core.
 ## 🧪 Testing Prompts
 
 ### Unit Testing
+
 ```
 I need comprehensive tests for this React component:
 
@@ -242,6 +253,7 @@ Please create thorough test suites with proper mocking and assertions.
 ```
 
 ### Integration Testing
+
 ```
 I need integration tests for this feature:
 
@@ -261,6 +273,7 @@ Create integration tests that validate the complete user workflows.
 ## 🔧 Development Workflow Prompts
 
 ### Setup & Configuration
+
 ```
 I need help setting up/configuring this development tool:
 
@@ -282,6 +295,7 @@ Please provide complete configuration with explanations.
 ```
 
 ### Debugging Issues
+
 ```
 I'm encountering this issue in the React portfolio:
 
@@ -305,6 +319,7 @@ Please help diagnose and fix this issue.
 ## 📚 Documentation Prompts
 
 ### Code Documentation
+
 ```
 I need to document this component/feature:
 
@@ -325,6 +340,7 @@ Create comprehensive documentation following our project standards.
 ## 🔄 Deployment Prompts
 
 ### Build & Deployment
+
 ```
 I need help with deployment configuration:
 

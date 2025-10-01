@@ -6,7 +6,7 @@ mode: agent
 
 I need to create a new React component based on the wireframe reference.
 
-**Wireframe Reference**: Check `/context/wireframes/[page].html` for the specific section
+**Wireframe Reference**: Check `/project-context/wireframes/[page].html` for the specific section
 **Component Requirements**:
 
 - **CREATE VISUALLY STUNNING COMPONENTS**: Focus on beautiful, modern design
@@ -18,7 +18,7 @@ I need to create a new React component based on the wireframe reference.
 - Allow natural scrolling with smooth section transitions
 - Implement sophisticated responsive behavior
 - Include accessibility features (ARIA labels, keyboard navigation)
-- Use design tokens from `/context/data/styles/style.json`
+- Use design tokens from `/project-context/data/styles/style.json`
 
 **Visual Excellence Guidelines**:
 

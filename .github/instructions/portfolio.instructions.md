@@ -16,33 +16,39 @@ This### Development Approach
 ## 🎨 Visual Design Excellence Guidelines
 
 ### Create Stunning Visual Appeal
+
 The portfolio should be **visually gorgeous** and professional:
 
 #### Hero Section
+
 - **Dramatic Background**: Rich gradients, subtle patterns, or animated backgrounds
 - **Typography Hierarchy**: Large, bold, elegant typography with proper spacing
 - **Call-to-Action**: Beautifully designed buttons with hover animations
 - **Professional Photo**: High-quality avatar with elegant framing/borders
 
 #### Content Sections
+
 - **Rich Cards**: Beautiful card designs with shadows, gradients, and hover effects
 - **Visual Hierarchy**: Clear typography scales, proper spacing, visual breathing room
 - **Interactive Elements**: Smooth hover states, click animations, visual feedback
 - **Section Dividers**: Elegant transitions between sections with visual separators
 
 #### Technology & Skills
+
 - **Beautiful Icons**: High-quality icons with consistent styling
 - **Progress Indicators**: Visually appealing skill bars or circular progress indicators
 - **Interactive Badges**: Hover effects, animations, and visual grouping
 - **Color Coordination**: Consistent color usage that ties into the main palette
 
 #### Projects Showcase
+
 - **Project Cards**: Rich, detailed cards with images, descriptions, and tech stacks
 - **Image Galleries**: Beautiful project screenshots with overlay effects
 - **Interactive Filters**: Smooth category filtering with animations
 - **Detailed Views**: Modal or expansion states with rich content presentation
 
 #### Visual Effects & Polish
+
 - **Smooth Animations**: Page load animations, scroll-triggered effects, hover states
 - **Gradient Overlays**: Rich background gradients that enhance readability
 - **Shadow Depth**: Layered shadows that create visual depth and hierarchy
@@ -59,7 +65,7 @@ The portfolio should be **visually gorgeous** and professional:
 - **Technology Stack**: React 18+, TypeScript, Vanilla CSS with CSS Variables, Vite
 - **Target Deployment**: github pages/pages.dev (primary domain: sunnydodti.com)
 - **Data Source**: Fetches profile data from main repository's JSON endpoints
-- **Layout Reference**: `/context/wireframes/` (structural building blocks - not exact design)
+- **Layout Reference**: `/project-context/wireframes/` (structural building blocks - not exact design)
 - **Design Reference**: `/data/styles/pallet-demo-dark-light.html` (beautiful color palette and styling)
 
 ### Connection to Main Portfolio System
@@ -114,7 +120,7 @@ sunnydodti (main repo)
 - **Stunning Visual Design**: Create a visually gorgeous portfolio using `/data/styles/pallet-demo-dark-light.html`
 - **Modern Scrollable Layout**: Allow natural scrolling with beautiful section transitions and visual hierarchy
 - **Rich Visual Elements**: Use gradients, shadows, animations, and sophisticated typography
-- **Wireframes as Structure**: Use `/context/wireframes/` as layout building blocks (NOT exact design)
+- **Wireframes as Structure**: Use `/project-context/wireframes/` as layout building blocks (NOT exact design)
 - **Dark Theme First**: Default dark theme with smooth light/dark toggle animations
 - **Elegant Navigation**: Beautiful modern navigation (sidebar, top nav, or innovative patterns)
 - **Visual Polish**: Professional micro-interactions, hover effects, and smooth animations
@@ -126,7 +132,7 @@ sunnydodti (main repo)
 
 ### Wireframe Usage (Structure Only)
 
-The wireframes in `/context/wireframes/` are **structural references only**:
+The wireframes in `/project-context/wireframes/` are **structural references only**:
 
 - ✅ **Use for**: Layout structure, component placement, content hierarchy
 - ✅ **Use for**: Section organization (Hero, Experience, Projects, etc.)
@@ -295,12 +301,12 @@ const useProfileData = () => {
 
 ```bash
 # Required context files (copied from main repo)
-/context/wireframes/home.html           # Home page wireframe reference
-/context/wireframes/experience.html     # Experience page wireframe
-/context/wireframes/projects.html       # Projects page wireframe
-/context/wireframes/tech_stack.html     # Tech stack wireframe
-/context/wireframes/contact.html        # Contact page wireframe
-/context/data/default.json             # Profile data copy (development)
+/project-context/wireframes/home.html           # Home page wireframe reference
+/project-context/wireframes/experience.html     # Experience page wireframe
+/project-context/wireframes/projects.html       # Projects page wireframe
+/project-context/wireframes/tech_stack.html     # Tech stack wireframe
+/project-context/wireframes/contact.html        # Contact page wireframe
+/project-context/data/default.json             # Profile data copy (development)
 /context/styles/style.json             # Design system reference
 ```
 
@@ -388,7 +394,7 @@ const useProfileData = () => {
 
 - **Profile Data**: `https://raw.githubusercontent.com/sunnydodti/sunnydodti/refs/heads/dev/data/profiles/default.json`
 - **Style System**: Reference main repo's `/data/styles/style.json`
-- **Wireframes**: Local copies in `/context/wireframes/`
+- **Wireframes**: Local copies in `/project-context/wireframes/`
 - **Assets**: Shared images and icons from main repository
 
 ### Cross-Portfolio Consistency
@@ -418,7 +424,7 @@ All development context files are stored in `/context/` directory:
 4. **Add rich interactions** - hover effects, animations, micro-interactions, visual feedback
 5. **Allow natural scrolling** - smooth section transitions and reveal animations
 6. **Use TypeScript strictly** - no `any` types allowed
-7. **Follow accessibility guidelines** - proper ARIA labels and keyboard navigation  
+7. **Follow accessibility guidelines** - proper ARIA labels and keyboard navigation
 8. **Test responsive beauty** - ensure visual appeal is maintained at all breakpoints
 9. **Maintain performance** - lazy loading, code splitting, optimized builds
 10. **Document component props** and usage patterns
@@ -428,8 +434,9 @@ All development context files are stored in `/context/` directory:
 **The #1 Priority**: Create a **visually stunning, modern portfolio** that showcases professional design skills alongside development expertise. The current basic design needs to be transformed into something genuinely impressive and beautiful.
 
 **Visual Goals**:
+
 - Rich, sophisticated color usage with elegant gradients
-- Professional depth through layered shadows and visual hierarchy  
+- Professional depth through layered shadows and visual hierarchy
 - Smooth, polished animations and micro-interactions
 - Modern, clean layouts with proper spacing and visual rhythm
 - Interactive elements that provide satisfying visual feedback

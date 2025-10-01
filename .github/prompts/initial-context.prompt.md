@@ -14,9 +14,9 @@ I'm working on a React TypeScript portfolio implementation for Sunny Dodti. This
 
 **Key Requirements**:
 
-1. Use wireframes in `/context/wireframes/` for layout structure only (NOT exact styling)
+1. Use wireframes in `/project-context/wireframes/` for layout structure only (NOT exact styling)
 2. Follow beautiful design from `/data/styles/pallet-demo-dark-light.html`
-3. Use design tokens from `/context/data/styles/style.json`
+3. Use design tokens from `/project-context/data/styles/style.json`
 4. Implement TypeScript strictly (no `any` types)
 5. Maintain CSS variables and semantic class approach
 6. Ensure responsive design (mobile-first)

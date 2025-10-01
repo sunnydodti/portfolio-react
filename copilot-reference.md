@@ -34,7 +34,7 @@ _Last Updated: September 27, 2025_
 
 **WIREFRAMES vs ACTUAL DESIGN - MUST REMEMBER:**
 
-1. **Wireframes** (`/context/wireframes/`) = **STRUCTURE ONLY**
+1. **Wireframes** (`/project-context/wireframes/`) = **STRUCTURE ONLY**
    - ✅ Use for: Layout, component placement, content hierarchy
    - ❌ DO NOT use for: Colors, typography, visual styling
 
@@ -220,7 +220,7 @@ Section Components (Page-specific):
 
 ### 1. Home Page (`/`)
 
-**Wireframe**: `/context/wireframes/home.html`
+**Wireframe**: `/project-context/wireframes/home.html`
 **Components**:
 
 - Sidebar with profile + navigation
@@ -231,7 +231,7 @@ Section Components (Page-specific):
 
 ### 2. Experience Page (`/experience`)
 
-**Wireframe**: `/context/wireframes/experience.html`
+**Wireframe**: `/project-context/wireframes/experience.html`
 **Components**:
 
 - Work experience timeline
@@ -241,7 +241,7 @@ Section Components (Page-specific):
 
 ### 3. Projects Page (`/projects`)
 
-**Wireframe**: `/context/wireframes/projects.html`
+**Wireframe**: `/project-context/wireframes/projects.html`
 **Components**:
 
 - Featured projects grid (2x2)
@@ -252,7 +252,7 @@ Section Components (Page-specific):
 
 ### 4. Tech Stack Page (`/tech-stack`)
 
-**Wireframe**: `/context/wireframes/tech_stack.html`
+**Wireframe**: `/project-context/wireframes/tech_stack.html`
 **Components**:
 
 - Category tabs (Frontend, Backend, Database, DevOps, Cloud)
@@ -262,7 +262,7 @@ Section Components (Page-specific):
 
 ### 5. Contact Page (`/contact`)
 
-**Wireframe**: `/context/wireframes/contact.html`
+**Wireframe**: `/project-context/wireframes/contact.html`
 **Components**:
 
 - "Let's Connect" hero
@@ -275,13 +275,13 @@ Section Components (Page-specific):
 ### Phase 1: Foundation (NEXT)
 
 1. ✅ **Design System Setup**
-   - CSS variables from `/context/data/styles/style.json`
+   - CSS variables from `/project-context/data/styles/style.json`
    - Beautiful styling from palette demo
    - Responsive breakpoints
    - Typography system
 
 2. ✅ **Core Types**
-   - TypeScript interfaces from `/context/data/default.json`
+   - TypeScript interfaces from `/project-context/data/default.json`
    - Strict typing (no `any`)
    - API response types
 
@@ -360,10 +360,10 @@ Section Components (Page-specific):
 
 ### Context Files Available
 
-- ✅ Wireframes: `/context/wireframes/*.html`
-- ✅ Profile Data: `/context/data/profiles/default.json`
-- ✅ Design Tokens: `/context/data/styles/style.json`
-- ✅ Palette Demo: `/context/data/styles/pallet-demo-dark-light.html`
+- ✅ Wireframes: `/project-context/wireframes/*.html`
+- ✅ Profile Data: `/project-context/data/profiles/default.json`
+- ✅ Design Tokens: `/project-context/data/styles/style.json`
+- ✅ Palette Demo: `/project-context/data/styles/pallet-demo-dark-light.html`
 
 ### STEP 1: STYLES ARCHITECTURE - ✅ COMPLETE
 
