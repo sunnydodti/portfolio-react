@@ -317,7 +317,7 @@ body {
 }
 
 .page-title {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--text-primary);
   margin: 0;
@@ -383,7 +383,7 @@ body {
   .sidebar {
     max-width: 280px;
   }
-  
+
   .page-container {
     padding: var(--spacing-md);
   }
@@ -396,7 +396,7 @@ body {
   }
 
   .page-title {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
 
   .header {
@@ -453,11 +453,12 @@ body {
     max-width: 1400px;
     padding: var(--spacing-2xl) var(--spacing-3xl);
   }
-  
+
   .sidebar {
-    width: 18rem; /* Slightly wider on very large screens */
+    width: 18rem;
+    /* Slightly wider on very large screens */
   }
-  
+
   .main-content {
     margin-left: 18rem;
   }

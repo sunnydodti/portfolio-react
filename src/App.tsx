@@ -9,10 +9,20 @@ import { Layout } from './components/layout';
 import { Home, Experience, Projects, TechStack, Contact } from './pages';
 import { ComponentDemo } from './pages/ComponentDemo';
 
+// Get basename from the base href element (works with sed replacement)
+const getBasename = () => {
+  const baseElement = document.querySelector('base');
+  if (baseElement) {
+    const href = baseElement.getAttribute('href') || '/';
+    return href === '/' ? undefined : href.replace(/\/$/, '');
+  }
+  return undefined;
+};
+
 function App() {
   return (
     <PortfolioProvider>
-      <Router>
+      <Router basename={getBasename()}>
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
