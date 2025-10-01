@@ -6,6 +6,9 @@ import { resolve } from 'path';
 export default defineConfig({
   plugins: [react()],
   
+  // Base URL for GitHub Pages
+  base: '/portfolio-react/',
+  
   // Path aliases for cleaner imports
   resolve: {
     alias: {
