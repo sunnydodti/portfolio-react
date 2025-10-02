@@ -78,7 +78,7 @@ body {
 @media (max-width: 1023px) {
   :root {
     --portfolio-sidebar-width: 0;
-    --portfolio-content-padding: var(--spacing-md);
+    --portfolio-content-padding: var(--padding-default);
   }
 }
 

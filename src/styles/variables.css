@@ -51,6 +51,10 @@
   --spacing-xl: 2rem;
   --spacing-2xl: 3rem;
 
+  /* Responsive Padding System */
+  --padding-default: 1rem;
+  /* Mobile default (16px) */
+
   /* Border Radius */
   --border-radius-sm: 0.25rem;
   --border-radius-md: 0.5rem;

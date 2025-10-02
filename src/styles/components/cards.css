@@ -13,9 +13,6 @@
 }
 
 /* Card Variants */
-.card--default {
-  /* Default variant - base styles are sufficient */
-}
 
 .card--bordered {
   border-width: 2px;
@@ -43,7 +40,7 @@
 }
 
 .card--padding-md {
-  padding: var(--spacing-md);
+  padding: var(--padding-default);
 }
 
 .card--padding-lg {
@@ -212,7 +209,7 @@
   background-color: var(--bg-raised);
   border: 1px solid var(--border-primary);
   border-radius: var(--border-radius-lg);
-  padding: var(--spacing-md);
+  padding: var(--padding-default);
   /* margin-bottom: var(--spacing-md); */
   transition: all 0.3s ease;
 }
@@ -257,7 +254,7 @@
   background-color: var(--bg-raised);
   border: 1px solid var(--border-primary);
   border-radius: var(--border-radius-md);
-  padding: var(--spacing-md);
+  padding: var(--padding-default);
   text-align: center;
   transition: all 0.3s ease;
 }
@@ -326,7 +323,7 @@
   }
 
   .card--padding-lg {
-    padding: var(--spacing-md);
+    padding: var(--padding-default);
   }
 
   .project-card__image {
