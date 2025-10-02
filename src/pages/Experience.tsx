@@ -61,149 +61,151 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
       hover={true}
       className="experience-card"
     >
-      <button
-        className="experience-header"
-        onClick={onToggle}
-        onKeyDown={e => e.key === 'Enter' && onToggle()}
-        aria-expanded={isExpanded}
-      >
-        <div className="company-logo">
-          <span>{experience.company.substring(0, 2).toUpperCase()}</span>
-        </div>
+      {/* Compact Header - Always Visible */}
+      <div className="experience-header">
+        <div className="experience-header-main">
+          <div className="company-logo">
+            <span>{experience.company.substring(0, 2).toUpperCase()}</span>
+          </div>
 
-        <div className="experience-info">
-          <h3 className="job-title">{experience.position}</h3>
-          <div className="company-name">{experience.company}</div>
-          <div className="job-meta">
-            <span className="job-location">{experience.location}</span>
-            <span className="job-duration">
-              {formatDate(experience.start_date)} -{' '}
-              {formatDate(experience.end_date)}
-              {experience.current && <Badge variant="success">Current</Badge>}
-            </span>
-            <span className="duration-badge">
-              {getDuration(experience.start_date, experience.end_date)}
-            </span>
+          <div className="experience-info">
+            <h3 className="job-title">{experience.position}</h3>
+            <div className="company-name">{experience.company}</div>
+            <div className="job-meta">
+              <span className="job-location">{experience.location}</span>
+              <span className="job-duration">
+                {formatDate(experience.start_date)} -{' '}
+                {formatDate(experience.end_date)}
+                {experience.current && (
+                  <Badge variant="success" className="current-badge">
+                    Current
+                  </Badge>
+                )}
+              </span>
+              <Badge variant="secondary" className="duration-badge">
+                {getDuration(experience.start_date, experience.end_date)}
+              </Badge>
+            </div>
           </div>
         </div>
 
-        <div className={`expand-icon ${isExpanded ? 'expanded' : ''}`}>
-          {isExpanded ? '−' : '+'}
-        </div>
-      </button>
+        <button
+          className={`expand-toggle ${isExpanded ? 'expanded' : ''}`}
+          onClick={onToggle}
+          onKeyDown={e => e.key === 'Enter' && onToggle()}
+          aria-expanded={isExpanded}
+          aria-label={`${isExpanded ? 'Collapse' : 'Expand'} details for ${experience.position}`}
+        >
+          <span className="expand-icon">{isExpanded ? '−' : '+'}</span>
+        </button>
+      </div>
 
+      {/* Expandable Details */}
       {isExpanded && (
         <div className="experience-details">
+          {/* Tab Navigation */}
           <div className="details-tabs">
-            <button
-              className={`tab ${activeTab === 'overview' ? 'active' : ''}`}
-              onClick={() => setActiveTab('overview')}
-            >
-              Overview
-            </button>
-            <button
-              className={`tab ${activeTab === 'responsibilities' ? 'active' : ''}`}
-              onClick={() => setActiveTab('responsibilities')}
-            >
-              Key Responsibilities
-            </button>
-            <button
-              className={`tab ${activeTab === 'technologies' ? 'active' : ''}`}
-              onClick={() => setActiveTab('technologies')}
-            >
-              Tech Stack
-            </button>
-            {experience.achievements && experience.achievements.length > 0 && (
+            {[
+              { key: 'overview', label: 'Overview' },
+              { key: 'responsibilities', label: 'Responsibilities' },
+              { key: 'technologies', label: 'Tech Stack' },
+              ...(experience.achievements && experience.achievements.length > 0
+                ? [{ key: 'achievements', label: 'Achievements' }]
+                : []),
+            ].map(tab => (
               <button
-                className={`tab ${activeTab === 'achievements' ? 'active' : ''}`}
-                onClick={() => setActiveTab('achievements')}
+                key={tab.key}
+                className={`tab ${activeTab === tab.key ? 'active' : ''}`}
+                onClick={() => setActiveTab(tab.key as TabType)}
               >
-                Achievements
+                {tab.label}
               </button>
-            )}
+            ))}
           </div>
 
+          {/* Tab Content */}
           <div className="tab-content">
             {activeTab === 'overview' && (
               <div className="overview-content">
-                <p>
+                <p className="overview-description">
                   {experience.description ||
                     'Building innovative solutions and contributing to impactful projects.'}
                 </p>
 
-                <div className="overview-section">
-                  <h4 className="overview-section-title">
-                    Key Responsibilities
-                  </h4>
-                  <ul className="overview-list">
-                    {responsibilities
-                      .slice(0, 3)
-                      .map((responsibility, index) => (
-                        <li key={index} className="overview-item">
-                          {responsibility}
+                {/* Key Highlights Grid */}
+                <div className="overview-grid">
+                  <div className="overview-section">
+                    <h4 className="overview-section-title">
+                      Key Responsibilities
+                    </h4>
+                    <ul className="overview-list">
+                      {responsibilities
+                        .slice(0, 3)
+                        .map((responsibility, index) => (
+                          <li key={index} className="overview-item">
+                            {responsibility}
+                          </li>
+                        ))}
+                      {responsibilities.length > 3 && (
+                        <li className="overview-item overview-more">
+                          +{responsibilities.length - 3} more
                         </li>
-                      ))}
-                  </ul>
-                </div>
+                      )}
+                    </ul>
+                  </div>
 
-                <div className="overview-section">
-                  <h4 className="overview-section-title">
-                    Primary Technologies
-                  </h4>
-                  <div className="overview-tech-preview">
-                    {Object.entries(experience.tech_stack).map(
-                      ([category, technologies]) => {
-                        const hasTechnologies =
-                          Array.isArray(technologies) &&
-                          technologies.length > 0;
+                  <div className="overview-section">
+                    <h4 className="overview-section-title">Technologies</h4>
+                    <div className="overview-tech-preview">
+                      {Object.entries(experience.tech_stack)
+                        .slice(0, 2)
+                        .map(([category, technologies]) => {
+                          const hasTechnologies =
+                            Array.isArray(technologies) &&
+                            technologies.length > 0;
 
-                        return hasTechnologies ? (
-                          <div
-                            key={category}
-                            className="overview-tech-category"
-                          >
-                            <span className="overview-tech-label">
-                              {category
-                                .replace(/_/g, ' ')
-                                .replace(/\b\w/g, l => l.toUpperCase())}
-                              :
-                            </span>
-                            <div className="overview-tech-items">
-                              {Array.isArray(technologies) ? (
-                                // Check if it's an array of strings (like frontend, backend, etc.)
-                                typeof technologies[0] === 'string' ? (
-                                  technologies
-                                    .slice(0, 4)
-                                    .map((tech, index) => (
-                                      <Badge key={index} variant="secondary">
-                                        {tech}
-                                      </Badge>
-                                    ))
-                                ) : (
-                                  // It's an array of objects (like cloud providers)
-                                  (
-                                    technologies as {
-                                      provider: string;
-                                      services?: string[];
-                                    }[]
+                          return hasTechnologies ? (
+                            <div key={category} className="overview-tech-group">
+                              <span className="overview-tech-label">
+                                {category
+                                  .replace(/_/g, ' ')
+                                  .replace(/\b\w/g, l => l.toUpperCase())}
+                                :
+                              </span>
+                              <div className="overview-tech-items">
+                                {Array.isArray(technologies) ? (
+                                  typeof technologies[0] === 'string' ? (
+                                    technologies
+                                      .slice(0, 3)
+                                      .map((tech, index) => (
+                                        <Badge key={index} variant="primary">
+                                          {tech}
+                                        </Badge>
+                                      ))
+                                  ) : (
+                                    (
+                                      technologies as {
+                                        provider: string;
+                                        services?: string[];
+                                      }[]
+                                    )
+                                      .slice(0, 2)
+                                      .map((provider, index) => (
+                                        <Badge key={index} variant="info">
+                                          {provider.provider}
+                                        </Badge>
+                                      ))
                                   )
-                                    .slice(0, 2)
-                                    .map((provider, index) => (
-                                      <Badge key={index} variant="info">
-                                        {provider.provider}
-                                      </Badge>
-                                    ))
-                                )
-                              ) : (
-                                <Badge variant="secondary">
-                                  {String(technologies)}
-                                </Badge>
-                              )}
+                                ) : (
+                                  <Badge variant="secondary">
+                                    {String(technologies)}
+                                  </Badge>
+                                )}
+                              </div>
                             </div>
-                          </div>
-                        ) : null;
-                      }
-                    )}
+                          ) : null;
+                        })}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -211,88 +213,92 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
 
             {activeTab === 'responsibilities' && (
               <div className="responsibilities-content">
-                <div className="content-header">
-                  <h4 className="content-title">
-                    Key Responsibilities & Achievements
-                  </h4>
-                </div>
-                <ul className="responsibility-list">
+                <div className="responsibilities-grid">
                   {responsibilities.map((responsibility, index) => (
-                    <li key={index} className="responsibility-item">
-                      {responsibility}
-                    </li>
+                    <div key={index} className="responsibility-card">
+                      <div className="responsibility-icon">
+                        <span>•</span>
+                      </div>
+                      <p className="responsibility-text">{responsibility}</p>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
             )}
 
             {activeTab === 'technologies' && (
               <div className="technologies-content">
-                <div className="content-header">
-                  <h4 className="content-title">Technology Stack & Tools</h4>
-                </div>
-                {/* add spacint before below elements are displayed */}
-                
-                {Object.entries(experience.tech_stack).map(
-                  ([category, technologies]) => {
-                    const hasTechnologies =
-                      Array.isArray(technologies) && technologies.length > 0;
+                <div className="tech-grid">
+                  {Object.entries(experience.tech_stack).map(
+                    ([category, technologies]) => {
+                      const hasTechnologies =
+                        Array.isArray(technologies) && technologies.length > 0;
 
-                    if (!hasTechnologies) return null;
+                      if (!hasTechnologies) return null;
 
-                    const techCount = Array.isArray(technologies)
-                      ? technologies.length
-                      : 1;
+                      const techCount = Array.isArray(technologies)
+                        ? technologies.length
+                        : 1;
 
-                    return (
-                      <div key={category} className="tech-category">
-                        <h4 className="tech-category-title">
-                          {category
-                            .replace(/_/g, ' ')
-                            .replace(/\b\w/g, l => l.toUpperCase())}{' '}
-                          ({techCount})
-                        </h4>
-                        <div className="tech-tags">
-                          {Array.isArray(technologies) ? (
-                            // Check if it's an array of strings (like frontend, backend, etc.)
-                            typeof technologies[0] === 'string' ? (
-                              technologies.map((tech, index) => (
-                                <Badge key={index} variant="primary">
-                                  {tech}
-                                </Badge>
-                              ))
-                            ) : (
-                              // It's an array of objects (like cloud providers)
-                              (
-                                technologies as {
-                                  provider: string;
-                                  services?: string[];
-                                }[]
-                              ).map((provider, index) => (
-                                <div key={index} className="cloud-provider">
-                                  <Badge variant="secondary">
-                                    {provider.provider}
-                                  </Badge>
-                                  {provider.services?.map(
-                                    (service: string, sIndex: number) => (
-                                      <Badge key={sIndex} variant="info">
-                                        {service}
-                                      </Badge>
-                                    )
-                                  )}
-                                </div>
-                              ))
-                            )
-                          ) : (
-                            <Badge variant="primary">
-                              {String(technologies)}
+                      return (
+                        <div key={category} className="tech-category-card">
+                          <div className="tech-category-header">
+                            <h4 className="tech-category-title">
+                              {category
+                                .replace(/_/g, ' ')
+                                .replace(/\b\w/g, l => l.toUpperCase())}
+                            </h4>
+                            <Badge variant="secondary" className="tech-count">
+                              {techCount}
                             </Badge>
-                          )}
+                          </div>
+                          <div className="tech-tags">
+                            {Array.isArray(technologies) ? (
+                              typeof technologies[0] === 'string' ? (
+                                technologies.map((tech, index) => (
+                                  <Badge key={index} variant="primary">
+                                    {tech}
+                                  </Badge>
+                                ))
+                              ) : (
+                                (
+                                  technologies as {
+                                    provider: string;
+                                    services?: string[];
+                                  }[]
+                                ).map((provider, index) => (
+                                  <div
+                                    key={index}
+                                    className="cloud-provider-group"
+                                  >
+                                    <Badge variant="info">
+                                      {provider.provider}
+                                    </Badge>
+                                    {provider.services?.map(
+                                      (service: string, sIndex: number) => (
+                                        <Badge
+                                          key={sIndex}
+                                          variant="secondary"
+                                          className="service-tag"
+                                        >
+                                          {service}
+                                        </Badge>
+                                      )
+                                    )}
+                                  </div>
+                                ))
+                              )
+                            ) : (
+                              <Badge variant="primary">
+                                {String(technologies)}
+                              </Badge>
+                            )}
+                          </div>
                         </div>
-                      </div>
-                    );
-                  }
-                )}
+                      );
+                    }
+                  )}
+                </div>
               </div>
             )}
 
@@ -300,13 +306,16 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
               experience.achievements &&
               experience.achievements.length > 0 && (
                 <div className="achievements-content">
-                  <ul className="achievement-list">
+                  <div className="achievements-grid">
                     {experience.achievements.map((achievement, index) => (
-                      <li key={index} className="achievement-item">
-                        {achievement}
-                      </li>
+                      <div key={index} className="achievement-card">
+                        <div className="achievement-icon">
+                          <span>★</span>
+                        </div>
+                        <p className="achievement-text">{achievement}</p>
+                      </div>
                     ))}
-                  </ul>
+                  </div>
                 </div>
               )}
           </div>
@@ -366,9 +375,29 @@ export const Experience: React.FC = () => {
       new Date(b.start_date).getTime() - new Date(a.start_date).getTime()
   );
 
+  // Calculate metrics
+  const totalYearsExperience = Math.ceil(
+    sortedExperiences.reduce((total, exp) => {
+      const start = new Date(exp.start_date);
+      const end = exp.end_date ? new Date(exp.end_date) : new Date();
+      return (
+        total +
+        (end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24 * 365.25)
+      );
+    }, 0)
+  );
+
+  const totalCompanies = new Set(sortedExperiences.map(exp => exp.company))
+    .size;
+  const totalAchievements = sortedExperiences.reduce(
+    (total, exp) =>
+      total + (exp.responsibilities ? exp.responsibilities.length : 0),
+    0
+  );
+
   return (
     <div className="page-container experience-page">
-      {/* Hero Section - Following Home pattern */}
+      {/* Hero Section */}
       <section className="hero-section">
         <div className="hero-content">
           <div className="hero-main">
@@ -376,13 +405,13 @@ export const Experience: React.FC = () => {
             <h2 className="hero-subtitle">Software Development Journey</h2>
           </div>
           <p className="hero-description">
-            My career progression across different roles and technologies in
-            software development
+            A comprehensive overview of my career progression, key achievements,
+            and technical expertise across different roles and organizations.
           </p>
         </div>
       </section>
 
-      {/* Metrics Section - Following Home pattern */}
+      {/* Metrics Section */}
       <section className="metrics-section">
         <h3 className="section-title">Career Overview</h3>
         <div className="metrics-grid">
@@ -391,46 +420,29 @@ export const Experience: React.FC = () => {
             <div className="metric-label">Positions</div>
           </div>
           <div className="metric-item">
-            <div className="metric-value">
-              {Math.max(
-                ...sortedExperiences.map(exp => {
-                  const start = new Date(exp.start_date);
-                  const end = exp.end_date
-                    ? new Date(exp.end_date)
-                    : new Date();
-                  return Math.ceil(
-                    (end.getTime() - start.getTime()) /
-                      (1000 * 60 * 60 * 24 * 365.25)
-                  );
-                })
-              )}
-              +
-            </div>
-            <div className="metric-label">Years</div>
+            <div className="metric-value">{totalYearsExperience}+</div>
+            <div className="metric-label">Years Experience</div>
           </div>
           <div className="metric-item">
-            <div className="metric-value">
-              {new Set(sortedExperiences.map(exp => exp.company)).size}
-            </div>
+            <div className="metric-value">{totalCompanies}</div>
             <div className="metric-label">Companies</div>
           </div>
           <div className="metric-item">
-            <div className="metric-value">
-              {sortedExperiences.reduce(
-                (total, exp) =>
-                  total +
-                  (exp.responsibilities ? exp.responsibilities.length : 0),
-                0
-              )}
-            </div>
+            <div className="metric-value">{totalAchievements}</div>
             <div className="metric-label">Key Achievements</div>
           </div>
         </div>
       </section>
 
-      {/* Experience Timeline Section */}
+      {/* Experience Timeline */}
       <section className="experience-timeline-section">
-        <h3 className="section-title">Work History</h3>
+        <div className="section-header">
+          <h3 className="section-title">Work History</h3>
+          <p className="section-subtitle">
+            Click on any position to explore responsibilities, technologies, and
+            achievements
+          </p>
+        </div>
 
         <div className="experience-timeline">
           {sortedExperiences.map(experience => (
