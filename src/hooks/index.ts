@@ -10,6 +10,11 @@ export {
   useProfileData,
 } from './useProfileData';
 
+// Navigation hooks
+export {
+  usePortfolioNavigation,
+} from './usePortfolioNavigation';
+
 // UI state hooks (to be created)
 // export { useBreakpoint } from './useBreakpoint';
 // export { useLocalStorage } frṇom './useLocalStorage';

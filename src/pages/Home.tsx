@@ -1,5 +1,5 @@
 import React from 'react';
-import { useProfileData } from '../hooks/useProfileData';
+import { useProfileData, usePortfolioNavigation } from '../hooks';
 import { Card, CardBody, Button, SkillBadge } from '../components/common';
 import {
   ReactIcon,
@@ -12,6 +12,12 @@ import {
 
 export const Home: React.FC = () => {
   const { data: profile, loading, error } = useProfileData();
+  const {
+    navigateToWorkPortfolio,
+    navigateToContactForm,
+    navigateToResume,
+    navigateToMetric,
+  } = usePortfolioNavigation();
 
   if (loading) {
     return (
@@ -54,10 +60,14 @@ export const Home: React.FC = () => {
               'Developer at heart. Building apps & solving problems is my hobby.'}
           </p>
           <div className="hero-actions">
-            <Button variant="primary" size="md">
+            <Button
+              variant="primary"
+              size="md"
+              onClick={navigateToWorkPortfolio}
+            >
               View My Work
             </Button>
-            <Button variant="primary" size="md">
+            <Button variant="primary" size="md" onClick={navigateToContactForm}>
               Get In Touch
             </Button>
           </div>
@@ -68,21 +78,55 @@ export const Home: React.FC = () => {
       <section className="metrics-section">
         <h3 className="section-title">Career Overview</h3>
         <div className="metrics-grid">
-          <div className="metric-item">
+          <div
+            className="metric-item"
+            onClick={() => navigateToMetric('experience')}
+            onKeyDown={e => e.key === 'Enter' && navigateToMetric('experience')}
+            role="button"
+            tabIndex={0}
+            style={{ cursor: 'pointer' }}
+            aria-label="View work experience details"
+          >
             <div className="metric-value">3+</div>
             <div className="metric-label">Years Experience</div>
           </div>
-          <div className="metric-item">
+          <div
+            className="metric-item"
+            onClick={() => navigateToMetric('companies')}
+            onKeyDown={e => e.key === 'Enter' && navigateToMetric('companies')}
+            role="button"
+            tabIndex={0}
+            style={{ cursor: 'pointer' }}
+            aria-label="View work experience at different companies"
+          >
             <div className="metric-value">
               {profile?.work_experience?.length || 2}
             </div>
             <div className="metric-label">Companies</div>
           </div>
-          <div className="metric-item">
+          <div
+            className="metric-item"
+            onClick={() => navigateToMetric('projects')}
+            onKeyDown={e => e.key === 'Enter' && navigateToMetric('projects')}
+            role="button"
+            tabIndex={0}
+            style={{ cursor: 'pointer' }}
+            aria-label="View projects portfolio"
+          >
             <div className="metric-value">6+</div>
             <div className="metric-label">Projects</div>
           </div>
-          <div className="metric-item">
+          <div
+            className="metric-item"
+            onClick={() => navigateToMetric('technologies')}
+            onKeyDown={e =>
+              e.key === 'Enter' && navigateToMetric('technologies')
+            }
+            role="button"
+            tabIndex={0}
+            style={{ cursor: 'pointer' }}
+            aria-label="View technology stack and skills"
+          >
             <div className="metric-value">10+</div>
             <div className="metric-label">Technologies</div>
           </div>
@@ -180,10 +224,10 @@ export const Home: React.FC = () => {
             opportunities?
           </p>
           <div className="next-steps-actions">
-            <Button variant="primary" size="lg">
+            <Button variant="primary" size="lg" onClick={navigateToContactForm}>
               Start a Conversation
             </Button>
-            <Button variant="outline" size="lg">
+            <Button variant="outline" size="lg" onClick={navigateToResume}>
               View Full Resume
             </Button>
           </div>
