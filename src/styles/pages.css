@@ -76,7 +76,7 @@
 
 /* Metrics Section - Mobile Base */
 .metrics-section {
-  padding: var(--spacing-lg);
+  padding: var(--spacing-md);
   background-color: var(--bg-raised);
   border-radius: var(--border-radius-lg);
   border: 1px solid var(--border-primary);
@@ -88,7 +88,7 @@
   font-weight: 700;
   color: var(--text-primary);
   text-align: center;
-  margin: 0 0 var(--spacing-lg) 0;
+  margin: 0 0 var(--spacing-md) 0;
 }
 
 .metrics-grid {
@@ -135,7 +135,7 @@
 
 /* Current Focus Section - Mobile Base */
 .current-focus-section {
-  padding: var(--spacing-xl);
+  padding: var(--spacing-md);
   background-color: var(--bg-raised);
   border-radius: var(--border-radius-lg);
   border: 1px solid var(--border-primary);
@@ -145,7 +145,7 @@
   display: grid;
   grid-template-columns: 1fr;
   /* Mobile single column */
-  gap: var(--spacing-lg);
+  gap: var(--spacing-md);
 }
 
 .tech-category {
@@ -218,7 +218,7 @@
   }
 
   .metrics-grid {
-    gap: var(--spacing-lg);
+    gap: var(--spacing-md);
   }
 }
 
@@ -227,7 +227,7 @@
   .home-page {}
 
   .hero-section {
-    padding: var(--spacing-xl);
+    padding: var(--spacing-md);
   }
 
   .hero-title {
@@ -248,16 +248,16 @@
   }
 
   .metrics-section {
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
   }
 
   .metrics-grid {
     grid-template-columns: repeat(4, 1fr);
-    gap: var(--spacing-lg);
+    gap: var(--spacing-md);
   }
 
   .current-focus-section {
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
   }
 
   .tech-badges {
@@ -270,7 +270,7 @@
   .home-page {}
 
   .hero-section {
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
   }
 
   .hero-title {
@@ -287,7 +287,7 @@
 
   .tech-categories {
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-xl);
+    gap: var(--spacing-md);
   }
 }
 
@@ -326,7 +326,7 @@
 
 /* Experience Timeline Section - Mobile Base */
 .experience-timeline-section {
-  padding: var(--spacing-lg);
+  padding: var(--spacing-md);
   background-color: var(--bg-raised);
   border-radius: var(--border-radius-lg);
   border: 1px solid var(--border-primary);
@@ -342,7 +342,7 @@
   overflow: hidden;
   transition: var(--transition);
   border-radius: var(--border-radius-md);
-  border: 1px solid var(--border-primary);
+  border: 1px solid var(--border-glass);
 }
 
 /* Experience Header (clickable) - Mobile Base */
@@ -478,14 +478,13 @@
 }
 
 .tab-content {
-  padding: var(--spacing-lg);
+  padding: var(--spacing-xl);
 }
 
 /* Content Headers */
 .content-header {
-  margin-bottom: var(--spacing-lg);
-  padding-bottom: var(--spacing-md);
-  border-bottom: 1px solid var(--border-primary);
+  border-bottom: 1px solid var(--border-glass);
+  margin-bottom: var(--spacing-md);
 }
 
 .content-title {
@@ -506,12 +505,12 @@
 .overview-content p {
   font-size: 1rem;
   color: var(--text-secondary);
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
   line-height: 1.6;
 }
 
 .overview-section {
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
 }
 
 .overview-section:last-child {
@@ -584,10 +583,10 @@
 }
 
 .responsibility-item {
-  padding: var(--spacing-md) 0;
+  padding: var(--spacing-sm) 0;
   border-bottom: 1px solid var(--border-primary);
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1;
   color: var(--text-secondary);
   position: relative;
   padding-left: var(--spacing-lg);
@@ -725,13 +724,15 @@
   .experience-header {
     padding: var(--spacing-xl);
     gap: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+
   }
 
   .experience-card .experience-header {
     flex-direction: row;
     align-items: center;
     gap: var(--spacing-lg);
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
   }
 
   .company-logo {
@@ -803,7 +804,7 @@
 
 /* Projects Section - Mobile Base */
 .projects-section {
-  padding: var(--spacing-xl);
+  padding: var(--spacing-md);
   background-color: var(--bg-raised);
   border-radius: var(--border-radius-lg);
   border: 1px solid var(--border-primary);
@@ -853,7 +854,7 @@
 /* Projects Grid */
 .projects-grid {
   display: grid;
-  gap: var(--spacing-lg);
+  gap: var(--spacing-md);
 }
 
 .project-card {
@@ -865,7 +866,6 @@
   display: flex;
   align-items: flex-start;
   gap: var(--spacing-lg);
-  padding: var(--spacing-lg);
 }
 
 .project-icon {
@@ -1047,7 +1047,7 @@
   .projects-page {}
 
   .projects-section {
-    padding: var(--spacing-xl);
+    padding: var(--spacing-md);
   }
 
   .section-header {
@@ -1098,7 +1098,7 @@
 
 /* Tech Categories Section - Mobile Base */
 .tech-categories-section {
-  padding: var(--spacing-xl);
+  padding: var(--spacing-md);
   background-color: var(--bg-raised);
   border-radius: var(--border-radius-lg);
   border: 1px solid var(--border-primary);
@@ -1246,7 +1246,7 @@
   .tech-stack-page {}
 
   .tech-categories-section {
-    padding: var(--spacing-xl);
+    padding: var(--spacing-md);
   }
 
   .tech-categories-grid {
@@ -1292,7 +1292,7 @@
 
 /* Contact Information Section - Mobile Base */
 .contact-info-section {
-  padding: var(--spacing-xl);
+  padding: var(--spacing-md);
   background-color: var(--bg-raised);
   border-radius: var(--border-radius-lg);
   border: 1px solid var(--border-primary);
@@ -1365,7 +1365,7 @@
 
 /* Social Section */
 .social-section {
-  padding: var(--spacing-xl);
+  padding: var(--spacing-md);
   background-color: var(--bg-raised);
   border-radius: var(--border-radius-lg);
   border: 1px solid var(--border-primary);
@@ -1385,7 +1385,6 @@
   padding: var(--spacing-md);
   border: 1px solid var(--border-primary);
   border-radius: var(--border-radius-md);
-  background-color: var(--bg-surface);
   text-decoration: none;
   color: var(--text-primary);
   transition: all 0.2s ease;
@@ -1417,14 +1416,14 @@
 
 /* Professional Summary Section */
 .professional-summary-section {
-  padding: var(--spacing-xl);
+  padding: var(--spacing-md);
   background-color: var(--bg-raised);
   border-radius: var(--border-radius-lg);
   border: 1px solid var(--border-primary);
 }
 
 .professional-summary-card {
-  background-color: var(--bg-surface);
+  /* background-color: var(--bg-surface); */
 }
 
 .summary-header {
@@ -1476,14 +1475,13 @@
 
 /* CTA Section */
 .cta-section {
-  padding: var(--spacing-xl);
+  padding: var(--spacing-md);
   background-color: var(--bg-raised);
   border-radius: var(--border-radius-lg);
   border: 1px solid var(--border-primary);
 }
 
 .cta-card {
-  background: linear-gradient(135deg, var(--bg-surface) 0%, var(--bg-raised) 100%);
   text-align: center;
 }
 
@@ -1565,13 +1563,13 @@
   .contact-page {}
 
   .contact-info-section {
-    padding: var(--spacing-xl);
+    padding: var(--spacing-md);
   }
 
   .contact-cards-grid,
   .social-links-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-lg);
+    gap: var(--spacing-md);
   }
 
   .contact-card-content {

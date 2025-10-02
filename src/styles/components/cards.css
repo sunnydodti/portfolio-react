@@ -131,7 +131,7 @@
 /* Project Card */
 .project-card {
   background-color: var(--bg-raised);
-  border: 1px solid var(--border-primary);
+  border: 1px solid var(--border-glass);
   border-radius: var(--border-radius-lg);
   overflow: hidden;
   transition: all 0.3s ease;
@@ -212,8 +212,8 @@
   background-color: var(--bg-raised);
   border: 1px solid var(--border-primary);
   border-radius: var(--border-radius-lg);
-  padding: var(--spacing-lg);
-  margin-bottom: var(--spacing-md);
+  padding: var(--spacing-md);
+  /* margin-bottom: var(--spacing-md); */
   transition: all 0.3s ease;
 }
 
@@ -324,20 +324,20 @@
   .card {
     border-radius: var(--border-radius-md);
   }
-  
+
   .card--padding-lg {
     padding: var(--spacing-md);
   }
-  
+
   .project-card__image {
     height: 10rem;
   }
-  
+
   .experience-card__header {
     flex-direction: column;
     gap: var(--spacing-xs);
   }
-  
+
   .experience-card__period {
     text-align: left;
   }
