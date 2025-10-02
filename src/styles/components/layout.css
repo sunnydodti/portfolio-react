@@ -77,7 +77,6 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: var(--spacing-sm) var(--spacing-md);
-  background-color: var(--bg-surface);
   border-bottom: 1px solid var(--border-primary);
   position: sticky;
   top: 0;
@@ -260,7 +259,6 @@ body {
   position: sticky;
   top: 0;
   height: 4rem;
-  background-color: var(--bg-raised);
   border-bottom: 1px solid var(--border-primary);
   display: flex;
   align-items: center;
@@ -366,7 +364,6 @@ body {
 .page-content {
   flex: 1 1 auto;
   /* Grow and shrink as needed */
-  padding: var(--spacing-xs);
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
@@ -391,9 +388,7 @@ body {
 
 /* Medium tablets and up (768px+) */
 @media (min-width: 768px) {
-  .page-container {
-    padding: var(--spacing-lg);
-  }
+  .page-container {}
 
   .page-title {
     font-size: 1.25rem;
@@ -429,9 +424,7 @@ body {
     display: none;
   }
 
-  .page-container {
-    padding: var(--spacing-xl);
-  }
+  .page-container {}
 
   .sidebar-backdrop {
     display: none;
@@ -441,7 +434,6 @@ body {
 /* Desktop and up (1280px+) */
 @media (min-width: 1280px) {
   .page-container {
-    padding: var(--spacing-2xl);
     max-width: 1200px;
     margin: 0 auto;
   }
