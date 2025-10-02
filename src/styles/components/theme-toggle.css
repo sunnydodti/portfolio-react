@@ -73,20 +73,3 @@
 .theme-toggle:hover .toggle-thumb {
   box-shadow: var(--shadow-md);
 }
-
-/* Responsive adjustments */
-@media (max-width: 767px) {
-  .theme-toggle {
-    width: 2.5rem;
-    height: 1.25rem;
-  }
-
-  .toggle-thumb {
-    width: 1rem;
-    height: 1rem;
-  }
-
-  .theme-toggle.light .toggle-thumb {
-    transform: translateX(1.25rem);
-  }
-}
