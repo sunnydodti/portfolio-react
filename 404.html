@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Page Not Found | Sunny Dodti Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        background: #0f172a;
+        color: #f8fafc;
+        text-align: center;
+      }
+      .container {
+        max-width: 400px;
+        padding: 2rem;
+      }
+      h1 {
+        font-size: 3rem;
+        margin: 0 0 1rem 0;
+        color: #3b82f6;
+      }
+      p {
+        margin: 1rem 0;
+        line-height: 1.6;
+      }
+      a {
+        color: #3b82f6;
+        text-decoration: none;
+        font-weight: 500;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+    <script>
+      // SPA fallback - environment aware
+      // Store the current path for SPA routing
+      const path = window.location.pathname;
+      const hostname = window.location.hostname;
+      
+      // Determine base path based on environment
+      let base = '/';
+      if (hostname.includes('github.io')) {
+        base = '/portfolio-react';
+      }
+      
+      // If we're not on the base path, handle SPA routing
+      if (path !== base && path !== base + '/') {
+        // Store the intended path in sessionStorage
+        const redirectPath = path.replace(base, '') || '/';
+        sessionStorage.setItem('spa-redirect', redirectPath);
+        
+        // Redirect to the base URL
+        window.location.replace(base + '/');
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>404</h1>
+      <p>Sorry, the page you're looking for doesn't exist.</p>
+      <p><a href="/">Return to Homepage</a></p>
+    </div>
+  </body>
+</html>
