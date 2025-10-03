@@ -52,7 +52,9 @@ jobs:
           # Ensure _redirects file exists for Cloudflare Pages SPA support
           if [ ! -f dist/_redirects ]; then
             echo "/* /index.html 200" > dist/_redirects
-          fi      - name: Deploy to pages-preview branch
+          fi
+
+      - name: Deploy to pages-preview branch
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
