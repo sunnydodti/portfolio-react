@@ -41,6 +41,14 @@ jobs:
         run: |
           # Add canonical URL to prevent duplicate content issues
           sed -i 's|<meta name="viewport"|<link rel="canonical" href="https://sunny.persist.site/" />\n    <meta name="viewport"|g' dist/index.html
+          
+          # Remove 404.html since Cloudflare Pages has native SPA support
+          rm -f dist/404.html
+          
+          # Ensure _redirects file exists for Cloudflare Pages SPA support
+          if [ ! -f dist/_redirects ]; then
+            echo "/* /index.html 200" > dist/_redirects
+          fi
 
       - name: Deploy to pages-dev branch
         uses: peaceiris/actions-gh-pages@v4

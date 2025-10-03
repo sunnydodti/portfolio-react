@@ -39,16 +39,22 @@
       }
     </style>
     <script>
-      // SPA fallback for GitHub Pages
+      // SPA fallback - environment aware
       // Store the current path for SPA routing
       const path = window.location.pathname;
-      const base = '/portfolio-react';
+      const hostname = window.location.hostname;
       
-      // If we're on GitHub Pages and path is not just the base
+      // Determine base path based on environment
+      let base = '/';
+      if (hostname.includes('github.io')) {
+        base = '/portfolio-react';
+      }
+      
+      // If we're not on the base path, handle SPA routing
       if (path !== base && path !== base + '/') {
         // Store the intended path in sessionStorage
         const redirectPath = path.replace(base, '') || '/';
-        sessionStorage.setItem('github-pages-redirect', redirectPath);
+        sessionStorage.setItem('spa-redirect', redirectPath);
         
         // Redirect to the base URL
         window.location.replace(base + '/');

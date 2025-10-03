@@ -42,11 +42,17 @@ jobs:
           # Add robots.txt to prevent indexing (dev environment)
           echo "User-agent: *" > dist/robots.txt
           echo "Disallow: /" >> dist/robots.txt
-
+          
           # Add noindex meta tag for development preview
           sed -i 's|<meta name="viewport"|<meta name="robots" content="noindex, nofollow" />\n    <meta name="viewport"|g' dist/index.html
-
-      - name: Deploy to pages-preview branch
+          
+          # Remove 404.html since Cloudflare Pages has native SPA support
+          rm -f dist/404.html
+          
+          # Ensure _redirects file exists for Cloudflare Pages SPA support
+          if [ ! -f dist/_redirects ]; then
+            echo "/* /index.html 200" > dist/_redirects
+          fi      - name: Deploy to pages-preview branch
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

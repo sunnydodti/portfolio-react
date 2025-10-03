@@ -17,15 +17,18 @@ const getBasename = () => {
   return basename && basename !== '/' ? basename : undefined;
 };
 
-// Component to handle GitHub Pages redirects
-const GitHubPagesRedirectHandler = () => {
+// Component to handle SPA redirects for all platforms
+const SPARedirectHandler = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if there's a stored redirect path from GitHub Pages 404 handler
-    const redirectPath = sessionStorage.getItem('github-pages-redirect');
+    // Check if there's a stored redirect path from 404 handler
+    const redirectPath = sessionStorage.getItem('spa-redirect') || 
+                        sessionStorage.getItem('github-pages-redirect'); // Legacy support
+    
     if (redirectPath) {
-      sessionStorage.removeItem('github-pages-redirect');
+      sessionStorage.removeItem('spa-redirect');
+      sessionStorage.removeItem('github-pages-redirect'); // Clean up legacy
       navigate(redirectPath, { replace: true });
     }
   }, [navigate]);
@@ -37,7 +40,7 @@ function App() {
   return (
     <PortfolioProvider>
       <Router basename={getBasename()}>
-        <GitHubPagesRedirectHandler />
+        <SPARedirectHandler />
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
