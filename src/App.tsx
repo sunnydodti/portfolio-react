@@ -23,9 +23,10 @@ const SPARedirectHandler = () => {
 
   useEffect(() => {
     // Check if there's a stored redirect path from 404 handler
-    const redirectPath = sessionStorage.getItem('spa-redirect') || 
-                        sessionStorage.getItem('github-pages-redirect'); // Legacy support
-    
+    const redirectPath =
+      sessionStorage.getItem('spa-redirect') ||
+      sessionStorage.getItem('github-pages-redirect'); // Legacy support
+
     if (redirectPath) {
       sessionStorage.removeItem('spa-redirect');
       sessionStorage.removeItem('github-pages-redirect'); // Clean up legacy

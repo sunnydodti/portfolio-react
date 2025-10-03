@@ -12,7 +12,7 @@
 
 /* Add spacing between sections without flex */
 .home-page>section {
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--margin-default);
 }
 
 .home-page>section:last-child {
@@ -61,7 +61,7 @@
   /* Mobile size */
   color: var(--text-secondary);
   line-height: 1.6;
-  margin: var(--spacing-md) 0 var(--spacing-xl) 0;
+  margin: var(--margin-default) 0 var(--spacing-xl) 0;
   max-width: 100%;
 }
 
@@ -88,7 +88,7 @@
   font-weight: 700;
   color: var(--text-primary);
   text-align: center;
-  margin: 0 0 var(--spacing-md) 0;
+  margin: 0 0 var(--margin-default) 0;
 }
 
 .metrics-grid {
@@ -159,7 +159,7 @@
   /* Fixed typo: font-weight should be font-size */
   font-weight: 600;
   color: var(--text-primary);
-  margin: 0 0 var(--spacing-md) 0;
+  margin: 0 0 var(--margin-default) 0;
 }
 
 .tech-badges {
@@ -188,7 +188,7 @@
   border-top-color: var(--primary-500);
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--margin-default);
 }
 
 @keyframes spin {
@@ -367,6 +367,7 @@
 
 /* Experience Header - Completely Redesigned */
 .experience-header {
+  padding: var(--padding-default);
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -828,9 +829,6 @@
 
 /* Small tablets and up (768px+) */
 @media (min-width: 768px) {
-  .experience-header {
-    padding: var(--padding-default);
-  }
 
   .experience-header-main {
     gap: var(--padding-default);
@@ -930,7 +928,7 @@
 
 /* Technologies Content */
 .tech-category {
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--margin-default);
   padding: var(--padding-default);
   background: var(--bg-raised);
   border-radius: var(--border-radius-md);
@@ -945,7 +943,7 @@
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--text-primary);
-  margin: 0 0 var(--spacing-md) 0;
+  margin: 0 0 var(--margin-default) 0;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   display: flex;
@@ -1024,7 +1022,7 @@
 .error-message h2,
 .empty-state h2 {
   color: var(--text-primary);
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--margin-default);
 }
 
 /* =============================================================================
@@ -1036,7 +1034,7 @@
 }
 
 .projects-page>section {
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--margin-default);
 }
 
 .projects-page>section:last-child {
@@ -1159,7 +1157,7 @@
   font-size: 0.95rem;
   color: var(--text-secondary);
   line-height: 1.5;
-  margin: 0 0 var(--spacing-md) 0;
+  margin: 0 0 var(--margin-default) 0;
 }
 
 .project-tech-preview {
@@ -1295,7 +1293,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--margin-default);
   }
 
   .filter-buttons {
@@ -1329,7 +1327,7 @@
 
 /* Add spacing between sections without flex */
 .tech-stack-page>section {
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--margin-default);
 }
 
 .tech-stack-page>section:last-child {
@@ -1367,7 +1365,7 @@
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--margin-default);
 }
 
 .category-info h3 {
@@ -1396,7 +1394,7 @@
 }
 
 .tech-category-content {
-  margin-top: var(--spacing-md);
+  margin-top: var(--margin-default);
 }
 
 .tech-grid {
@@ -1523,7 +1521,7 @@
 
 /* Add spacing between sections without flex */
 .contact-page>section {
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--margin-default);
 }
 
 .contact-page>section:last-child {

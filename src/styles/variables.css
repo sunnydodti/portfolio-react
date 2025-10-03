@@ -51,9 +51,9 @@
   --spacing-xl: 2rem;
   --spacing-2xl: 3rem;
 
-  /* Responsive Padding System */
-  --padding-default: 1rem;
-  /* Mobile default (16px) */
+  /* Responsive Spacing System */
+  --padding-default: 0.5rem;
+  --margin-default: 0.5rem;
 
   /* Border Radius */
   --border-radius-sm: 0.25rem;
@@ -92,6 +92,20 @@
 
   --shadow:
     0px 2px 4px 1px var(--shadow-color)
+}
+
+/* ========================================
+   RESPONSIVE SPACING BREAKPOINTS
+   ======================================== */
+
+/* Tablet and Desktop (768px+) */
+@media (min-width: 768px) {
+  :root {
+    --padding-default: 1rem;
+    /* 16px */
+    --margin-default: 1rem;
+    /* 16px */
+  }
 }
 
 /* ========================================
