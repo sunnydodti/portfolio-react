@@ -1,4 +1,4 @@
-name: Deploy to Development
+name: Deploy to Development Preview
 
 on:
   push:
@@ -6,8 +6,6 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 jobs:
   build-and-deploy:
@@ -32,29 +30,34 @@ jobs:
       - name: Type check
         run: npm run type-check
 
-      - name: Build for Development
+      - name: Build for Development Preview
         run: |
           echo "VITE_DEPLOY_TARGET=development" > .env.production
-          echo "VITE_ROUTER_BASE=/portfolio-react" >> .env.production
+          echo "VITE_ROUTER_BASE=/" >> .env.production
+          echo "VITE_CANONICAL_URL=https://sunny.persist.site" >> .env.production
           npm run build
 
-      - name: Add noindex for SEO
+      - name: Add preview meta tags
         run: |
           # Add robots.txt to prevent indexing (dev environment)
           echo "User-agent: *" > dist/robots.txt
           echo "Disallow: /" >> dist/robots.txt
 
-          # Update base href for GitHub Pages
-          sed -i 's|<base href="/" />|<base href="/portfolio-react/" />|g' dist/index.html
-
-          # Add noindex meta tag for development
+          # Add noindex meta tag for development preview
           sed -i 's|<meta name="viewport"|<meta name="robots" content="noindex, nofollow" />\n    <meta name="viewport"|g' dist/index.html
 
-      - name: Deploy to gh-pages-dev
+      - name: Deploy to pages-preview branch
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-          publish_branch: gh-pages-dev
+          publish_branch: pages-dev-preview
           force_orphan: true
-          commit_message: 'Deploy to development from dev branch'
+          commit_message: 'Deploy to Cloudflare Pages preview from dev branch'
+
+      - name: Deployment Summary
+        run: |
+          echo "🚀 Development preview deployment completed!"
+          echo "📁 Built files pushed to pages-preview branch"
+          echo "🌐 Cloudflare Pages will automatically deploy preview from this branch"
+          echo "🔗 Preview site will be available at your configured preview domain"

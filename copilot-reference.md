@@ -181,6 +181,27 @@ _Last Updated: October 2, 2025_
 - ✅ Navigation logic refactored into reusable hook architecture
 - ✅ Enhanced visual design with improved user experience and accessibility
 
+9. **LATEST UPDATE - SPA Routing & Dev Preview Deployment**: Fixed SPA routing issues and updated dev workflow for Cloudflare Pages preview:
+
+   **SPA Routing Fix**:
+   - ✅ **Fixed refresh/direct URL access** for both GitHub Pages and Cloudflare Pages
+   - ✅ **GitHub Pages**: Updated `404.html` with SPA redirect script to capture routes and restore them
+   - ✅ **Cloudflare Pages**: Already working with `_redirects` file (`/* /index.html 200`)
+   - ✅ **App.tsx**: Added `GitHubPagesRedirectHandler` component to restore intended routes seamlessly
+
+   **Dev Workflow Update** (`.github/workflows/deploy-dev.yaml`):
+   - ✅ **Updated for Cloudflare Pages preview**: Changed from GitHub Pages to Cloudflare Pages deployment
+   - ✅ **Branch target**: Now deploys to `pages-preview` branch instead of `gh-pages-dev`
+   - ✅ **Environment**: Uses `/` base href and preview domain configuration
+   - ✅ **SEO protection**: Maintains noindex for development preview environment
+   - ✅ **Deployment method**: Uses reliable `peaceiris/actions-gh-pages` action like main workflows
+
+   **Deployment Architecture**:
+   - ✅ **Main branch → `pages-dev`**: Production deployment on Cloudflare Pages
+   - ✅ **Dev branch → `pages-preview`**: Preview deployment on Cloudflare Pages
+   - ✅ **Main branch → `gh-pages`**: Demo deployment on GitHub Pages (noindex)
+   - ✅ **All deployments**: Handle SPA routing correctly with refresh support
+
 ## Project Overview
 
 **CRITICAL RULE**: NO EMOJIS ANYWHERE IN CODEBASE - FIXED ALL INSTANCES
