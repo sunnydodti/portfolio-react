@@ -11,7 +11,7 @@ This file provides essential context for AI assistants working on the Sunny Dodt
 **Repository**: `portfolio-react` (React implementation of Sunny Dodti's multi-technology portfolio)
 **Purpose**: Professional portfolio showcasing software development skills and experience
 **Tech Stack**: React 18+ | TypeScript | Vanilla CSS with CSS Variables | Vite | React Router
-**Deployment**: github pages/pages.dev (primary domain: sunnydodti.com)
+**Deployment**: github pages/pages.dev (primary domain: sunny.persist.site)
 
 ---
 

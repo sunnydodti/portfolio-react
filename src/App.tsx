@@ -9,14 +9,10 @@ import { Layout } from './components/layout';
 import { Home, Experience, Projects, TechStack, Contact } from './pages';
 import { ComponentDemo } from './pages/ComponentDemo';
 
-// Get basename from the base href element (works with sed replacement)
+// Get basename from environment variable or default to undefined
 const getBasename = () => {
-  const baseElement = document.querySelector('base');
-  if (baseElement) {
-    const href = baseElement.getAttribute('href') || '/';
-    return href === '/' ? undefined : href.replace(/\/$/, '');
-  }
-  return undefined;
+  const basename = import.meta.env.VITE_ROUTER_BASE;
+  return basename && basename !== '/' ? basename : undefined;
 };
 
 function App() {

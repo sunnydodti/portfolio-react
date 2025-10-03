@@ -8,7 +8,7 @@ I need help configuring the build and deployment process for the React portfolio
 
 **Deployment Targets**:
 
-- **Primary**: Vercel/Netlify for main deployment (sunnydodti.com)
+- **Primary**: Vercel/Netlify for main deployment (sunny.persist.site)
 - **Secondary**: GitHub Pages for backup hosting
 - **Requirements**: Static site generation, optimized builds, fast CDN delivery
 
@@ -94,7 +94,7 @@ I need help configuring the build and deployment process for the React portfolio
 
 **Domain Configuration**:
 
-- Custom domain setup (sunnydodti.com)
+- Custom domain setup (sunny.persist.site)
 - SSL certificate automation
 - CDN configuration for global delivery
 - Redirect rules (www → non-www, HTTP → HTTPS)

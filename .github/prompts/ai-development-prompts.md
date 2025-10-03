@@ -348,7 +348,7 @@ I need help with deployment configuration:
 **Requirements**:
 - Optimized production build
 - Environment variable setup
-- Domain configuration (sunnydodti.com)
+- Domain configuration (sunny.persist.site)
 - Performance optimization
 - SEO configuration
 

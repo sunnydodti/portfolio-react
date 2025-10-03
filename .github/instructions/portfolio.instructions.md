@@ -63,7 +63,7 @@ The portfolio should be **visually gorgeous** and professional:
 
 - **Primary Purpose**: React/TypeScript implementation of Sunny Dodti's portfolio
 - **Technology Stack**: React 18+, TypeScript, Vanilla CSS with CSS Variables, Vite
-- **Target Deployment**: github pages/pages.dev (primary domain: sunnydodti.com)
+- **Target Deployment**: github pages/pages.dev (primary domain: sunny.persist.site)
 - **Data Source**: Fetches profile data from main repository's JSON endpoints
 - **Layout Reference**: `/project-context/wireframes/` (structural building blocks - not exact design)
 - **Design Reference**: `/data/styles/pallet-demo-dark-light.html` (beautiful color palette and styling)

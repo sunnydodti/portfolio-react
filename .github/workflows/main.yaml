@@ -1,4 +1,4 @@
-name: Build and Deploy to Production
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -32,8 +32,23 @@ jobs:
       - name: Type check
         run: npm run type-check
 
-      - name: Build
-        run: npm run build
+      - name: Build for GitHub Pages
+        run: |
+          echo "VITE_DEPLOY_TARGET=github" > .env.production
+          echo "VITE_ROUTER_BASE=/portfolio-react" >> .env.production
+          npm run build
+
+      - name: Add noindex for SEO
+        run: |
+          # Add robots.txt to prevent indexing (avoid duplicate content SEO issues)
+          echo "User-agent: *" > dist/robots.txt
+          echo "Disallow: /" >> dist/robots.txt
+
+          # Update base href for GitHub Pages
+          sed -i 's|<base href="/" />|<base href="/portfolio-react/" />|g' dist/index.html
+
+          # Add noindex meta tag to prevent search engine indexing
+          sed -i 's|<meta name="viewport"|<meta name="robots" content="noindex, nofollow" />\n    <meta name="viewport"|g' dist/index.html
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
@@ -42,4 +57,4 @@ jobs:
           publish_dir: ./dist
           publish_branch: gh-pages
           force_orphan: true
-          commit_message: 'Deploy to production from main branch'
+          commit_message: 'Deploy to GitHub Pages from main branch'

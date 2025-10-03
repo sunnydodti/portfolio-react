@@ -1,4 +1,4 @@
-name: Build and Deploy to Development
+name: Deploy to Development
 
 on:
   push:
@@ -32,8 +32,23 @@ jobs:
       - name: Type check
         run: npm run type-check
 
-      - name: Build
-        run: npm run build
+      - name: Build for Development
+        run: |
+          echo "VITE_DEPLOY_TARGET=development" > .env.production
+          echo "VITE_ROUTER_BASE=/portfolio-react" >> .env.production
+          npm run build
+
+      - name: Add noindex for SEO
+        run: |
+          # Add robots.txt to prevent indexing (dev environment)
+          echo "User-agent: *" > dist/robots.txt
+          echo "Disallow: /" >> dist/robots.txt
+
+          # Update base href for GitHub Pages
+          sed -i 's|<base href="/" />|<base href="/portfolio-react/" />|g' dist/index.html
+
+          # Add noindex meta tag for development
+          sed -i 's|<meta name="viewport"|<meta name="robots" content="noindex, nofollow" />\n    <meta name="viewport"|g' dist/index.html
 
       - name: Deploy to gh-pages-dev
         uses: peaceiris/actions-gh-pages@v4

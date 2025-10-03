@@ -7,9 +7,14 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:github": "cp .env.github .env.production && npm run build",
+    "build:cloudflare": "cp .env.cloudflare .env.production && npm run build",
+    "build:dev": "cp .env.development .env.production && npm run build",
     "lint": "eslint .",
     "type-check": "tsc --noEmit",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy:github": "npm run build:github",
+    "deploy:cloudflare": "npm run build:cloudflare"
   },
   "dependencies": {
     "react": "^19.1.1",

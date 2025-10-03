@@ -1,0 +1,69 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type check
+        run: npm run type-check
+
+      - name: Build for Cloudflare Pages
+        run: |
+          echo "VITE_DEPLOY_TARGET=cloudflare" > .env.production
+          echo "VITE_ROUTER_BASE=/" >> .env.production
+          echo "VITE_CANONICAL_URL=https://sunny.persist.site" >> .env.production
+          npm run build
+
+      - name: Add canonical meta tag for SEO
+        run: |
+          # Add canonical URL to prevent duplicate content issues
+          sed -i 's|<meta name="viewport"|<link rel="canonical" href="https://sunny.persist.site/" />\n    <meta name="viewport"|g' dist/index.html
+
+      - name: Deploy to pages-dev branch
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch origin
+          git checkout -B pages-dev
+
+          # Clear everything except .git
+          find . -not -name '.git' -not -path './.git/*' -delete
+
+          # Copy built files
+          cp -r dist/* .
+          cp -r dist/.* . 2>/dev/null || true
+
+          # Add all files
+          git add .
+          git commit -m "Deploy to Cloudflare Pages from main branch [$(date '+%Y-%m-%d %H:%M:%S')]" || echo "No changes to commit"
+          git push origin pages-dev --force
+
+      - name: Deployment Summary
+        run: |
+          echo "🚀 Deployment completed!"
+          echo "📁 Built files pushed to pages-dev branch"
+          echo "🌐 Cloudflare Pages will automatically deploy from this branch"
+          echo "🔗 Your site will be available at your custom domain and pages.dev URL"

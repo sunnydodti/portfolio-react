@@ -99,6 +99,48 @@ _Last Updated: October 2, 2025_
    - ✅ 1024px+: Three-column tech grid, two-column responsibilities grid
    - ✅ 1280px+: Four-column tech grid, optimized overview layout ratios
 
+7. **LATEST UPDATE - Dual Deployment Architecture**: Complete separation of GitHub Pages and Cloudflare Pages deployments to prevent SEO duplicate content issues:
+
+   **Deployment Strategy**:
+   - ✅ GitHub Pages: Demo/development version with noindex for SEO protection
+   - ✅ Cloudflare Pages: Production/canonical version for search engine visibility
+   - ✅ Environment-based configuration for deployment-specific builds
+   - ✅ Separate workflows to prevent content duplication conflicts
+
+   **Infrastructure Changes**:
+   **GitHub Workflow** (`.github/workflows/main.yaml`):
+   - ✅ Updated to use GitHub-specific environment variables
+   - ✅ Adds robots.txt with disallow rules for SEO protection
+   - ✅ Injects noindex meta tag to prevent search engine indexing
+   - ✅ Builds with `/portfolio-react/` base href for GitHub Pages routing
+   - ✅ Deploys to `gh-pages` branch for GitHub Pages hosting
+
+   **Cloudflare Workflow** (`.github/workflows/deploy-cloudflare.yaml`):
+   - ✅ New dedicated workflow for Cloudflare Pages deployment
+   - ✅ Uses clean environment without noindex restrictions
+   - ✅ Injects canonical URL for proper SEO attribution
+   - ✅ Builds with root base href for custom domain routing
+   - ✅ Deploys to `pages-dev` branch for Cloudflare auto-deployment
+
+   **Build Configuration** (`vite.config.ts`):
+   - ✅ Enhanced with meta injection plugin for deployment-specific handling
+   - ✅ Dynamic base URL configuration based on deployment target
+   - ✅ Conditional meta tag injection (noindex for GitHub, canonical for Cloudflare)
+   - ✅ Environment-aware build process with proper routing configuration
+
+   **Environment Setup**:
+   - ✅ Created `.env.github` for GitHub Pages specific configuration
+   - ✅ Created `.env.cloudflare` for Cloudflare Pages specific configuration
+   - ✅ Created `.env.development` for local development settings
+   - ✅ Updated Router basename to use environment variables instead of DOM parsing
+   - ✅ Updated package.json with deployment-specific build scripts
+
+   **Legacy System Cleanup**:
+   - ✅ Removed old SPA redirect system from `404.html`
+   - ✅ Cleaned up `index.html` redirect scripts
+   - ✅ Eliminated DOM-based basename detection in Router configuration
+   - ✅ Simplified routing to use environment-based configuration
+
    **Visual Enhancements**:
    - ✅ Improved company logo design with primary color background
    - ✅ Enhanced hover effects and micro-interactions throughout
@@ -111,7 +153,7 @@ _Last Updated: October 2, 2025_
    - ✅ Consistent use of CSS variables and design tokens
    - ✅ Mobile-first media queries with proper breakpoint progression
 
-7. **LATEST UPDATE - Responsive Design Compliance**: Updated Experience page to fully comply with responsive design guidelines:
+8. **LATEST UPDATE - Responsive Design Compliance**: Updated Experience page to fully comply with responsive design guidelines:
    **Touch Target Optimization**:
    - ✅ Expand toggle button: Increased from 36px to 44px minimum touch target size
    - ✅ Tab buttons: Added 44px minimum height with proper flex alignment

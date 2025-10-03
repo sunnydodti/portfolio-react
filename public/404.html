@@ -1,33 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Portfolio - Redirecting...</title>
-    <script type="text/javascript">
-      // Check if we're on GitHub Pages
-      if (window.location.hostname.includes('github.io')) {
-        // GitHub Pages SPA redirect
-        // MIT License
-        // https://github.com/rafgraph/spa-github-pages
-        var pathSegmentsToKeep = 1;
-        var l = window.location;
-        
-        // Redirect to index with encoded path
-        l.replace(
-          l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-          l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
-          l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
-          (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-          l.hash
-        );
-      } else {
-        // Not GitHub Pages - this file shouldn't be served by Cloudflare (they use _redirects)
-        // Fallback redirect to home
-        window.location.href = '/';
+    <title>Page Not Found | Sunny Dodti Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        background: #0f172a;
+        color: #f8fafc;
+        text-align: center;
       }
-    </script>
+      .container {
+        max-width: 400px;
+        padding: 2rem;
+      }
+      h1 {
+        font-size: 3rem;
+        margin: 0 0 1rem 0;
+        color: #3b82f6;
+      }
+      p {
+        margin: 1rem 0;
+        line-height: 1.6;
+      }
+      a {
+        color: #3b82f6;
+        text-decoration: none;
+        font-weight: 500;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
   </head>
   <body>
+    <div class="container">
+      <h1>404</h1>
+      <p>Sorry, the page you're looking for doesn't exist.</p>
+      <p><a href="/">Return to Homepage</a></p>
+    </div>
+  </body>
+</html>
     <p>Redirecting...</p>
   </body>
 </html>
