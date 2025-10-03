@@ -38,6 +38,22 @@
         text-decoration: underline;
       }
     </style>
+    <script>
+      // SPA fallback for GitHub Pages
+      // Store the current path for SPA routing
+      const path = window.location.pathname;
+      const base = '/portfolio-react';
+      
+      // If we're on GitHub Pages and path is not just the base
+      if (path !== base && path !== base + '/') {
+        // Store the intended path in sessionStorage
+        const redirectPath = path.replace(base, '') || '/';
+        sessionStorage.setItem('github-pages-redirect', redirectPath);
+        
+        // Redirect to the base URL
+        window.location.replace(base + '/');
+      }
+    </script>
   </head>
   <body>
     <div class="container">
@@ -45,8 +61,5 @@
       <p>Sorry, the page you're looking for doesn't exist.</p>
       <p><a href="/">Return to Homepage</a></p>
     </div>
-  </body>
-</html>
-    <p>Redirecting...</p>
   </body>
 </html>

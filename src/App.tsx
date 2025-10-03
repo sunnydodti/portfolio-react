@@ -3,7 +3,9 @@ import {
   Routes,
   Route,
   Navigate,
+  useNavigate,
 } from 'react-router-dom';
+import { useEffect } from 'react';
 import { PortfolioProvider } from './context/PortfolioProvider';
 import { Layout } from './components/layout';
 import { Home, Experience, Projects, TechStack, Contact } from './pages';
@@ -15,10 +17,27 @@ const getBasename = () => {
   return basename && basename !== '/' ? basename : undefined;
 };
 
+// Component to handle GitHub Pages redirects
+const GitHubPagesRedirectHandler = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check if there's a stored redirect path from GitHub Pages 404 handler
+    const redirectPath = sessionStorage.getItem('github-pages-redirect');
+    if (redirectPath) {
+      sessionStorage.removeItem('github-pages-redirect');
+      navigate(redirectPath, { replace: true });
+    }
+  }, [navigate]);
+
+  return null;
+};
+
 function App() {
   return (
     <PortfolioProvider>
       <Router basename={getBasename()}>
+        <GitHubPagesRedirectHandler />
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
