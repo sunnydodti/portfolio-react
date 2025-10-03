@@ -43,23 +43,13 @@ jobs:
           sed -i 's|<meta name="viewport"|<link rel="canonical" href="https://sunny.persist.site/" />\n    <meta name="viewport"|g' dist/index.html
 
       - name: Deploy to pages-dev branch
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git fetch origin
-          git checkout -B pages-dev
-
-          # Clear everything except .git
-          find . -not -name '.git' -not -path './.git/*' -delete
-
-          # Copy built files
-          cp -r dist/* .
-          cp -r dist/.* . 2>/dev/null || true
-
-          # Add all files
-          git add .
-          git commit -m "Deploy to Cloudflare Pages from main branch [$(date '+%Y-%m-%d %H:%M:%S')]" || echo "No changes to commit"
-          git push origin pages-dev --force
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: pages-dev
+          force_orphan: true
+          commit_message: 'Deploy to Cloudflare Pages from main branch'
 
       - name: Deployment Summary
         run: |
